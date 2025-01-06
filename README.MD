@@ -18,14 +18,22 @@ We are tasked with creating full stack hotel management web application. Users w
 ## :two_men_holding_hands: User Stories:
 
 As a user, I can register and login
+
 As a user, I can create, read, update, and delete my own reviews
+
 As a user, I can create, read, update, and delete reservations
+
 As a user, I can search hotels by location
+
 As a user, I can update/delete my own information
 
+
 As a manager, I can do everything user can
+
 As a manager, I can add, update, delete hotels
+
 As a manager, I can read and delete reviews
+
 As a manager, I can read, update, and delete reservations
 
 ## :computer: Technologies Used:
