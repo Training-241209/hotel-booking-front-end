@@ -17,12 +17,12 @@ export default function Navbar() {
 
 
   return (
-    <div className='flex items-center shadow-md justify-between h-15 py-3 px-5'>
-        <div className="flex items-center justify-center">
-            <img src="CHECKINN.png" alt="Logo" className='w-[75px] h-[75px]' />
-        </div>
-        {user &&
-          <div className="flex gap-3 ml-3 flex-1">
+    <div className={`flex items-center justify-between h-15 py-3 px-36 ${user ? 'shadow-md' : ''}`}>
+      <div className="flex items-center justify-center">
+          <img src="Logo.png" alt="Logo" className='w-[75px] h-[75px]' />
+      </div>
+      {user &&
+        <div className="flex gap-3 ml-3 flex-1">
           <Link to="/" className="[&.active]:font-bold">
             Hotels
           </Link>
@@ -33,9 +33,9 @@ export default function Navbar() {
             Reviews
           </Link>
         </div>
-        }
+      }
 
-        {user && 
+      {user && 
         <>
           <div className="bg-orange-500 mx-3">
             <input type="text" placeholder='Enter a location' />
@@ -45,16 +45,16 @@ export default function Navbar() {
             <span>{user?.name}</span>
           </div>
           
-        </>}
-        {!user && <div className='flex gap-3'>
-          <Link to="/login" className="[&.active]:font-bold">
-            Login
-          </Link>
-          <Link to="/register" className="[&.active]:font-bold">
-            Register
-          </Link>
-        
-        </div>}
+        </>
+      }
+      {!user && <div className='flex gap-3'>
+        <Link to="/login" className="[&.active]:font-bold">
+          Login
+        </Link>
+        <Link to="/register" className="[&.active]:font-bold">
+          Register
+        </Link>
+      </div>}
         
     </div>
   )
