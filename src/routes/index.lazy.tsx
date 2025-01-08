@@ -12,8 +12,8 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
   return (
-    <div className="flex flex-col items-center justify-start h-[calc(100vh-99px)] ">
-      <div className="logo mt-48">
+    <div className="flex flex-col items-center justify-start h-[calc(100vh-99px)] pb-10 ">
+      <div className="logo mt-20">
         <img src="Logo.png" alt="Logo" />
       </div>
       <div className="search_bar mt-8 w-1/2">
