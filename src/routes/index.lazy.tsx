@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
   return (
-    <div className="flex flex-col items-center justify-start h-[calc(100vh-6.5rem)] pb-10 ">
+    <div className="flex flex-col items-center justify-start h-[calc(100vh-5rem)] pb-10 ">
       <div className="logo mt-20">
         <img src="Logo.png" alt="Logo" />
       </div>
