@@ -13,7 +13,7 @@ function RouteComponent() {
   const [hotel, setHotel] = useAtom(hotelAtom);
 
   return (
-    <div className="w-full h-[calc(100vh-6.5rem)] px-36 py-10 flex items-center flex-col">
+    <div className="w-full h-[calc(100vh-5rem)] px-36 py-10 flex items-center flex-col">
       <div className="grid w-3/4 h-full grid-cols-5 grid-rows-1 gap-3">
         <div className="col-span-2 flex justify-center p-3 shadow-lg">
           <HotelSlider />

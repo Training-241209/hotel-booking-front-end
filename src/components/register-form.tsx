@@ -48,7 +48,7 @@ export default function RegisterForm() {
 
     return (
         <div className="flex w-1/2 p-2">
-            <div className="register_form_image w-1/2 relative">
+            <div className="register_form_image w-1/2  relative">
                 <img src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg" alt="Laptop Image" className="w-full h-full object-cover" />
                 <div className="w-full h-full flex flex-col items-center justify-center text-center text-white absolute top-0 p-3">
                     <h1 className="font-bold text-2xl mb-3">Create an Account</h1>
