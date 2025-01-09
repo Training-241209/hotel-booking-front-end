@@ -7,7 +7,7 @@ export default function Navbar() {
     email: string;
   }
   
-  let user: User | null = {
+  let user: User | any = {
     id: 1,
     name: "John Doe",
     email: "john.doe@example.com",
@@ -17,9 +17,11 @@ export default function Navbar() {
 
 
   return (
-    <div className={`flex items-center justify-between h-15 py-3 px-36 ${user ? 'shadow-md' : ''}`}>
+    <div className={`flex items-center justify-between h-20 py-3 px-36 ${user ? 'shadow-md' : ''}`}>
       <div className="flex items-center justify-center">
+        <Link to="/HomePage">
           <img src="Logo.png" alt="Logo" className='w-[75px] h-[75px]' />
+        </Link>
       </div>
       {user &&
         <div className="flex gap-3 ml-3 flex-1">
@@ -44,7 +46,6 @@ export default function Navbar() {
             <div className="w-[50px] h-[50px] rounded-full bg-blue-300"></div>
             <span>{user?.name}</span>
           </div>
-          
         </>
       }
       {!user && <div className='flex gap-3'>
