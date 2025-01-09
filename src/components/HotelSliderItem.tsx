@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { useAtom } from 'jotai';
+import { hotelAtom } from '@/store/atoms';
 
 interface HotelSliderItemProps {
     hotel_id: number;
@@ -8,10 +10,9 @@ interface HotelSliderItemProps {
     location: string;
     price: number;
     image: string;
-    rating: number;
 }
 
-export default function HotelSliderItem({  
+export default function HotelSliderItem({
     hotel_id,
     hotel_name,
     description,
@@ -19,15 +20,20 @@ export default function HotelSliderItem({
     location,
     price,
     image,
-    rating
-}:HotelSliderItemProps) {
-  return (
-    <div className='relative'>
-      <img src={image} alt={hotel_name} />
-      <div className="absolute bottom-0 m-1 text-white">
-        <h1 className='font-bold'>{hotel_name}</h1>
-        <p>{location}</p>
-      </div>
-    </div>
-  )
+}: HotelSliderItemProps) {
+    const [, setHotel] = useAtom(hotelAtom);
+
+    const handleSelect = () => {
+        setHotel({ hotel_id, hotel_name, description, rooms, location, price, image });
+    };
+
+    return (
+        <div className="relative cursor-pointer rounded-md" onClick={handleSelect}>
+            <img src={image} alt={hotel_name} className="w-full h-auto rounded-lg" />
+            <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 text-white p-2">
+                <h1 className="font-bold text-lg">{hotel_name}</h1>
+                <p className="text-sm">{location}</p>
+            </div>
+        </div>
+    );
 }
