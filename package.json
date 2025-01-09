@@ -20,11 +20,7 @@
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-<<<<<<< HEAD
-    "hotel-booking-front-end": "file:",
-=======
     "jotai": "^2.11.0",
->>>>>>> a019e796bc57260819ca06e7fa24bffaca66c851
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.469.0",
     "react": "^18.3.1",
