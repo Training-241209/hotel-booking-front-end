@@ -13,7 +13,9 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as MainImport } from './routes/_main'
 import { Route as AuthImport } from './routes/_auth'
+import { Route as MainHomePageImport } from './routes/_main/HomePage'
 
 // Create Virtual Routes
 
@@ -22,6 +24,11 @@ const AuthRegisterLazyImport = createFileRoute('/_auth/register')()
 const AuthLoginLazyImport = createFileRoute('/_auth/login')()
 
 // Create/Update Routes
+
+const MainRoute = MainImport.update({
+  id: '/_main',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const AuthRoute = AuthImport.update({
   id: '/_auth',
@@ -48,6 +55,12 @@ const AuthLoginLazyRoute = AuthLoginLazyImport.update({
   getParentRoute: () => AuthRoute,
 } as any).lazy(() => import('./routes/_auth/login.lazy').then((d) => d.Route))
 
+const MainHomePageRoute = MainHomePageImport.update({
+  id: '/HomePage',
+  path: '/HomePage',
+  getParentRoute: () => MainRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -65,6 +78,20 @@ declare module '@tanstack/react-router' {
       fullPath: ''
       preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
+    }
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof MainImport
+      parentRoute: typeof rootRoute
+    }
+    '/_main/HomePage': {
+      id: '/_main/HomePage'
+      path: '/HomePage'
+      fullPath: '/HomePage'
+      preLoaderRoute: typeof MainHomePageImport
+      parentRoute: typeof MainImport
     }
     '/_auth/login': {
       id: '/_auth/login'
@@ -97,16 +124,28 @@ const AuthRouteChildren: AuthRouteChildren = {
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
+interface MainRouteChildren {
+  MainHomePageRoute: typeof MainHomePageRoute
+}
+
+const MainRouteChildren: MainRouteChildren = {
+  MainHomePageRoute: MainHomePageRoute,
+}
+
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '': typeof AuthRouteWithChildren
+  '': typeof MainRouteWithChildren
+  '/HomePage': typeof MainHomePageRoute
   '/login': typeof AuthLoginLazyRoute
   '/register': typeof AuthRegisterLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '': typeof AuthRouteWithChildren
+  '': typeof MainRouteWithChildren
+  '/HomePage': typeof MainHomePageRoute
   '/login': typeof AuthLoginLazyRoute
   '/register': typeof AuthRegisterLazyRoute
 }
@@ -115,27 +154,38 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/_auth': typeof AuthRouteWithChildren
+  '/_main': typeof MainRouteWithChildren
+  '/_main/HomePage': typeof MainHomePageRoute
   '/_auth/login': typeof AuthLoginLazyRoute
   '/_auth/register': typeof AuthRegisterLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/login' | '/register'
+  fullPaths: '/' | '' | '/HomePage' | '/login' | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/login' | '/register'
-  id: '__root__' | '/' | '/_auth' | '/_auth/login' | '/_auth/register'
+  to: '/' | '' | '/HomePage' | '/login' | '/register'
+  id:
+    | '__root__'
+    | '/'
+    | '/_auth'
+    | '/_main'
+    | '/_main/HomePage'
+    | '/_auth/login'
+    | '/_auth/register'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AuthRoute: typeof AuthRouteWithChildren
+  MainRoute: typeof MainRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AuthRoute: AuthRouteWithChildren,
+  MainRoute: MainRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -149,7 +199,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_auth"
+        "/_auth",
+        "/_main"
       ]
     },
     "/": {
@@ -161,6 +212,16 @@ export const routeTree = rootRoute
         "/_auth/login",
         "/_auth/register"
       ]
+    },
+    "/_main": {
+      "filePath": "_main.tsx",
+      "children": [
+        "/_main/HomePage"
+      ]
+    },
+    "/_main/HomePage": {
+      "filePath": "_main/HomePage.tsx",
+      "parent": "/_main"
     },
     "/_auth/login": {
       "filePath": "_auth/login.lazy.tsx",

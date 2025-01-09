@@ -6,13 +6,9 @@ export const Route = createLazyFileRoute('/')({
   component: Index,
 })
 
-  // Notes: px-36 on all pages
-  // Current height of navbar = 99px
-  // primary-color: #022b60
-
 function Index() {
   return (
-    <div className="flex flex-col items-center justify-start h-[calc(100vh-99px)] pb-10 ">
+    <div className="flex flex-col items-center justify-start h-[calc(100vh-6.5rem)] pb-10 ">
       <div className="logo mt-20">
         <img src="Logo.png" alt="Logo" />
       </div>
