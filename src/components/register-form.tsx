@@ -47,7 +47,7 @@ export default function RegisterForm() {
     };
 
     return (
-        <div className="flex w-1/2 p-2 border rounded">
+        <div className="flex w-1/2 p-2 bg-white rounded">
             <div className="register_form_image w-1/2 relative">
                 <img src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg" alt="Laptop Image" className="w-full h-full object-cover" />
                 <div className="w-full h-full flex flex-col items-center justify-center text-center text-white absolute top-0 p-3">
@@ -55,7 +55,7 @@ export default function RegisterForm() {
                     <h2 className="">Sign up with your details to get started and join our community.</h2>
                 </div>
             </div>
-            <div className="w-1/2 p-5 rounded-md shadow-md bg-white">
+            <div className="w-1/2 p-5 rounded-md bg-white">
                 <div className="text-lg font-semibold mb-8 text-center">Sign Up</div>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 flex flex-col justify-center items-center">
