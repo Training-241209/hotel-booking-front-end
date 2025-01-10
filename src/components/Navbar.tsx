@@ -1,19 +1,27 @@
+import { userAtom } from "@/store/atoms";
 import { Link, useLocation } from "@tanstack/react-router";
+import { useAtom } from "jotai";
 
-export default function Navbar() {
+export default function Navbar() 
+{
+  const [storedUser] = useAtom(userAtom);
+
   interface User {
     id: number;
     name: string;
     email: string;
+    roleName: string;
+    isAdmin: boolean;
   }
 
   let user: User | any = {
-    id: 1,
-    name: "John Doe",
-    email: "john.doe@example.com",
+    id: storedUser?.userId,
+    name: `${storedUser?.firstName} ${storedUser?.lastName}`,
+    email: `${storedUser?.email}`,
   };
-
-  user = null;
+  // user = null;
+  // console.log(storedUser);
+  // console.log(user);
 
   // Check if the user is on the login or register page
   const location = useLocation();
@@ -25,7 +33,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex items-center justify-between h-24 py-3 px-36 ${user ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`flex items-center justify-between h-24 py-3 px-36 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
       <div className="flex items-center justify-center">
         <Link to="/HomePage">
@@ -36,7 +44,7 @@ export default function Navbar() {
           />
         </Link>
       </div>
-      {user && (
+      {storedUser && (
         <div className="flex gap-3 ml-3 flex-1">
           <Link to="/" className={`${linkTextColor} [&.active]:font-bold`}>
             Hotels
@@ -50,7 +58,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {user && (
+      {storedUser && (
         <>
           <div className="bg-orange-500 mx-3">
             <input type="text" placeholder="Enter a location" />
@@ -61,7 +69,7 @@ export default function Navbar() {
           </div>
         </>
       )}
-      {!user && (
+      {!storedUser && (
         <div className="flex gap-3">
           <Link
             to="/login"

@@ -24,7 +24,7 @@ export default function LoginForm() {
         resolver: zodResolver(loginFormSchema),
         // this is the default values for the form
         defaultValues: {
-            username: "",
+            email: "",
             password: "",
         },
     });
@@ -56,12 +56,12 @@ export default function LoginForm() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 flex flex-col justify-center items-center">
                         <FormField
                             control={form.control}
-                            name="username"
+                            name="email"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>Username</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="Username" {...field} />
+                                        <Input type="text" placeholder="Email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

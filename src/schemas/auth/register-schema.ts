@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const registerFormSchema = z.object({
-    firstname: z.string().min(1, "Please enter a valid first name").max(50),
+    firstName: z.string().min(1, "Please enter a valid first name").max(50),
 
-    lastname: z.string().min(1, "Please enter a valid last name").max(50),
+    lastName: z.string().min(1, "Please enter a valid last name").max(50),
 
     email: z.string().min(1, "Please enter a valid email").max(50),
 

@@ -23,8 +23,8 @@ export default function RegisterForm() {
         resolver: zodResolver(registerFormSchema),
         // this is the default values for the form
         defaultValues: {
-            firstname: "",
-            lastname: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -61,7 +61,7 @@ export default function RegisterForm() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1 flex flex-col justify-center items-center">
                         <FormField
                             control={form.control}
-                            name="firstname"
+                            name="firstName"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>First Name</FormLabel>
@@ -74,7 +74,7 @@ export default function RegisterForm() {
                         />
                         <FormField
                             control={form.control}
-                            name="lastname"
+                            name="lastName"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>Last Name</FormLabel>

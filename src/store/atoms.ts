@@ -3,7 +3,18 @@ import { atom } from 'jotai';
 // this is where all the global states will be stored
 
 export const countAtom = atom(0);
-export const userAtom = atom({ name: '', age: 0 });
+
+interface User 
+{
+    userId: number,
+    firstName: string, 
+    lastName: string, 
+    email: string,
+    roleName: string,
+    isAdmin: boolean
+}
+
+export const userAtom = atom<User | null>(null);
 export const themeAtom = atom('light');
 
 
