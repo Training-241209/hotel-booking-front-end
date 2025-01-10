@@ -1,13 +1,20 @@
-import ReservationItem from '@/components/ReservationItem'
-import { createFileRoute } from '@tanstack/react-router'
+import ReservationItem from "@/components/ReservationItem";
+import { createFileRoute } from "@tanstack/react-router";
+import reservationData from "../../../reservationdata.json";
 
-export const Route = createFileRoute('/_main/ReservationPage')({
+export const Route = createFileRoute("/_main/ReservationPage")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div className='flex h-[calc(100vh-5rem)] w-full flex-col items-center px-36 py-10'>
-    <h1 className='text-3xl font-bold underline mb-3 text-[#022b60]'>My Reservations</h1>
-    <ReservationItem/>
-  </div>
+  return (
+    <div className="flex h-[calc(100vh-5rem)] w-full flex-col items-center px-36 py-10">
+      <h1 className="mb-3 text-3xl font-bold text-[#022b60] underline">
+        My Reservations
+      </h1>
+      {reservationData.map((reservation) => (
+        <ReservationItem key={reservation.reserve_id} {...reservation} />
+      ))}
+    </div>
+  );
 }
