@@ -38,7 +38,7 @@ export default function UpdateUserForm() {
   };
 
   return (
-    <div className="w-5/6 p-3 bg-red-50">
+    <div className="w-5/6 p-3 shadow-md">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
