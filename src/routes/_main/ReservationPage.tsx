@@ -12,9 +12,11 @@ function RouteComponent() {
       <h1 className="mb-3 text-3xl font-bold text-[#022b60] underline">
         My Reservations
       </h1>
-      {reservationData.map((reservation) => (
-        <ReservationItem key={reservation.reserve_id} {...reservation} />
-      ))}
+      <div className="scrollbar-hidden h-full w-full overflow-y-auto p-3 shadow-md">
+        {reservationData.map((reservation) => (
+          <ReservationItem key={reservation.reserve_id} {...reservation} />
+        ))}
+      </div>
     </div>
   );
 }

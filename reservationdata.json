@@ -33,6 +33,20 @@
       "check_out_time": "2025-05-25T10:00:00",
       "user_id_fk": 105,
       "hotel_id_fk": 4
+    },
+    {
+      "reserve_id": 6,
+      "check_in_time": "2025-05-20T13:00:00",
+      "check_out_time": "2025-05-25T10:00:00",
+      "user_id_fk": 105,
+      "hotel_id_fk": 4
+    },
+    {
+      "reserve_id": 7,
+      "check_in_time": "2025-05-20T13:00:00",
+      "check_out_time": "2025-05-25T10:00:00",
+      "user_id_fk": 105,
+      "hotel_id_fk": 4
     }
   ]
   
