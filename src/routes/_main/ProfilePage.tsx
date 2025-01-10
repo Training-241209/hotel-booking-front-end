@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import UpdateUserForm from "@/components/UpdateUserForm";
+import { UserAvatar } from "@/components/user-avatar";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_main/ProfilePage")({
@@ -25,7 +26,7 @@ function RouteComponent() {
         <div className="user__container__header h-1/4 bg-green-100 flex items-center px-3 gap-3">
           <div className="user__container__header__avatar">
             {/* Change this later on */}
-            <div className="w-[150px] h-[150px] bg-blue-100 circle rounded-full"></div>
+            <UserAvatar height={150} width={150} nav={false}/>
           </div>
           <div className="user__container__header__details flex flex-col justify-center">
             <h1>Email: {user.email}</h1>
