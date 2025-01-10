@@ -8,209 +8,243 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as MainImport } from "./routes/_main";
-import { Route as AuthImport } from "./routes/_auth";
-import { Route as MainProfilePageImport } from "./routes/_main/ProfilePage";
-import { Route as MainHomePageImport } from "./routes/_main/HomePage";
+import { Route as rootRoute } from './routes/__root'
+import { Route as MainImport } from './routes/_main'
+import { Route as AuthImport } from './routes/_auth'
+import { Route as MainReservationPageImport } from './routes/_main/ReservationPage'
+import { Route as MainProfilePageImport } from './routes/_main/ProfilePage'
+import { Route as MainHomePageImport } from './routes/_main/HomePage'
 
 // Create Virtual Routes
 
-const IndexLazyImport = createFileRoute("/")();
-const AuthRegisterLazyImport = createFileRoute("/_auth/register")();
-const AuthLoginLazyImport = createFileRoute("/_auth/login")();
+const IndexLazyImport = createFileRoute('/')()
+const AuthRegisterLazyImport = createFileRoute('/_auth/register')()
+const AuthLoginLazyImport = createFileRoute('/_auth/login')()
 
 // Create/Update Routes
 
 const MainRoute = MainImport.update({
-  id: "/_main",
+  id: '/_main',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const AuthRoute = AuthImport.update({
-  id: "/_auth",
+  id: '/_auth',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import("./routes/index.lazy").then((d) => d.Route));
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 const AuthRegisterLazyRoute = AuthRegisterLazyImport.update({
-  id: "/register",
-  path: "/register",
+  id: '/register',
+  path: '/register',
   getParentRoute: () => AuthRoute,
 } as any).lazy(() =>
-  import("./routes/_auth/register.lazy").then((d) => d.Route),
-);
+  import('./routes/_auth/register.lazy').then((d) => d.Route),
+)
 
 const AuthLoginLazyRoute = AuthLoginLazyImport.update({
-  id: "/login",
-  path: "/login",
+  id: '/login',
+  path: '/login',
   getParentRoute: () => AuthRoute,
-} as any).lazy(() => import("./routes/_auth/login.lazy").then((d) => d.Route));
+} as any).lazy(() => import('./routes/_auth/login.lazy').then((d) => d.Route))
+
+const MainReservationPageRoute = MainReservationPageImport.update({
+  id: '/ReservationPage',
+  path: '/ReservationPage',
+  getParentRoute: () => MainRoute,
+} as any)
 
 const MainProfilePageRoute = MainProfilePageImport.update({
-  id: "/ProfilePage",
-  path: "/ProfilePage",
+  id: '/ProfilePage',
+  path: '/ProfilePage',
   getParentRoute: () => MainRoute,
-} as any);
+} as any)
 
 const MainHomePageRoute = MainHomePageImport.update({
-  id: "/HomePage",
-  path: "/HomePage",
+  id: '/HomePage',
+  path: '/HomePage',
   getParentRoute: () => MainRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexLazyImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_auth": {
-      id: "/_auth";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof AuthImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_main": {
-      id: "/_main";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof MainImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_main/HomePage": {
-      id: "/_main/HomePage";
-      path: "/HomePage";
-      fullPath: "/HomePage";
-      preLoaderRoute: typeof MainHomePageImport;
-      parentRoute: typeof MainImport;
-    };
-    "/_main/ProfilePage": {
-      id: "/_main/ProfilePage";
-      path: "/ProfilePage";
-      fullPath: "/ProfilePage";
-      preLoaderRoute: typeof MainProfilePageImport;
-      parentRoute: typeof MainImport;
-    };
-    "/_auth/login": {
-      id: "/_auth/login";
-      path: "/login";
-      fullPath: "/login";
-      preLoaderRoute: typeof AuthLoginLazyImport;
-      parentRoute: typeof AuthImport;
-    };
-    "/_auth/register": {
-      id: "/_auth/register";
-      path: "/register";
-      fullPath: "/register";
-      preLoaderRoute: typeof AuthRegisterLazyImport;
-      parentRoute: typeof AuthImport;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthImport
+      parentRoute: typeof rootRoute
+    }
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof MainImport
+      parentRoute: typeof rootRoute
+    }
+    '/_main/HomePage': {
+      id: '/_main/HomePage'
+      path: '/HomePage'
+      fullPath: '/HomePage'
+      preLoaderRoute: typeof MainHomePageImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/ProfilePage': {
+      id: '/_main/ProfilePage'
+      path: '/ProfilePage'
+      fullPath: '/ProfilePage'
+      preLoaderRoute: typeof MainProfilePageImport
+      parentRoute: typeof MainImport
+    }
+    '/_main/ReservationPage': {
+      id: '/_main/ReservationPage'
+      path: '/ReservationPage'
+      fullPath: '/ReservationPage'
+      preLoaderRoute: typeof MainReservationPageImport
+      parentRoute: typeof MainImport
+    }
+    '/_auth/login': {
+      id: '/_auth/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AuthLoginLazyImport
+      parentRoute: typeof AuthImport
+    }
+    '/_auth/register': {
+      id: '/_auth/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof AuthRegisterLazyImport
+      parentRoute: typeof AuthImport
+    }
   }
 }
 
 // Create and export the route tree
 
 interface AuthRouteChildren {
-  AuthLoginLazyRoute: typeof AuthLoginLazyRoute;
-  AuthRegisterLazyRoute: typeof AuthRegisterLazyRoute;
+  AuthLoginLazyRoute: typeof AuthLoginLazyRoute
+  AuthRegisterLazyRoute: typeof AuthRegisterLazyRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
   AuthLoginLazyRoute: AuthLoginLazyRoute,
   AuthRegisterLazyRoute: AuthRegisterLazyRoute,
-};
+}
 
-const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren);
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface MainRouteChildren {
-  MainHomePageRoute: typeof MainHomePageRoute;
-  MainProfilePageRoute: typeof MainProfilePageRoute;
+  MainHomePageRoute: typeof MainHomePageRoute
+  MainProfilePageRoute: typeof MainProfilePageRoute
+  MainReservationPageRoute: typeof MainReservationPageRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainHomePageRoute: MainHomePageRoute,
   MainProfilePageRoute: MainProfilePageRoute,
-};
+  MainReservationPageRoute: MainReservationPageRoute,
+}
 
-const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren);
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexLazyRoute;
-  "": typeof MainRouteWithChildren;
-  "/HomePage": typeof MainHomePageRoute;
-  "/ProfilePage": typeof MainProfilePageRoute;
-  "/login": typeof AuthLoginLazyRoute;
-  "/register": typeof AuthRegisterLazyRoute;
+  '/': typeof IndexLazyRoute
+  '': typeof MainRouteWithChildren
+  '/HomePage': typeof MainHomePageRoute
+  '/ProfilePage': typeof MainProfilePageRoute
+  '/ReservationPage': typeof MainReservationPageRoute
+  '/login': typeof AuthLoginLazyRoute
+  '/register': typeof AuthRegisterLazyRoute
 }
 
 export interface FileRoutesByTo {
-  "/": typeof IndexLazyRoute;
-  "": typeof MainRouteWithChildren;
-  "/HomePage": typeof MainHomePageRoute;
-  "/ProfilePage": typeof MainProfilePageRoute;
-  "/login": typeof AuthLoginLazyRoute;
-  "/register": typeof AuthRegisterLazyRoute;
+  '/': typeof IndexLazyRoute
+  '': typeof MainRouteWithChildren
+  '/HomePage': typeof MainHomePageRoute
+  '/ProfilePage': typeof MainProfilePageRoute
+  '/ReservationPage': typeof MainReservationPageRoute
+  '/login': typeof AuthLoginLazyRoute
+  '/register': typeof AuthRegisterLazyRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/": typeof IndexLazyRoute;
-  "/_auth": typeof AuthRouteWithChildren;
-  "/_main": typeof MainRouteWithChildren;
-  "/_main/HomePage": typeof MainHomePageRoute;
-  "/_main/ProfilePage": typeof MainProfilePageRoute;
-  "/_auth/login": typeof AuthLoginLazyRoute;
-  "/_auth/register": typeof AuthRegisterLazyRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexLazyRoute
+  '/_auth': typeof AuthRouteWithChildren
+  '/_main': typeof MainRouteWithChildren
+  '/_main/HomePage': typeof MainHomePageRoute
+  '/_main/ProfilePage': typeof MainProfilePageRoute
+  '/_main/ReservationPage': typeof MainReservationPageRoute
+  '/_auth/login': typeof AuthLoginLazyRoute
+  '/_auth/register': typeof AuthRegisterLazyRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "" | "/HomePage" | "/ProfilePage" | "/login" | "/register";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "" | "/HomePage" | "/ProfilePage" | "/login" | "/register";
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | ''
+    | '/HomePage'
+    | '/ProfilePage'
+    | '/ReservationPage'
+    | '/login'
+    | '/register'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | ''
+    | '/HomePage'
+    | '/ProfilePage'
+    | '/ReservationPage'
+    | '/login'
+    | '/register'
   id:
-    | "__root__"
-    | "/"
-    | "/_auth"
-    | "/_main"
-    | "/_main/HomePage"
-    | "/_main/ProfilePage"
-    | "/_auth/login"
-    | "/_auth/register";
-  fileRoutesById: FileRoutesById;
+    | '__root__'
+    | '/'
+    | '/_auth'
+    | '/_main'
+    | '/_main/HomePage'
+    | '/_main/ProfilePage'
+    | '/_main/ReservationPage'
+    | '/_auth/login'
+    | '/_auth/register'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexLazyRoute: typeof IndexLazyRoute;
-  AuthRoute: typeof AuthRouteWithChildren;
-  MainRoute: typeof MainRouteWithChildren;
+  IndexLazyRoute: typeof IndexLazyRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  MainRoute: typeof MainRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AuthRoute: AuthRouteWithChildren,
   MainRoute: MainRouteWithChildren,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -237,7 +271,8 @@ export const routeTree = rootRoute
       "filePath": "_main.tsx",
       "children": [
         "/_main/HomePage",
-        "/_main/ProfilePage"
+        "/_main/ProfilePage",
+        "/_main/ReservationPage"
       ]
     },
     "/_main/HomePage": {
@@ -246,6 +281,10 @@ export const routeTree = rootRoute
     },
     "/_main/ProfilePage": {
       "filePath": "_main/ProfilePage.tsx",
+      "parent": "/_main"
+    },
+    "/_main/ReservationPage": {
+      "filePath": "_main/ReservationPage.tsx",
       "parent": "/_main"
     },
     "/_auth/login": {
