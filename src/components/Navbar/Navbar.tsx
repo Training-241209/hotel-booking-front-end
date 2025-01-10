@@ -17,7 +17,7 @@ export default function Navbar() {
     email: "john.doe@example.com",
   };
 
-  user = null;
+  // user = null;
 
   // Check if the user is on the login or register page
   const location = useLocation();
@@ -60,7 +60,7 @@ export default function Navbar() {
           >
             Hotels
           </Link>
-          <Link to="/" className={`${linkTextColor} [&.active]:font-bold`}>
+          <Link to="/ReservationPage" className={`${linkTextColor} [&.active]:font-bold`}>
             Reservations
           </Link>
         </div>
