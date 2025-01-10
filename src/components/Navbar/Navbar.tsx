@@ -78,15 +78,14 @@ export default function Navbar() {
             />
             <Search onClick={() => handleShow()} />
           </div>
-          <UserDropdown />
+          <div className="flex h-[50px] w-[50px]">
+            <UserDropdown />
+          </div>
         </div>
       )}
       {!user && (
         <div className="flex gap-3 text-2xl">
-          <Link
-            to="/login"
-            className={`${linkTextColor} [&.active]:font-bold`}
-          >
+          <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
           </Link>
           <Link
