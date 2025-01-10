@@ -24,7 +24,7 @@ export function useLogin() {
         },
         onSuccess: (token) => {
             localStorage.setItem('token', token);
-            console.log(`token: ${token}`);
+            // console.log(`token: ${token}`);
 
             const decoded = jwtDecode(token) as 
             {
@@ -35,7 +35,7 @@ export function useLogin() {
                 roleName: string;
                 isAdmin: boolean;
             };
-            console.log(`decoded token: ${JSON.stringify(decoded)}`);
+            // console.log(`decoded token: ${JSON.stringify(decoded)}`);
 
             // console.log(`id claims: ${decoded.userId}`);
             // console.log(`fn claims: ${decoded.firstName}`);

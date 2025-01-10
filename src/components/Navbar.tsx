@@ -2,8 +2,8 @@ import { userAtom } from "@/store/atoms";
 import { Link, useLocation } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 
-export default function Navbar() 
-{
+export default function Navbar() {
+  console.log("in navbar");
   const [storedUser] = useAtom(userAtom);
 
   interface User {
@@ -20,8 +20,8 @@ export default function Navbar()
     email: `${storedUser?.email}`,
   };
   // user = null;
-  // console.log(storedUser);
-  // console.log(user);
+  console.log(storedUser);
+  console.log(user);
 
   // Check if the user is on the login or register page
   const location = useLocation();
@@ -33,19 +33,19 @@ export default function Navbar()
 
   return (
     <div
-      className={`flex items-center justify-between h-24 py-3 px-36 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`flex h-24 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
       <div className="flex items-center justify-center">
         <Link to="/HomePage">
           <img
             src={isAuth ? "logo-white.png" : "logo-blue.png"}
             alt="Logo"
-            className="w-[75px] h-[75px]"
+            className="h-[75px] w-[75px]"
           />
         </Link>
       </div>
       {storedUser && (
-        <div className="flex gap-3 ml-3 flex-1">
+        <div className="ml-3 flex flex-1 gap-3">
           <Link to="/" className={`${linkTextColor} [&.active]:font-bold`}>
             Hotels
           </Link>
@@ -60,11 +60,11 @@ export default function Navbar()
 
       {storedUser && (
         <>
-          <div className="bg-orange-500 mx-3">
+          <div className="mx-3 bg-orange-500">
             <input type="text" placeholder="Enter a location" />
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-[50px] h-[50px] rounded-full bg-blue-300"></div>
+            <div className="h-[50px] w-[50px] rounded-full bg-blue-300"></div>
             <span>{user?.name}</span>
           </div>
         </>
@@ -73,13 +73,13 @@ export default function Navbar()
         <div className="flex gap-3">
           <Link
             to="/login"
-            className={`${linkTextColor} [&.active]:font-bold text-xl`}
+            className={`${linkTextColor} text-xl [&.active]:font-bold`}
           >
             Login
           </Link>
           <Link
             to="/register"
-            className={`${linkTextColor} [&.active]:font-bold text-xl`}
+            className={`${linkTextColor} text-xl [&.active]:font-bold`}
           >
             Register
           </Link>

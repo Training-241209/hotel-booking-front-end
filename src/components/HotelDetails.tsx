@@ -6,25 +6,27 @@ export default function HotelDetails() {
 
   if (!hotel) {
     return (
-      <h1 className="text-xl font-bold w-full h-full flex justify-center items-center shadow-md">Please select a hotel</h1>
+      <h1 className="flex h-full w-full items-center justify-center text-xl font-bold shadow-md">
+        Please select a hotel
+      </h1>
     );
   }
 
   return (
     <>
-      <div className="hotel__title flex justify-between h-10 items-center">
-        <h1 className="font-bold text-xl">{hotel?.hotel_name}</h1>
+      <div className="hotel__title flex h-10 items-center justify-between">
+        <h1 className="text-xl font-bold">{hotel?.hotel_name}</h1>
         {/* Hard coded need to change later */}
         <span className="hotel__ratings">4.5 Stars</span>
       </div>
-      <div className="hotel__image w-full h-3/5">
+      <div className="hotel__image h-3/5 w-full">
         <img
           src={hotel?.image}
           alt={hotel?.hotel_name}
-          className="object-cover w-full h-full"
+          className="h-full w-full object-cover"
         />
       </div>
-      <div className="hotel__info mt-3 h-1/5 flex flex-col gap-3 justify-center">
+      <div className="hotel__info mt-3 flex h-1/5 flex-col justify-center gap-3">
         <div className="hotel__info__description">
           Description: {hotel?.description}
         </div>
@@ -33,7 +35,7 @@ export default function HotelDetails() {
         </div>
         <div className="hotel__info__price">Room Price: ${hotel?.price}</div>
       </div>
-      <div className="hotel__review h-1/5 bg-slate-50 flex justify-center items-center">
+      <div className="hotel__review flex h-1/5 items-center justify-center bg-slate-50">
         Review Section Under Development
       </div>
     </>

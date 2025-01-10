@@ -1,16 +1,15 @@
-import Navbar from '@/components/Navbar'
-import { Toaster } from '@/components/ui/toaster'
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from "@/components/ui/toaster";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
   component: () => (
-    <>
-      <Navbar/>
+    <div className="h-screen">
+      <Navbar />
       <Outlet />
+      <Toaster />
       <TanStackRouterDevtools />
-
-      <Toaster/>
-    </>
+    </div>
   ),
-})
+});

@@ -5,10 +5,9 @@ import axios from "axios";
 import { RegisterSchema } from "@/schemas/auth/register-schema";
 import { useToast } from "../../use-toast";
 
-
 export function useRegister() {
-    const { toast } = useToast();
-    const router = useRouter();
+  const { toast } = useToast();
+  const router = useRouter();
 
     return useMutation({
         mutationFn: async (values: RegisterSchema) => {

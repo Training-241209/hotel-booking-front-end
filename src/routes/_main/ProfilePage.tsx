@@ -1,0 +1,52 @@
+import { Button } from "@/components/ui/button";
+import UpdateUserForm from "@/components/UpdateUserForm";
+import { UserAvatar } from "@/components/user-avatar";
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/_main/ProfilePage")({
+  component: RouteComponent,
+});
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+let user: User | any = {
+  id: 1,
+  name: "John Doe",
+  email: "john.doe@example.com",
+};
+
+function RouteComponent() {
+  return (
+    <div className="flex h-full items-center justify-center">
+      <div className="user__container flex h-3/4 w-3/4 flex-col gap-3 rounded p-3 shadow-lg">
+        <div className="user__container__header flex h-1/4 items-center gap-3 bg-white px-3 shadow-md">
+          <div className="user__container__header__avatar flex h-full w-1/12 items-center justify-center">
+            {/* Change this later on */}
+            <UserAvatar height={150} width={150} nav={false} />
+          </div>
+          <div className="user__container__header__details flex flex-col justify-center">
+            <h1>Email: {user.email}</h1>
+            <h1>Full Name: {user.name}</h1>
+          </div>
+        </div>
+        <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center bg-white shadow-md">
+            <UpdateUserForm />
+          </div>
+          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md">
+            <Button className="w-1/2 rounded-3xl border border-black bg-white text-black hover:bg-white hover:opacity-75">
+              Change Password
+            </Button>
+            <Button className="w-1/2 rounded-3xl border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75">
+              Delete Account
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

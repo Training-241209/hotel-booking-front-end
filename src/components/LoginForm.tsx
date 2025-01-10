@@ -1,22 +1,21 @@
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { loginFormSchema, LoginSchema } from "@/schemas/auth/login-schema";
 import { useLogin } from "@/hooks/users/auth/use-login";
 
-
 export default function LoginForm() {
-    const { mutate: login, isPending } = useLogin();
+  const { mutate: login, isPending } = useLogin();
 
     // Define your form
     const form = useForm<LoginSchema>({
@@ -29,15 +28,14 @@ export default function LoginForm() {
         },
     });
 
-
-    // Define the onSubmit function
-    const onSubmit = (data: LoginSchema) => {
-        try {
-            login(data);
-        } catch (error) {
-            console.error("Login failed:", error);
-        }
-    };
+  // Define the onSubmit function
+  const onSubmit = (data: LoginSchema) => {
+    try {
+      login(data);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
     // <div className="flex w-1/2 h-1/2 p-2 bg-white rounded"> => changed
     return (
@@ -93,5 +91,5 @@ export default function LoginForm() {
             </div>
         
         </div>
-    )
+  );
 }
