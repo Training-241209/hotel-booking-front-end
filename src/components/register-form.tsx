@@ -6,15 +6,13 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { registerFormSchema, RegisterSchema } from '@/schemas/register-schema';
+import { registerFormSchema, RegisterSchema } from '@/schemas/auth/register-schema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from '@tanstack/react-router';
-import { useRegister } from "@/hooks/users/use-register";
-
-// testing commit
+import { useRegister } from "@/hooks/users/auth/use-register";
 
 export default function RegisterForm() {
     const { mutate: register, isPending } = useRegister();
@@ -25,9 +23,9 @@ export default function RegisterForm() {
         resolver: zodResolver(registerFormSchema),
         // this is the default values for the form
         defaultValues: {
-            firstName: "",
-            lastName: "",
-            username: "",
+            firstname: "",
+            lastname: "",
+            email: "",
             password: "",
             confirmPassword: "",
         },
@@ -63,7 +61,7 @@ export default function RegisterForm() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1 flex flex-col justify-center items-center">
                         <FormField
                             control={form.control}
-                            name="firstName"
+                            name="firstname"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>First Name</FormLabel>
@@ -76,7 +74,7 @@ export default function RegisterForm() {
                         />
                         <FormField
                             control={form.control}
-                            name="lastName"
+                            name="lastname"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>Last Name</FormLabel>
@@ -89,12 +87,12 @@ export default function RegisterForm() {
                         />
                         <FormField
                             control={form.control}
-                            name="username"
+                            name="email"
                             render={({ field }) => (
                                 <FormItem className="w-full">
                                     <FormLabel>Username</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Username" {...field} />
+                                        <Input placeholder="Email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

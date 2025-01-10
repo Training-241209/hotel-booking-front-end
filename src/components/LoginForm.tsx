@@ -11,8 +11,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { loginFormSchema, LoginSchema } from "@/schemas/login-schema";
-import { useLogin } from "@/hooks/users/use-login";
+import { loginFormSchema, LoginSchema } from "@/schemas/auth/login-schema";
+import { useLogin } from "@/hooks/users/auth/use-login";
 
 
 export default function LoginForm() {

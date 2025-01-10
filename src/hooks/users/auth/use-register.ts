@@ -2,8 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios-config";
 import { useRouter } from "@tanstack/react-router";
 import axios from "axios";
-import { RegisterSchema } from "@/schemas/register-schema";
-import { useToast } from "../use-toast";
+import { RegisterSchema } from "@/schemas/auth/register-schema";
+import { useToast } from "../../use-toast";
 
 
 export function useRegister() {
@@ -12,9 +12,9 @@ export function useRegister() {
 
     return useMutation({
         mutationFn: async (values: RegisterSchema) => {
-            // const resp = await axiosInstance.post("/api/users/register", values);
-            // return resp.data;
-            return;
+            const resp = await axiosInstance.post("/api/auth/register", values);
+            return resp.data;
+            // return;
         },
         onSuccess: () => {
             toast({
