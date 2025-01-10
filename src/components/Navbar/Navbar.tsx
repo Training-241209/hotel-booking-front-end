@@ -3,21 +3,27 @@ import { UserDropdown } from "../user-dropdown";
 import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
 import { useState } from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "@/store/atoms";
 
 export default function Navbar() {
+  const [storedUser] = useAtom(userAtom);
+
   interface User {
     id: number;
     name: string;
     email: string;
+    roleName: string;
+    isAdmin: boolean;
   }
 
   let user: User | any = {
-    id: 1,
-    name: "John Doe",
-    email: "john.doe@example.com",
+    id: storedUser?.userId,
+    name: `${storedUser?.firstName} ${storedUser?.lastName}`,
+    email: `${storedUser?.email}`,
   };
-
-  // user = null;
+  console.log(storedUser);
+  console.log(user);
 
   // Check if the user is on the login or register page
   const location = useLocation();
@@ -41,7 +47,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex h-24 items-center justify-between px-36 py-3 ${user ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`flex h-24 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
       <div className="flex items-center justify-center">
         <Link to="/HomePage">
@@ -52,7 +58,7 @@ export default function Navbar() {
           />
         </Link>
       </div>
-      {user && (
+      {storedUser && (
         <div className="ml-5 flex flex-1 gap-3 text-2xl">
           <Link
             to="/HomePage"
@@ -66,7 +72,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {user && (
+      {storedUser && (
         <div className="flex items-center justify-center">
           <div className="relative mx-3 flex items-end justify-center">
             <input
@@ -83,7 +89,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
-      {!user && (
+      {!storedUser && (
         <div className="flex gap-3 text-2xl">
           <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
