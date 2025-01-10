@@ -1,4 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
+import { UserDropdown } from "./user-dropdown";
 
 export default function Navbar() {
   interface User {
@@ -44,9 +45,6 @@ export default function Navbar() {
           <Link to="/" className={`${linkTextColor} [&.active]:font-bold`}>
             Reservations
           </Link>
-          <Link to="/" className={`${linkTextColor} [&.active]:font-bold`}>
-            Reviews
-          </Link>
         </div>
       )}
 
@@ -56,8 +54,7 @@ export default function Navbar() {
             <input type="text" placeholder="Enter a location" />
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-[50px] h-[50px] rounded-full bg-blue-300"></div>
-            <span>{user?.name}</span>
+            <UserDropdown />
           </div>
         </>
       )}
