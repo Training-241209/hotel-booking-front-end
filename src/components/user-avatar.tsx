@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 interface UserAvatarProps {
   height: number;
   width: number;
-  nav: boolean
+  nav: boolean;
 }
 
 export function UserAvatar({ height, width, nav }: UserAvatarProps) {
@@ -30,7 +30,7 @@ export function UserAvatar({ height, width, nav }: UserAvatarProps) {
     email: "john.doe@example.com",
   };
 
-  let fontSize = nav ? 'text-sm': 'text-5xl';
+  let fontSize = nav ? "text-sm" : "text-5xl";
 
   return (
     <Avatar className={`h-[${height}px] w-[${width}px] ${fontSize}`}>

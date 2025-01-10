@@ -41,19 +41,19 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex items-center justify-between h-24 py-3 px-36 ${user ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`flex h-24 items-center justify-between px-36 py-3 ${user ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
       <div className="flex items-center justify-center">
         <Link to="/HomePage">
           <img
             src={isAuth ? "logo-white.png" : "logo-blue.png"}
             alt="Logo"
-            className="w-[60px] h-[60px]"
+            className="h-[60px] w-[60px]"
           />
         </Link>
       </div>
       {user && (
-        <div className="flex gap-3 ml-5 flex-1 text-2xl">
+        <div className="ml-5 flex flex-1 gap-3 text-2xl">
           <Link
             to="/HomePage"
             className={`${linkTextColor} [&.active]:font-bold`}
@@ -67,8 +67,8 @@ export default function Navbar() {
       )}
 
       {user && (
-        <div className="flex justify-center items-center">
-          <div className="mx-3 flex relative items-end justify-center">
+        <div className="flex items-center justify-center">
+          <div className="relative mx-3 flex items-end justify-center">
             <input
               className={`search ${show ? styles.search : styles.hide}`}
               type="text"

@@ -42,7 +42,7 @@ export default function UpdateUserForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-3 flex flex-col justify-center items-center"
+          className="flex flex-col items-center justify-center space-y-3"
         >
           <FormField
             control={form.control}
@@ -72,7 +72,7 @@ export default function UpdateUserForm() {
           />
           <Button
             type="submit"
-            className="w-full bg-blue-500 hover:opacity-75 hover:bg-blue-500 !mt-5 text-white"
+            className="!mt-5 w-full bg-blue-500 text-white hover:bg-blue-500 hover:opacity-75"
           >
             Confirm
           </Button>

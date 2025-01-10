@@ -21,10 +21,10 @@ let user: User | any = {
 
 function RouteComponent() {
   return (
-    <div className="flex justify-center items-center h-full">
-      <div className="user__container w-3/4 h-3/4 p-3 shadow-lg rounded flex flex-col gap-3">
-        <div className="user__container__header h-1/4 flex items-center px-3 gap-3 shadow-md bg-white">
-          <div className="user__container__header__avatar h-full w-1/12 flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
+      <div className="user__container flex h-3/4 w-3/4 flex-col gap-3 rounded p-3 shadow-lg">
+        <div className="user__container__header flex h-1/4 items-center gap-3 bg-white px-3 shadow-md">
+          <div className="user__container__header__avatar flex h-full w-1/12 items-center justify-center">
             {/* Change this later on */}
             <UserAvatar height={150} width={150} nav={false} />
           </div>
@@ -33,15 +33,15 @@ function RouteComponent() {
             <h1>Full Name: {user.name}</h1>
           </div>
         </div>
-        <div className="user__container__main w-full h-3/4 grid grid-cols-3 gap-3">
-          <div className="user__container__form col-span-2 flex flex-col justify-center items-center shadow-md bg-white">
+        <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center bg-white shadow-md">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col justify-center items-center gap-3 shadow-md bg-white">
-            <Button className="border w-1/2 border-black rounded-3xl bg-white hover:bg-white hover:opacity-75 text-black">
+          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md">
+            <Button className="w-1/2 rounded-3xl border border-black bg-white text-black hover:bg-white hover:opacity-75">
               Change Password
             </Button>
-            <Button className="border w-1/2 border-red-500 rounded-3xl text-red-500 bg-white hover:bg-white hover:opacity-75">
+            <Button className="w-1/2 rounded-3xl border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75">
               Delete Account
             </Button>
           </div>
