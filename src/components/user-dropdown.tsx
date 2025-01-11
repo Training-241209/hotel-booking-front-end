@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserAvatar } from "./user-avatar";
 import { Link } from "@tanstack/react-router";
-// import { useLogout } from "@/hooks/users/use-logout";
+import { useLogout } from "@/hooks/users/auth/use-logout";
 
 export function UserDropdown() {
-  // const logout = useLogout();
+  const logout = useLogout();
 
   return (
     <DropdownMenu>
@@ -25,7 +25,7 @@ export function UserDropdown() {
         <DropdownMenuItem>
           <Link to="/ProfilePage">Profile</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
