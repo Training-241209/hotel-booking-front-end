@@ -56,7 +56,7 @@ export function useLogin() {
             toast({
                 title: "Login Successfully",
             })
-            router.navigate({ to: "/" });
+            router.navigate({ to: "/HomePage" });
 
         },
         onError: () => {
