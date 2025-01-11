@@ -38,7 +38,7 @@ axiosInstance.interceptors.request.use((config) => {
       window.location.href = "/";
     } else {
       // console.log("Token have not expire")
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.authorization = `${token}`;
     }
   }
 

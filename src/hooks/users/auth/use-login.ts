@@ -24,7 +24,7 @@ export function useLogin() {
         },
         onSuccess: (token) => {
             localStorage.setItem('token', token);
-            // console.log(`token: ${token}`);
+            console.log(`token: ${token}`);
 
             const decoded = jwtDecode(token) as 
             {
