@@ -1,9 +1,6 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
-// reference my previous project for authUtils
-// import { getUser, User } from "@/lib/authUtils";
-// import { useEffect, useState } from "react";
 
 interface UserAvatarProps {
   height: number;
@@ -13,7 +10,7 @@ interface UserAvatarProps {
 
 export function UserAvatar({ height, width, nav }: UserAvatarProps) {
   const [storedUser] = useAtom(userAtom);
-
+  
   if (!storedUser){
     return null;
   }
