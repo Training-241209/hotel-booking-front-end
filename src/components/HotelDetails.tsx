@@ -16,11 +16,6 @@ export default function HotelDetails() {
 
   return (
     <>
-      <div className="hotel__title flex h-10 items-center justify-between">
-        <h1 className="text-2xl font-bold text-[#022b60]">
-          {hotel?.hotel_name}
-        </h1>
-      </div>
       <div className="hotel__image h-3/5 w-full">
         <img
           src={hotel?.image}
@@ -29,10 +24,12 @@ export default function HotelDetails() {
         />
       </div>
       <div className="grid h-1/5 grid-cols-6">
-        <div className="hotel__info col-span-4 mt-3 flex flex-col justify-center gap-3">
-          <div className="hotel__info__description">
-            <span className="text-lg font-bold">Description</span>:{" "}
-            {hotel?.description}
+        <div className="hotel__info col-span-4 flex flex-col gap-3">
+          <div className="hotel__infor__title flex flex-col items-start justify-between mt-2">
+            <h1 className="text-3xl font-bold text-[#022b60]">
+              {hotel?.hotel_name}
+            </h1>
+            <p className="text-[#022b60]">{hotel?.description}</p>
           </div>
           <div className="hotel__info__rooms">
             <span className="text-lg font-bold">Rooms Available</span>:{" "}
@@ -54,7 +51,9 @@ export default function HotelDetails() {
                 className="h-[50px] w-[50px]"
               />
             </div>
-            <div className="hotel__cta__reviews text-[#022b60]">(334 Reviews)</div>
+            <div className="hotel__cta__reviews text-[#022b60]">
+              (334 Reviews)
+            </div>
           </div>
 
           <Button className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75">
