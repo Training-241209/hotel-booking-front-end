@@ -49,7 +49,7 @@ export default function Navbar() {
     <div
       className={`flex h-24 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-3">
         <Link to="/HomePage">
           <img
             src={isAuth ? "logo-white.png" : "logo-blue.png"}
@@ -57,16 +57,19 @@ export default function Navbar() {
             className="h-[60px] w-[60px]"
           />
         </Link>
+        <Link
+          to="/HomePage"
+          className={`${linkTextColor} [&.active]:font-bold text-2xl`}
+        >
+          Hotels
+        </Link>
       </div>
       {storedUser && (
-        <div className="ml-5 flex flex-1 gap-3 text-2xl">
+        <div className="ml-5 flex flex-1 text-2xl">
           <Link
-            to="/HomePage"
+            to="/ReservationPage"
             className={`${linkTextColor} [&.active]:font-bold`}
           >
-            Hotels
-          </Link>
-          <Link to="/ReservationPage" className={`${linkTextColor} [&.active]:font-bold`}>
             Reservations
           </Link>
         </div>
