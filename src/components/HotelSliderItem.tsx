@@ -37,8 +37,8 @@ export default function HotelSliderItem({
 
   return (
     <div className="relative cursor-pointer rounded-md" onClick={handleSelect}>
-      <img src={image} alt={hotel_name} className="h-auto w-full rounded-lg" />
-      <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 p-2 text-white">
+      <img src={image} alt={hotel_name} className="h-auto w-full rounded-md" />
+      <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 p-2 text-white rounded">
         <h1 className="text-lg font-bold">{hotel_name}</h1>
         <p className="text-sm">{location}</p>
       </div>
