@@ -5,6 +5,7 @@ import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/store/atoms";
+import { CreateHotelDialog } from "../CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
@@ -59,10 +60,12 @@ export default function Navbar() {
         </Link>
         <Link
           to="/HomePage"
-          className={`${linkTextColor} [&.active]:font-bold text-2xl`}
+          className={`${linkTextColor} text-2xl [&.active]:font-bold`}
         >
           Hotels
         </Link>
+        {/* Remove this Create Hotel button Later on */}
+        <CreateHotelDialog />
       </div>
       {storedUser && (
         <div className="ml-5 flex flex-1 text-2xl">
