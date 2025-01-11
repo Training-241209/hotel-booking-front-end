@@ -25,7 +25,7 @@ export function UserDropdown() {
         <DropdownMenuItem>
           <Link to="/ProfilePage">Profile</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={()=> console.log("Logging out")}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
