@@ -25,18 +25,18 @@ export default function HotelDetails() {
       </div>
       <div className="grid h-1/5 grid-cols-6">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
-          <div className="hotel__infor__title flex flex-col items-start justify-between mt-2">
-            <h1 className="text-3xl font-bold text-[#022b60]">
+          <div className="hotel__infor__title flex flex-col items-start justify-between mt-1">
+            <h1 className="text-xl font-bold text-[#022b60]">
               {hotel?.hotel_name}
             </h1>
             <p className="text-[#022b60]">{hotel?.description}</p>
           </div>
           <div className="hotel__info__rooms">
-            <span className="text-lg font-bold">Rooms Available</span>:{" "}
+            <span className="text-md font-bold">Rooms Available</span>:{" "}
             {hotel?.rooms}
           </div>
           <div className="hotel__info__price">
-            <span className="text-lg font-bold">Room Price</span>: $
+            <span className="text-md font-bold">Room Price</span>: $
             {hotel?.price}
           </div>
         </div>
