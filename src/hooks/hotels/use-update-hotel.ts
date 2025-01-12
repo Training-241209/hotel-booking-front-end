@@ -17,6 +17,17 @@ export function useUpdateHotel()
             {
                 const res = await axiosInstance.patch(`/api/hotels/edit/${hotel?.hotelId}`, values);
                 return res.data;
+            },
+            onSuccess: () =>
+            {
+                queryClient.invalidateQueries(
+                    {
+                        queryKey: ["hotels"]
+                    }
+                );
+                toast({
+                    title: "Hotel Updated"
+                });
             }
         }
     )
