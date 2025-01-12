@@ -90,7 +90,7 @@ export default function RegisterForm() {
                             name="email"
                             render={({ field }) => (
                                 <FormItem className="w-full">
-                                    <FormLabel>Username</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input placeholder="Email" {...field} />
                                     </FormControl>

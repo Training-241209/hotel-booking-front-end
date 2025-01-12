@@ -23,8 +23,8 @@ export default function Navbar() {
     name: `${storedUser?.firstName} ${storedUser?.lastName}`,
     email: `${storedUser?.email}`,
   };
-  console.log(storedUser);
-  console.log(user);
+  // console.log(storedUser);
+  // console.log(user);
 
   // Check if the user is on the login or register page
   const location = useLocation();

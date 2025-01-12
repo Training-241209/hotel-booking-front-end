@@ -1,4 +1,3 @@
-import React from "react";
 import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 
@@ -14,12 +13,12 @@ interface HotelSliderItemProps {
 
 export default function HotelSliderItem({
   hotel_id,
-  hotel_name,
-  description,
-  rooms,
-  location,
-  price,
-  image,
+  hotel_name = "",
+  description = "",
+  rooms = 0,
+  location = "",
+  price = 0,
+  image = "",
 }: HotelSliderItemProps) {
   const [, setHotel] = useAtom(hotelAtom);
 
