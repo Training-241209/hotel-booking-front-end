@@ -7,9 +7,10 @@ interface ReviewItemProps{
     title: string;
     description:string;
     rating:number;
+    show:boolean;
 }
 
-export default function ReviewItem({title, description, rating}:ReviewItemProps) {
+export default function ReviewItem({title, description, rating, show}:ReviewItemProps) {
   return (
     <div className="grid h-full grid-cols-8 border-gray-100 border-2">
       <div className="col-span-1 row-span-1 flex h-full items-center justify-center">
@@ -28,7 +29,7 @@ export default function ReviewItem({title, description, rating}:ReviewItemProps)
           <span className="text-2xl font-bold text-[#022b60]">{rating}</span>
           <Star fill="#022b60" color="#022b60" className="h-[25px] w-[25px]" />
         </div>
-        <ReviewsDialog />
+        {show && <ReviewsDialog />}
       </div>
     </div>
   );

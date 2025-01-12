@@ -30,6 +30,7 @@ export function ReviewsDialog() {
               title={review.title}
               description={review.description}
               rating={review.rating}
+              show={false}
             />
           ))}
         </div>
