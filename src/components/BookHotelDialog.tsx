@@ -11,7 +11,6 @@ import {
 import { Calendar } from "./ui/calendar";
 import React from "react";
 import { Input } from "./ui/input";
-import { Label } from "@radix-ui/react-label";
 
 export function BookHotelDialog() {
   const [dates, setDates] = React.useState<Date[] | undefined>([]);

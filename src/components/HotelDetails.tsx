@@ -2,6 +2,9 @@ import { hotelAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { Star } from "lucide-react";
 import { BookHotelDialog } from "./BookHotelDialog";
+import { Button } from "./ui/button";
+import { DeleteHotelDialog } from "./DeleteHotelDialog";
+import { UpdateHotelDialog } from "./UpdateHotelDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -25,7 +28,7 @@ export default function HotelDetails() {
       </div>
       <div className="row-span-2 grid grid-cols-6">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
-          <div className="hotel__infor__title mt-3 flex flex-col items-start justify-between">
+          <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
               <h1 className="text-3xl font-bold text-[#022b60]">
                 {hotel?.hotel_name.toUpperCase()}
@@ -36,13 +39,21 @@ export default function HotelDetails() {
             </div>
             <p className="text-[#022b60]">{hotel?.description}</p>
           </div>
-          <div className="hotel__info__rooms">
-            <span className="text-md font-bold">Rooms Available</span>:{" "}
-            {hotel?.rooms}
-          </div>
-          <div className="hotel__info__price">
-            <span className="text-md font-bold">Room Price</span>: $
-            {hotel?.price}
+          <div className="grid w-full grid-cols-9 grid-rows-1">
+            <div className="col-span-7 flex flex-col justify-evenly">
+              <div className="hotel__info__rooms">
+                <span className="text-md font-bold">Rooms Available</span>:{" "}
+                {hotel?.rooms}
+              </div>
+              <div className="hotel__info__price">
+                <span className="text-md font-bold">Room Price</span>: $
+                {hotel?.price}
+              </div>
+            </div>
+            <div className="hotel__info__buttons col-span-2 flex flex-col gap-3">
+              <UpdateHotelDialog />
+              <DeleteHotelDialog />
+            </div>
           </div>
         </div>
         <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-evenly border-l-2">

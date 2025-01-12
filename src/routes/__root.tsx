@@ -5,7 +5,7 @@ import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
   component: () => (
-    <div className="h-screen">
+    <div className="h-screen overflow-hidden">
       <Navbar />
       <Outlet />
       <Toaster />
