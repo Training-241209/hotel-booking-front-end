@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 import HotelDetails from "@/components/HotelDetails";
+import { useAllHotels } from "@/hooks/hotels/use-all-hotels";
 
 export const Route = createFileRoute("/_main/HomePage")({
   component: RouteComponent,

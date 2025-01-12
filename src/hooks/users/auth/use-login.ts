@@ -12,20 +12,6 @@ export function useLogin() {
   const { toast } = useToast();
   const setUser = useSetAtom(userAtom);
 
-<<<<<<< Updated upstream
-    return useMutation({
-        
-        mutationFn: async (values: LoginSchema) => {
-            const resp = await axiosInstance.post("/api/auth/login", values);
-            // console.log(`body: ${resp.data}`);
-            // console.log(`headers: ${resp.headers[`authorization`]}`);
-            // console.log(`returned: ${resp.data.token}`);
-            return resp.headers[`authorization`];
-        },
-        onSuccess: (token) => {
-            localStorage.setItem('token', token);
-            console.log(`token: ${token}`);
-=======
   return useMutation({
     mutationFn: async (values: LoginSchema) => {
       const resp = await axiosInstance.post("/api/auth/login", values);
@@ -37,7 +23,6 @@ export function useLogin() {
     onSuccess: (token) => {
       localStorage.setItem("token", token);
       console.log(`token: ${token}`);
->>>>>>> Stashed changes
 
       const decoded = jwtDecode(token) as {
         userId: number;
@@ -63,21 +48,6 @@ export function useLogin() {
         isAdmin: decoded.isAdmin,
       });
 
-<<<<<<< Updated upstream
-            toast({
-                title: "Login Successfully",
-            })
-            router.navigate({ to: "/HomePage" });
-
-        },
-        onError: () => {
-            toast({
-                title: "Login Failed",
-            })
-        },
-    });
-}
-=======
       toast({
         title: "Login Successfully",
       });
@@ -90,4 +60,3 @@ export function useLogin() {
     },
   });
 }
->>>>>>> Stashed changes
