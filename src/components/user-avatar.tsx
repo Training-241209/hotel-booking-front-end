@@ -14,6 +14,8 @@ export function UserAvatar({ height, width, nav }: UserAvatarProps) {
   if (!storedUser){
     return null;
   }
+
+  // testing
   
   let fontSize = nav ? "text-sm" : "text-5xl";
 
