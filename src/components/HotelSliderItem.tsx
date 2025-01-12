@@ -2,8 +2,8 @@ import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 
 interface HotelSliderItemProps {
-  hotel_id: number;
-  hotel_name: string;
+  hotelId: number;
+  hotelName: string;
   description: string;
   rooms: number;
   location: string;
@@ -12,20 +12,20 @@ interface HotelSliderItemProps {
 }
 
 export default function HotelSliderItem({
-  hotel_id,
-  hotel_name = "",
+  hotelId,
+  hotelName,
   description = "",
   rooms = 0,
   location = "",
   price = 0,
   image = "",
 }: HotelSliderItemProps) {
-  const [, setHotel] = useAtom(hotelAtom);
+  const [hotel, setHotel] = useAtom(hotelAtom);
 
   const handleSelect = () => {
     setHotel({
-      hotel_id,
-      hotel_name,
+      hotelId,
+      hotelName,
       description,
       rooms,
       location,
@@ -34,11 +34,13 @@ export default function HotelSliderItem({
     });
   };
 
+  console.log(hotel);
+
   return (
     <div className="relative cursor-pointer rounded-md" onClick={handleSelect}>
-      <img src={image} alt={hotel_name} className="h-auto w-full rounded-md" />
+      <img src={image} alt={hotelName} className="h-auto w-full rounded-md" />
       <div className="absolute bottom-0 left-0 bg-black bg-opacity-50 p-2 text-white rounded">
-        <h1 className="text-lg font-bold">{hotel_name}</h1>
+        <h1 className="text-lg font-bold">{hotelName}</h1>
         <p className="text-sm">{location}</p>
       </div>
     </div>

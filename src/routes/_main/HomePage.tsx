@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_main/HomePage")({
 
 function RouteComponent() {
   // check the store folder to see all my global states - these are states that can accessed anywhere in our app
-  const [hotel, setHotel] = useAtom(hotelAtom);
+  // const [hotel, setHotel] = useAtom(hotelAtom);
 
   return (
     <div className="flex h-[calc(100vh-5rem)] w-full flex-col items-center px-36 py-10">

@@ -21,8 +21,8 @@ export const themeAtom = atom('light');
 
 
 export interface Hotel {
-  hotel_id: number;
-  hotel_name: string;
+  hotelId: number;
+  hotelName: string;
   description: string;
   rooms: number;
   location: string;
