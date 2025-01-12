@@ -25,12 +25,7 @@ export function CreateHotelDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="hotelName" className="text-right">
-              Name
-            </Label>
-            <Input id="hotelName" placeholder="Hotel Name" className="col-span-3" />
-          </div>
+          
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="description" className="text-right">
               Description

@@ -1,7 +1,7 @@
 import { hotelAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
-import { Button } from "./ui/button";
 import { Star } from "lucide-react";
+import { BookHotelDialog } from "./BookHotelDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -15,20 +15,25 @@ export default function HotelDetails() {
   }
 
   return (
-    <>
-      <div className="hotel__image h-3/5 w-full">
+    <div className="grid h-full w-full grid-rows-8">
+      <div className="hotel__image row-span-5 w-full">
         <img
           src={hotel?.image}
           alt={hotel?.hotel_name}
           className="h-full w-full rounded-md object-cover"
         />
       </div>
-      <div className="grid h-1/5 grid-cols-6">
+      <div className="row-span-2 grid grid-cols-6">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
-          <div className="hotel__infor__title flex flex-col items-start justify-between mt-1">
-            <h1 className="text-xl font-bold text-[#022b60]">
-              {hotel?.hotel_name}
-            </h1>
+          <div className="hotel__infor__title mt-3 flex flex-col items-start justify-between">
+            <div className="flex items-center gap-3">
+              <h1 className="text-3xl font-bold text-[#022b60]">
+                {hotel?.hotel_name.toUpperCase()}
+              </h1>
+              <h2 className="border-l-2 border-[#022b60] pl-3 text-3xl font-bold text-[#022b60]">
+                {hotel.location.toUpperCase()}
+              </h2>
+            </div>
             <p className="text-[#022b60]">{hotel?.description}</p>
           </div>
           <div className="hotel__info__rooms">
@@ -55,16 +60,13 @@ export default function HotelDetails() {
               (334 Reviews)
             </div>
           </div>
-
-          <Button className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75">
-            Book Now
-          </Button>
+          <BookHotelDialog />
         </div>
       </div>
 
-      <div className="hotel__review flex h-1/5 items-center justify-center bg-slate-50">
+      <div className="hotel__review row-span-1 flex items-center justify-center bg-slate-50">
         Review Section Under Development
       </div>
-    </>
+    </div>
   );
 }
