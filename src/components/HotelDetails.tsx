@@ -5,6 +5,7 @@ import { BookHotelDialog } from "./BookHotelDialog";
 import { Button } from "./ui/button";
 import { DeleteHotelDialog } from "./DeleteHotelDialog";
 import { UpdateHotelDialog } from "./UpdateHotelDialog";
+import ReviewDetails from "./ReviewDetails";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -75,8 +76,8 @@ export default function HotelDetails() {
         </div>
       </div>
 
-      <div className="hotel__review row-span-1 flex items-center justify-center bg-slate-50">
-        Review Section Under Development
+      <div className="hotel__review row-span-1">
+        <ReviewDetails />
       </div>
     </div>
   );
