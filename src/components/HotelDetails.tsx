@@ -22,7 +22,7 @@ export default function HotelDetails() {
       <div className="hotel__image row-span-5 w-full">
         <img
           src={hotel?.image}
-          alt={hotel?.hotel_name}
+          alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
       </div>
@@ -31,7 +31,7 @@ export default function HotelDetails() {
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
               <h1 className="text-3xl font-bold text-[#022b60]">
-                {hotel?.hotel_name.toUpperCase()}
+                {hotel?.hotelName.toUpperCase()}
               </h1>
               <h2 className="border-l-2 border-[#022b60] pl-3 text-3xl font-bold text-[#022b60]">
                 {hotel.location.toUpperCase()}
