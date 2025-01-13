@@ -48,7 +48,7 @@ export function CreateHotelDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Create Hotel</Button>
+        <Button variant="outline" className="text-[#022b60] border-[#022b60]">Create Hotel</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
