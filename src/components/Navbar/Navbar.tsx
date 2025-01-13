@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex h-24 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`flex row-span-1 col-span-12 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
       <div className="flex items-center justify-center gap-3">
         <Link to="/HomePage">
