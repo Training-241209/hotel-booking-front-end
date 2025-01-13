@@ -37,6 +37,8 @@ export const allHotelsAtom = atom<Hotel[]>([]);
 export interface Reservation
 {
   reservationId: number;
+  hotel: Hotel;
+  // location: string;
   checkInTime: string;
   checkOutTime: string;
 }
