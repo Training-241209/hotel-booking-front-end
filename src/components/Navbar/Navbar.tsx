@@ -48,16 +48,15 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex row-span-1 col-span-12 items-center justify-between px-36 py-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`col-span-12 row-span-1 grid grid-cols-12 gap-3 bg-red-100 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
     >
-      <div className="flex items-center justify-center gap-3">
-        <Link to="/HomePage">
-          <img
-            src={isAuth ? "logo-white.png" : "logo-blue.png"}
-            alt="Logo"
-            className="h-[60px] w-[60px]"
-          />
-        </Link>
+      <Link
+        to="/HomePage"
+        className={`col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat ${
+          isAuth ? "bg-[url('logo-white.png')]" : "bg-[url('logo-blue.png')]"
+        }`}
+      ></Link>
+      <div className="col-start-3 flex items-center justify-center gap-3">
         <Link
           to="/HomePage"
           className={`${linkTextColor} text-2xl [&.active]:font-bold`}
@@ -66,7 +65,7 @@ export default function Navbar() {
         </Link>
       </div>
       {storedUser && (
-        <div className="ml-5 flex flex-1 text-2xl gap-3 items-center">
+        <div className="col-start-4 ml-5 flex flex-1 items-center gap-3 text-2xl">
           <Link
             to="/ReservationPage"
             className={`${linkTextColor} [&.active]:font-bold`}
@@ -74,12 +73,16 @@ export default function Navbar() {
             Reservations
           </Link>
           {/* Remove this Create Hotel button Later on */}
+        </div>
+      )}
+      {storedUser && (
+        <div className="col-start-5 flex items-center mx-auto">
           <CreateHotelDialog />
         </div>
       )}
 
       {storedUser && (
-        <div className="flex items-center justify-center">
+        <div className="col-start-11 flex items-center justify-center">
           <div className="relative mx-3 flex items-end justify-center">
             <input
               className={`search ${show ? styles.search : styles.hide}`}
@@ -96,7 +99,7 @@ export default function Navbar() {
         </div>
       )}
       {!storedUser && (
-        <div className="flex gap-3 text-2xl">
+        <div className="col-start-11 col-end-12 flex items-center gap-3 text-2xl">
           <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
           </Link>

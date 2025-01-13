@@ -29,8 +29,8 @@ function RouteComponent() {
   }
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="user__container flex h-3/4 w-3/4 flex-col gap-3 rounded p-3 shadow-lg">
+    <div className="col-span-full row-start-2 row-end-13 bg-orange-50 grid">
+      <div className="user__container flex flex-col gap-3 rounded p-3 shadow-lg">
         <div className="user__container__header flex h-1/4 items-center gap-3 bg-white px-3 shadow-md">
           <div className="user__container__header__avatar flex h-[150px] w-[150px] items-center justify-center">
             <UserAvatar height={150} width={150} nav={false} />
