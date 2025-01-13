@@ -20,7 +20,7 @@ export default function HotelSliderItem({
   price = 0,
   image = "",
 }: HotelSliderItemProps) {
-  const [hotel, setHotel] = useAtom(hotelAtom);
+  const [, setHotel] = useAtom(hotelAtom);
 
   const handleSelect = () => {
     setHotel({
