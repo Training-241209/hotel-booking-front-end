@@ -3,23 +3,23 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
+import { useUpdateHotel } from "@/hooks/hotels/use-update-hotel";
 
 export function UpdateHotelDialog() 
 {
   const [hotel] = useAtom(hotelAtom);
+  const update = useUpdateHotel();
 
   const form = useForm<HotelSchema>({
     resolver: zodResolver(hotelFormSchema),
@@ -36,7 +36,7 @@ export function UpdateHotelDialog()
 
   function onSubmit(values: HotelSchema)
   {
-    console.log(values);
+    update.mutate(values)
   }
 
   return (
