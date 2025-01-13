@@ -16,6 +16,7 @@ import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
 import { useUpdateHotel } from "@/hooks/hotels/use-update-hotel";
+import { useEffect } from "react";
 
 export function UpdateHotelDialog() 
 {
@@ -34,6 +35,23 @@ export function UpdateHotelDialog()
       image: hotel?.image,
     }
   })
+
+  useEffect(() =>
+  {
+    if (hotel)
+    {
+      form.reset(
+        {
+          hotelName: hotel.hotelName,
+          description: hotel.description,
+          rooms: hotel.rooms.toString(),
+          location: hotel.location,
+          price: hotel.price.toString(),
+          image: hotel.image,
+        }
+      )
+    }
+  }, [hotel, form])
 
   function onSubmit(values: HotelSchema)
   {
