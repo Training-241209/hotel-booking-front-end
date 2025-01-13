@@ -1,7 +1,7 @@
 import axiosInstance from "@/lib/axios-config";
 import { ReserveSchema } from "@/schemas/reservations/reserve-schema";
 import { hotelAtom } from "@/store/atoms";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { useToast } from "../use-toast";
 
@@ -9,6 +9,7 @@ export function useCreateReserve()
 {
     const [hotel] = useAtom(hotelAtom);
     const {toast} = useToast();
+    const queryClient = useQueryClient();
 
     return useMutation(
         {
@@ -24,6 +25,9 @@ export function useCreateReserve()
                         title: "Reservation Created"
                     }
                 );
+                queryClient.invalidateQueries({
+                    queryKey: ["reservations"]
+                })
             }
         }
     )
