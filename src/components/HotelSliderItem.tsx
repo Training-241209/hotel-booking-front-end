@@ -34,7 +34,7 @@ export default function HotelSliderItem({
     });
   };
 
-  console.log(hotel);
+  // console.log(hotel);
 
   return (
     <div className="relative cursor-pointer rounded-md" onClick={handleSelect}>
