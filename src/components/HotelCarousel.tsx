@@ -37,18 +37,29 @@ const hotels: Hotel[] = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl2IQppTtdNT6BG0Vy_wELy-z8NsiEfkCGSw&s",
   },
+  {
+    name: "Mountain View Lodge 3",
+    description: "Your gateway to the mountains",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl2IQppTtdNT6BG0Vy_wELy-z8NsiEfkCGSw&s",
+  },
 ];
 
 export default function HotelCarousel() {
   return (
-    <div className="flex w-screen justify-center gap-3 px-36">
-      {hotels.map((hotel) => (
-        <HotelCarouselItem
-          key={hotel.name}
-          name={hotel.name}
-          image={hotel.image}
-        />
-      ))}
-    </div>
+    <>
+      <h1 className="col-start-4 col-end-8 row-start-7 text-center font-bold text-[#022b60] text-2xl mb-2">
+        Check out some of our hotels
+      </h1>
+      <div className="grid xs:grid-cols-3 md:grid-cols-6 gap-3">
+        {hotels.map((hotel) => (
+          <HotelCarouselItem
+            key={hotel.name}
+            name={hotel.name}
+            image={hotel.image}
+          />
+        ))}
+      </div>
+    </>
   );
 }

@@ -6,7 +6,7 @@ export const Route = createFileRoute("/_main")({
 
 function RouteComponent() {
   return (
-    <div className="h-full">
+    <div className="col-span-full row-span-full grid grid-cols-12 grid-rows-12">
       <Outlet />
     </div>
   );
