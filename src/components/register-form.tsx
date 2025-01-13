@@ -64,7 +64,7 @@ export default function RegisterForm() {
           </h2>
         </div>
       </div>
-      <div className="w-1/2 rounded-md bg-white p-5">
+      <div className="w-1/2 rounded-md bg-white p-5 flex flex-col justify-center">
         <div className="mb-8 text-center text-lg font-semibold">Sign Up</div>
         <Form {...form}>
           <form
