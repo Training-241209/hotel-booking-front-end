@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_main/ReservationPage")({
 
 function RouteComponent() {
   return (
-    <div className="flex h-[calc(100vh-5rem)] w-full flex-col items-center px-36 py-10">
+    <div className="col-span-full row-start-2 row-end-13">
       <h1 className="mb-3 text-3xl font-bold text-[#022b60] underline">
         My Reservations
       </h1>
