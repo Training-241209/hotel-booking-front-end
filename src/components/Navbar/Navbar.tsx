@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`col-span-12 row-span-1 grid grid-cols-12 gap-3 bg-red-100 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""}`}
+      className={`col-span-12 row-span-1 grid grid-cols-12 gap-3 bg-red-100 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""} sm:text-sm md:text-lg 2xl:text-2xl`}
     >
       <Link
         to="/HomePage"
@@ -56,34 +56,32 @@ export default function Navbar() {
           isAuth ? "bg-[url('logo-white.png')]" : "bg-[url('logo-blue.png')]"
         }`}
       ></Link>
-      <div className="col-start-3 flex items-center justify-center gap-3">
+      <div
+        className={`${storedUser ? "xs:col-end-7 md:col-end-6 lg:col-end-5" : "col-span-1"} col-start-3 flex items-center justify-evenly`}
+      >
         <Link
           to="/HomePage"
-          className={`${linkTextColor} text-2xl [&.active]:font-bold`}
+          className={`${linkTextColor} [&.active]:font-bold`}
         >
           Hotels
         </Link>
+
+        {storedUser && (
+          <div className="flex items-center justify-center">
+            <Link
+              to="/ReservationPage"
+              className={`${linkTextColor} [&.active]:font-bold`}
+            >
+              Reservations
+            </Link>
+            {/* Remove this Create Hotel button Later on */}
+          </div>
+        )}
       </div>
-      {storedUser && (
-        <div className="col-start-4 ml-5 flex flex-1 items-center gap-3 text-2xl">
-          <Link
-            to="/ReservationPage"
-            className={`${linkTextColor} [&.active]:font-bold`}
-          >
-            Reservations
-          </Link>
-          {/* Remove this Create Hotel button Later on */}
-        </div>
-      )}
-      {storedUser && (
-        <div className="col-start-5 flex items-center mx-auto">
-          <CreateHotelDialog />
-        </div>
-      )}
 
       {storedUser && (
-        <div className="col-start-11 flex items-center justify-center">
-          <div className="relative mx-3 flex items-end justify-center">
+        <div className="xs:col-start-7 col-end-11 flex items-center justify-evenly md:col-start-8 lg:col-start-9 2xl:col-start-10">
+          <div className="relative flex items-end justify-center">
             <input
               className={`search ${show ? styles.search : styles.hide}`}
               type="text"
@@ -93,13 +91,14 @@ export default function Navbar() {
             />
             <Search onClick={() => handleShow()} />
           </div>
+          <CreateHotelDialog />
           <div className="flex h-[50px] w-[50px]">
             <UserDropdown />
           </div>
         </div>
       )}
       {!storedUser && (
-        <div className="col-start-11 col-end-12 flex items-center gap-3 text-2xl">
+        <div className="col-end-12 flex items-center gap-3 2xl:col-start-11 sm:col-start-9 md:col-start-10">
           <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
           </Link>
