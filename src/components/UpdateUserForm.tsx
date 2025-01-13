@@ -14,16 +14,25 @@ import {
   Form,
 } from "./ui/form";
 import { Input } from "./ui/input";
+import { useAtom } from "jotai";
+import { userAtom } from "@/store/atoms";
+import { useUpdUser } from "@/hooks/users/use-upd-user";
 
-export default function UpdateUserForm() {
+export default function UpdateUserForm() 
+{
+  const [user, setUser] = useAtom(userAtom);
+  const update = useUpdUser();
+
+  // console.log("User updated:", user);
+
   // Define your form
   const form = useForm<UpdateUserSchema>({
     // resolver integrates wuth your preferred validation library
     resolver: zodResolver(updateUserFormSchema),
     // this is the default values for the form
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      firstName: user?.firstName,
+      lastName: user?.lastName,
     },
   });
 
@@ -31,7 +40,15 @@ export default function UpdateUserForm() {
   const onSubmit = (data: UpdateUserSchema) => {
     try {
       // this is where you have to hook it up with the backend
-      console.log("Using the Backend Hook");
+      update.mutate(data);
+      setUser((prev) => (
+        prev ? {
+          ...prev,
+          firstName: data.firstName,
+          lastName: data.lastName,
+        } : null
+      ))
+      
     } catch (error) {
       console.error("User update failed:", error);
     }
