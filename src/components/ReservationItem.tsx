@@ -1,6 +1,4 @@
-import { DeleteHotelDialog } from "./DeleteHotelDialog";
 import { DeleteReservationDialog } from "./DeleteReservationDialog";
-import { Button } from "./ui/button";
 import { UpdateReservationDialog } from "./UpdateReservationDialog";
 
 interface ReservationProps {

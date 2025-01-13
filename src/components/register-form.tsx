@@ -50,8 +50,8 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 sm:col-span-full xs:col-span-full">
-      <div className="register_form_image relative w-1/2">
+    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 sm:col-span-full xs:col-span-full xs:h-full">
+      <div className="register_form_image relative w-1/2 xs:hidden">
         <img
           src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg"
           alt="Laptop Image"
@@ -64,7 +64,7 @@ export default function RegisterForm() {
           </h2>
         </div>
       </div>
-      <div className="w-1/2 rounded-md bg-white p-5 flex flex-col justify-center">
+      <div className="w-1/2 rounded-md bg-white p-5 flex flex-col justify-center xs:w-full">
         <div className="mb-8 text-center text-lg font-semibold">Sign Up</div>
         <Form {...form}>
           <form
@@ -149,7 +149,7 @@ export default function RegisterForm() {
             </Button>
           </form>
         </Form>
-        <div className="mt-4">
+        <div className="mt-4 xs:hidden">
           Already have an account?
           <Link to="/login" className="ml-1 text-blue-500">
             Login

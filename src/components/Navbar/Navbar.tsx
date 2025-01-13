@@ -45,14 +45,15 @@ export default function Navbar() {
     setShow(!show);
     // Remember to to add another function to actually handle search under this comment: handleSearch(location)
   };
-
+  const [currentUser] = useAtom(userAtom);
+  
   return (
     <div
       className={`col-span-12 row-span-1 grid grid-cols-12 gap-3 ${storedUser ? "shadow-md" : ""} ${isAuth ? "bg-transparent" : ""} sm:text-sm md:text-lg 2xl:text-2xl`}
     >
       <Link
         to="/HomePage"
-        className={`col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat ${
+        className={`xs:scale-150 col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat ${
           isAuth ? "bg-[url('logo-white.png')]" : "bg-[url('logo-blue.png')]"
         }`}
       ></Link>
@@ -76,7 +77,6 @@ export default function Navbar() {
             >
               Reservations
             </Link>
-            {/* Remove this Create Hotel button Later on */}
           </div>
         )}
       </div>
@@ -93,14 +93,14 @@ export default function Navbar() {
             />
             <Search onClick={() => handleShow()} />
           </div>
-          <CreateHotelDialog />
+          {currentUser?.isAdmin ? <CreateHotelDialog /> : null}
           <div className="flex h-[50px] w-[50px]">
             <UserDropdown />
           </div>
         </div>
       )}
       {!storedUser && (
-        <div className="col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11">
+        <div className="xs:col-start-8 col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11">
           <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
           </Link>

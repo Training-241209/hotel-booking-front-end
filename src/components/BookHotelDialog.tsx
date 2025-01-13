@@ -72,7 +72,7 @@ export function BookHotelDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75">
+        <Button className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75 xs:w-full">
           Book Now
         </Button>
       </DialogTrigger>
