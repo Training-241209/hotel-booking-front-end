@@ -1,4 +1,7 @@
+import { DeleteHotelDialog } from "./DeleteHotelDialog";
+import { DeleteReservationDialog } from "./DeleteReservationDialog";
 import { Button } from "./ui/button";
+import { UpdateReservationDialog } from "./UpdateReservationDialog";
 
 interface ReservationProps {
   reserve_id: number;
@@ -41,12 +44,9 @@ export default function ReservationItem({
           </div>
         </div>
         <div className="reservation__details__buttons border-grey row-span-3 flex flex-col items-center justify-center gap-3 border-l-2">
-          <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75">
-            Edit
-          </Button>
-          <Button className="w-1/2 border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75">
-            Cancel
-          </Button>
+
+          <UpdateReservationDialog/>
+          <DeleteReservationDialog/>
         </div>
       </div>
     </div>
