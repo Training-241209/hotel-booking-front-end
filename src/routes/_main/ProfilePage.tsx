@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { DeleteUserDialog } from "@/components/DeleteUserDialog";
+import { UpdatePasswordDialog } from "@/components/UpdatePasswordDialog";
 import UpdateUserForm from "@/components/UpdateUserForm";
 import { UserAvatar } from "@/components/user-avatar";
 import { userAtom } from "@/store/atoms";
@@ -46,12 +47,8 @@ function RouteComponent() {
             <UpdateUserForm />
           </div>
           <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md">
-            <Button className="w-1/2 rounded-3xl border border-black bg-white text-black hover:bg-white hover:opacity-75">
-              Change Password
-            </Button>
-            <Button className="w-1/2 rounded-3xl border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75">
-              Delete Account
-            </Button>
+            <UpdatePasswordDialog/>
+            <DeleteUserDialog/>
           </div>
         </div>
       </div>
