@@ -83,7 +83,7 @@ export default function LoginForm() {
                         </Button>
                     </form>
                 </Form>
-                <div className="mt-4">Don't have an account?
+                <div className="mt-4 xs:hidden">Don't have an account?
                     <Link to="/register" className="ml-1 text-blue-500">
                         Signup
                     </Link>

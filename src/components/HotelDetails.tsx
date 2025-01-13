@@ -1,4 +1,4 @@
-import { hotelAtom } from "@/store/atoms";
+import { hotelAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { Star } from "lucide-react";
 import { BookHotelDialog } from "./BookHotelDialog";
@@ -8,6 +8,7 @@ import ReviewDetails from "./ReviewDetails";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
+  const [currentUser] = useAtom(userAtom);
 
   if (!hotel) {
     return (
@@ -50,10 +51,12 @@ export default function HotelDetails() {
                 {hotel?.price}
               </div>
             </div>
-            <div className="hotel__info__buttons col-span-2 flex flex-col gap-3">
-              <UpdateHotelDialog />
-              <DeleteHotelDialog />
-            </div>
+            {currentUser?.isAdmin ? (
+              <div className="hotel__info__buttons col-span-2 flex flex-col gap-3">
+                <UpdateHotelDialog />
+                <DeleteHotelDialog />
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-evenly">

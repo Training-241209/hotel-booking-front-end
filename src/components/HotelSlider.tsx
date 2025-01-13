@@ -10,7 +10,7 @@ export default function HotelSlider() {
   const [hotels] = useAtom(allHotelsAtom);
 
   return (
-    <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md">
+    <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md xs:flex-row xs:overflow-x-auto">
       {hotels.map((hotel) => (
         <HotelSliderItem key={hotel.hotelId} {...hotel} />
       ))}

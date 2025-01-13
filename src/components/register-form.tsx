@@ -50,7 +50,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 sm:col-span-full xs:col-span-full">
+    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 sm:col-span-full xs:col-span-full xs:h-full">
       <div className="register_form_image relative w-1/2 xs:hidden">
         <img
           src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg"
@@ -149,7 +149,7 @@ export default function RegisterForm() {
             </Button>
           </form>
         </Form>
-        <div className="mt-4">
+        <div className="mt-4 xs:hidden">
           Already have an account?
           <Link to="/login" className="ml-1 text-blue-500">
             Login
