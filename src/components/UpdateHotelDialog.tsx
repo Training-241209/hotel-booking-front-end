@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -134,7 +135,9 @@ export function UpdateHotelDialog()
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">Update Hotel</Button>
+              <DialogClose>
+                <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">Update Hotel</Button>
+              </DialogClose>
             </form>
           </Form>
         </div>
