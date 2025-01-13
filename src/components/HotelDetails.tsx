@@ -20,21 +20,21 @@ export default function HotelDetails() {
 
   return (
     <div className="grid h-full w-full grid-rows-8">
-      <div className="hotel__image row-span-5 w-full">
+      <div className="hotel__image row-span-5 w-full xs:row-span-4">
         <img
           src={hotel?.image}
           alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
       </div>
-      <div className="row-span-2 grid grid-cols-6">
+      <div className="row-span-2 grid grid-cols-6 xs:row-span-2">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-bold text-[#022b60]">
+              <h1 className="font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
                 {hotel?.hotelName.toUpperCase()}
               </h1>
-              <h2 className="border-l-2 border-[#022b60] pl-3 text-3xl font-bold text-[#022b60]">
+              <h2 className="border-l-2 border-[#022b60] pl-3 font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
                 {hotel.location.toUpperCase()}
               </h2>
             </div>
@@ -59,15 +59,17 @@ export default function HotelDetails() {
             ) : null}
           </div>
         </div>
-        <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-evenly">
-          <div className="flex w-full flex-col items-center">
+        <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-start gap-2">
+          <div className="flex w-full flex-col items-center mt-3">
             <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
               {/* Hard coded need to change later */}
-              <span className="text-6xl font-bold text-[#022b60]">4.5</span>
+              <span className="2xl:text-6xl font-bold text-[#022b60] md:text-3xl lg:text-4xl">
+                4.5
+              </span>
               <Star
                 fill="#022b60"
                 color="#022b60"
-                className="h-[50px] w-[50px]"
+                className="2xl:h-[50px] 2xl:w-[50px] md:h-[35px] md:w-[35px] lg:h-[40px] lg:w-[40px]"
               />
             </div>
             <div className="hotel__cta__reviews text-[#022b60]">
@@ -77,8 +79,7 @@ export default function HotelDetails() {
           <BookHotelDialog />
         </div>
       </div>
-
-      <div className="hotel__review row-span-1">
+      <div className="hotel__review row-span-1 xs:row-span-2">
         <ReviewDetails />
       </div>
     </div>
