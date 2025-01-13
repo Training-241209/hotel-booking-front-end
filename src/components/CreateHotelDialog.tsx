@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -173,13 +174,15 @@ export function CreateHotelDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Create Hotel
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Create Hotel
+                </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>
