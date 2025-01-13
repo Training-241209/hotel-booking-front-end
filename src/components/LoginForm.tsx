@@ -39,7 +39,7 @@ export default function LoginForm() {
 
     // <div className="flex w-1/2 h-1/2 p-2 bg-white rounded"> => changed
     return (
-        <div className="flex w-1/2 h-[375px] p-2 bg-white rounded">
+        <div className="col-start-4 col-end-10 row-start-4 row-end-10 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 md:col-start-1 md:col-end-13 sm:col-span-full xs:col-span-full">
             <div className="login_form_image w-1/2 relative">
                 <img src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg" alt="Laptop Image" className="w-full h-full" />
                 <div className="w-full h-full flex flex-col items-center justify-center text-center text-white absolute top-0 p-3">
