@@ -77,6 +77,7 @@ export function BookHotelDialog() {
 
         <DialogFooter>
           <Button
+            className="w-3/4 bg-blue-500 hover:bg-blue-500 hover:opacity-75 mx-auto"
             type="button"
             onClick={() => {
               fillDates();

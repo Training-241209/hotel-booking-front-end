@@ -14,28 +14,33 @@ import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ui/form";
 import { useCreateHotel } from "@/hooks/hotels/use-create-hotel";
 
-export function CreateHotelDialog() 
-{
-  const {mutate: create, isPending} = useCreateHotel();
+export function CreateHotelDialog() {
+  const { mutate: create, isPending } = useCreateHotel();
 
   const form = useForm<HotelSchema>({
     resolver: zodResolver(hotelFormSchema),
-    defaultValues:
-    {
+    defaultValues: {
       hotelName: "",
       description: "",
       rooms: "",
       location: "",
       price: "",
       image: "",
-    }
-  })
+    },
+  });
 
-  function onSubmit(values: HotelSchema)
-  {
+  function onSubmit(values: HotelSchema) {
     create(values);
     form.reset();
   }
@@ -48,12 +53,9 @@ export function CreateHotelDialog()
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create Hotel</DialogTitle>
-          <DialogDescription>
-            Add a new hotel to our database
-          </DialogDescription>
+          <DialogDescription>Add a new hotel to our database</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          
           {/* <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
@@ -171,7 +173,13 @@ export function CreateHotelDialog()
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isPending}>Create Hotel</Button>
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+              >
+                Create Hotel
+              </Button>
             </form>
           </Form>
         </div>
