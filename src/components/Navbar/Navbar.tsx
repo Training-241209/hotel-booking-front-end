@@ -64,17 +64,17 @@ export default function Navbar() {
         >
           Hotels
         </Link>
-        {/* Remove this Create Hotel button Later on */}
-        <CreateHotelDialog />
       </div>
       {storedUser && (
-        <div className="ml-5 flex flex-1 text-2xl">
+        <div className="ml-5 flex flex-1 text-2xl gap-3 items-center">
           <Link
             to="/ReservationPage"
             className={`${linkTextColor} [&.active]:font-bold`}
           >
             Reservations
           </Link>
+          {/* Remove this Create Hotel button Later on */}
+          <CreateHotelDialog />
         </div>
       )}
 

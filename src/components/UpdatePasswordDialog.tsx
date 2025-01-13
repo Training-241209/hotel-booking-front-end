@@ -3,58 +3,41 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  Form,
+} from "./ui/form";
+import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
-import { useAtom } from "jotai";
-import { hotelAtom } from "@/store/atoms";
-import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
-import { useUpdateHotel } from "@/hooks/hotels/use-update-hotel";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export function UpdateHotelDialog() 
-{
-  const [hotel] = useAtom(hotelAtom);
-  const update = useUpdateHotel();
-
-  const form = useForm<HotelSchema>({
-    resolver: zodResolver(hotelFormSchema),
-    defaultValues:
-    {
-      hotelName: hotel?.hotelName,
-      description: hotel?.description,
-      rooms: hotel?.rooms?.toString(),
-      location: hotel?.location,
-      price: hotel?.price.toString(),
-      image: hotel?.image,
-    }
-  })
-
-  function onSubmit(values: HotelSchema)
-  {
-    update.mutate(values)
-  }
+export function UpdatePasswordDialog() {
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75">
-          Update
+          Change Password
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Update Hotel Details</DialogTitle>
+          <DialogTitle>Update Your Password</DialogTitle>
           <DialogDescription>
-            Update the hotel details as needed.
+            Securely change your password to keep your account safe.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-        <Form {...form}>
+          {/* <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
@@ -134,10 +117,22 @@ export function UpdateHotelDialog()
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">Update Hotel</Button>
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+              >
+                Create Hotel
+              </Button>
             </form>
-          </Form>
+          </Form> */}
         </div>
+
+        <DialogFooter>
+          <Button className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">
+            Confirm
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

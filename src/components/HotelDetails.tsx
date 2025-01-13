@@ -2,7 +2,6 @@ import { hotelAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { Star } from "lucide-react";
 import { BookHotelDialog } from "./BookHotelDialog";
-import { Button } from "./ui/button";
 import { DeleteHotelDialog } from "./DeleteHotelDialog";
 import { UpdateHotelDialog } from "./UpdateHotelDialog";
 import ReviewDetails from "./ReviewDetails";
@@ -57,7 +56,7 @@ export default function HotelDetails() {
             </div>
           </div>
         </div>
-        <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-evenly border-l-2">
+        <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-evenly">
           <div className="flex w-full flex-col items-center">
             <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
               {/* Hard coded need to change later */}

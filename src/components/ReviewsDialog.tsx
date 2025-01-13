@@ -16,14 +16,14 @@ export function ReviewsDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>All Reviews</Button>
+        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75">All Reviews</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] h-1/2">
         <DialogHeader>
           <DialogTitle>Reviews</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 overflow-y-auto scrollbar-hidden">
           {data.map((review) => (
             <ReviewItem
               key={review.review_id}
@@ -34,11 +34,6 @@ export function ReviewsDialog() {
             />
           ))}
         </div>
-        <DialogFooter>
-          <Button className="mx-auto w-3/4 border" type="submit">
-            Confirm
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
