@@ -23,7 +23,7 @@ export function useCreateReview()
                 toast({title: "Review Added"});
                 queryClient.invalidateQueries({queryKey: ["reviews"]});
                 setReview(data);
-            }
+            },
         }
     )
 }

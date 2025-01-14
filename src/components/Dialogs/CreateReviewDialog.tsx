@@ -27,18 +27,20 @@ import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
 import { useEffect } from "react";
 import { useCreateReview } from "@/hooks/reviews/use-create-review";
+import { useToast } from "@/hooks/use-toast";
 
 export function CreateReviewDialog() {
   //   const { mutate: create, isPending } = useCreateReview();
   const [hotel] = useAtom(hotelAtom);
   const {mutate: createReview} = useCreateReview();
+  const {toast} = useToast();
 
   const form = useForm<ReviewSchema>({
     resolver: zodResolver(reviewFormSchema),
     defaultValues: {
       title: "",
       description: "",
-      rating: 5,
+      rating: "5",
       hotel: {
         hotelId: hotel?.hotelId || 0,
       },
@@ -47,6 +49,13 @@ export function CreateReviewDialog() {
 
   function onSubmit(values: ReviewSchema) 
   {
+    let num = parseInt(values.rating);
+    if (num > 5 || num < 1)
+    {
+      form.setError("rating", {message: "Rating must be between 1 and 5"});
+      toast({title: "Rating must be between 1 and 5"});
+      return;
+    }
     const req = 
     {
       title: values.title,
@@ -70,7 +79,7 @@ export function CreateReviewDialog() {
         {
           title: "",
           description: "",
-          rating: 5,
+          rating: "5",
           hotel: {
             hotelId: hotel.hotelId,
           },
