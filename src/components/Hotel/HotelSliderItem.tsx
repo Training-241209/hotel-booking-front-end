@@ -1,5 +1,6 @@
 import { useAtom } from "jotai";
 import { hotelAtom } from "@/store/atoms";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface HotelSliderItemProps {
   hotelId: number;
