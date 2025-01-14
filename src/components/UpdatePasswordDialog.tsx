@@ -25,7 +25,7 @@ export function UpdatePasswordDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75">
+        <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75 md:w-3/4 sm:w-3/4">
           Change Password
         </Button>
       </DialogTrigger>
