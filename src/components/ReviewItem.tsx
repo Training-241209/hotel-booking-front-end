@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Star } from "lucide-react";
-import { ReviewsDialog } from "./ReviewsDialog";
+import { ReviewsDialog } from "./Dialogs/ReviewsDialog";
 
 // modify as needed, might have to pass in some user info to get the avatar to display properly
 interface ReviewItemProps{
@@ -24,7 +24,7 @@ export default function ReviewItem({title, description, rating, show}:ReviewItem
           {description}
         </p>
       </div>
-      <div className="col-span-2 row-span-1 flex flex-col items-center justify-center">
+      <div className="col-span-2 row-span-1 flex gap-2 items-center justify-end">
         <div className="flex items-center">
           <span className="text-2xl font-bold text-[#022b60]">{rating}</span>
           <Star fill="#022b60" color="#022b60" className="h-[25px] w-[25px]" />

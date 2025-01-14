@@ -1,43 +1,96 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import {
+  Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
-  Form,
-} from "./ui/form";
-import { Input } from "./ui/input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+} from "../ui/form";
+import { useCreateHotel } from "@/hooks/hotels/use-create-hotel";
 
-export function UpdatePasswordDialog() {
+export function CreateHotelDialog() {
+  const { mutate: create, isPending } = useCreateHotel();
+
+  const form = useForm<HotelSchema>({
+    resolver: zodResolver(hotelFormSchema),
+    defaultValues: {
+      hotelName: "",
+      description: "",
+      rooms: "",
+      location: "",
+      price: "",
+      image: "",
+    },
+  });
+
+  function onSubmit(values: HotelSchema) {
+    create(values);
+    form.reset();
+  }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75">
-          Change Password
-        </Button>
+        <Button variant="outline" className="text-[#022b60] border-[#022b60] mx-3">Create Hotel</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Update Your Password</DialogTitle>
-          <DialogDescription>
-            Securely change your password to keep your account safe.
-          </DialogDescription>
+          <DialogTitle>Create Hotel</DialogTitle>
+          <DialogDescription>Add a new hotel to our database</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* <Form {...form}>
+          {/* <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Name
+            </Label>
+            <Input id="name" placeholder="Hotel Name" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="description" className="text-right">
+              Description
+            </Label>
+            <Input id="description" placeholder="Hotel Description" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="rooms" className="text-right">
+              # of Rooms
+            </Label>
+            <Input id="rooms" type="number" placeholder="Rooms Available" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="location" className="text-right">
+              Location
+            </Label>
+            <Input id="location" placeholder="Hotel Location" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="price" className="text-right">
+              Price
+            </Label>
+            <Input id="price" placeholder="Room Price" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="image" className="text-right">
+              Image
+            </Label>
+            <Input id="image" placeholder="Hotel Image" className="col-span-3" />
+          </div> */}
+
+          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
@@ -117,22 +170,21 @@ export function UpdatePasswordDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Create Hotel
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Create Hotel
+                </Button>
+              </DialogClose>
             </form>
-          </Form> */}
+          </Form>
         </div>
-
-        <DialogFooter>
-          <Button className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">
-            Confirm
-          </Button>
-        </DialogFooter>
+        {/* <DialogFooter>
+          <Button type="submit">Create Hotel</Button>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

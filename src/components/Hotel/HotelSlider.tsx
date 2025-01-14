@@ -12,7 +12,7 @@ export default function HotelSlider() {
   return (
     <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md xs:flex-row xs:overflow-x-auto">
       {hotels.map((hotel) => (
-        <HotelSliderItem key={hotel.hotelId} {...hotel} />
+        <HotelSliderItem key={hotel.hotelId}  {...hotel} />
       ))}
     </div>
   );
