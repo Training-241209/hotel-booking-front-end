@@ -39,7 +39,7 @@ export default function HotelDetails() {
                 {hotel.location.toUpperCase()}
               </h2>
             </div>
-            <p className="text-[#022b60]">{hotel?.description}</p>
+            <p className="text-[#022b60] xs:truncate w-full">{hotel?.description}</p>
           </div>
           <div className="grid w-full grid-cols-9 grid-rows-1">
             <div className="col-span-7 flex flex-col justify-evenly">
@@ -60,8 +60,8 @@ export default function HotelDetails() {
             ) : null}
           </div>
         </div>
-        <div className="hotel__cta border-grey col-span-2 flex flex-col items-center justify-start gap-2">
-          <div className="flex w-full flex-col items-center mt-3">
+        <div className="hotel__cta border-grey col-span-2 flex flex-col items-end justify-start gap-2">
+          <div className="flex flex-col items-center mt-3">
             <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
               {/* Hard coded need to change later */}
               <span className="2xl:text-6xl font-bold text-[#022b60] md:text-3xl lg:text-4xl">
@@ -70,7 +70,7 @@ export default function HotelDetails() {
               <Star
                 fill="#022b60"
                 color="#022b60"
-                className="2xl:h-[50px] 2xl:w-[50px] md:h-[35px] md:w-[35px] lg:h-[40px] lg:w-[40px]"
+                className="2xl:min-h-[50px] 2xl:min-w-[50px] md:min-h-[35px] md:min-w-[35px] lg:min-h-[40px] lg:min-w-[40px]"
               />
             </div>
             <div className="hotel__cta__reviews text-[#022b60]">
