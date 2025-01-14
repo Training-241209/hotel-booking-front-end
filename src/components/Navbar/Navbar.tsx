@@ -100,7 +100,7 @@ export default function Navbar() {
         </div>
       )}
       {!storedUser && (
-        <div className="xs:col-start-8 col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11">
+        <div className="xxs:col-start-8 xs:col-start-10 col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11">
           <Link to="/login" className={`${linkTextColor} [&.active]:font-bold`}>
             Login
           </Link>

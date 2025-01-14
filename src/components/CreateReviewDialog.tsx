@@ -44,7 +44,7 @@ export function CreateReviewDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 text-white w-1/2">Add Review Hotel</Button>
+        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 text-white w-1/2 xs:w-full">Add Review</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
