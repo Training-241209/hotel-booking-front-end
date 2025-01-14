@@ -1,6 +1,6 @@
-import { allHotelReviewsAtom, hotelAtom, hotelIdAtom, userAtom } from "@/store/atoms";
+import { hotelAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
-import { Heading1, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
 import ReviewDetails from "../ReviewDetails";
 import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";

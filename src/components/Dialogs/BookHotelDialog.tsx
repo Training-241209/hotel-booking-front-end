@@ -44,19 +44,6 @@ export function BookHotelDialog() {
     ? new Date(Math.max(...dates.map((date) => date.getTime())))
     : undefined;
 
-  // Generate all dates between checkIn and checkOut
-  // const fillDates = () => {
-  //   if (checkIn && checkOut) {
-  //     const currentDate = new Date(checkIn);
-  //     const filledDates = [];
-  //     while (currentDate <= checkOut) {
-  //       filledDates.push(new Date(currentDate));
-  //       currentDate.setDate(currentDate.getDate() + 1);
-  //     }
-  //     setDates(filledDates);
-  //   }
-  // };
-
   const onSubmit = (data: ReserveSchema) => {
     // console.log(values);
     try {

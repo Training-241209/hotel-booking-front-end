@@ -1,7 +1,4 @@
-import { useHotelReviews } from "@/hooks/reviews/use-hotel-reviews";
 import ReviewItem from "./ReviewItem";
-import { useAtom } from "jotai";
-import { allHotelReviewsAtom, hotelAtom} from "@/store/atoms";
 
 interface ReviewDetailsProps{
   title:string;

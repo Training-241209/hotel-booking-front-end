@@ -1,6 +1,6 @@
 import axiosInstance from "@/lib/axios-config";
 import { ReviewSchema } from "@/schemas/reviews/reviews-schema";
-import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "../use-toast";
 import { useSetAtom } from "jotai";
 import { reviewAtom } from "@/store/atoms";

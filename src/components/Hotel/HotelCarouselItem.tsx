@@ -1,5 +1,3 @@
-import React from "react";
-
 interface HotelCarouselItemProps {
   image: string;
   name: string;

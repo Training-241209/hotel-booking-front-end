@@ -15,14 +15,10 @@ export function useLogin() {
   return useMutation({
     mutationFn: async (values: LoginSchema) => {
       const resp = await axiosInstance.post("/api/auth/login", values);
-      // console.log(`body: ${resp.data}`);
-      // console.log(`headers: ${resp.headers[`authorization`]}`);
-      // console.log(`returned: ${resp.data.token}`);
       return resp.headers[`authorization`];
     },
     onSuccess: (token) => {
       localStorage.setItem("token", token);
-      console.log(`token: ${token}`);
 
       const decoded = jwtDecode(token) as {
         userId: number;
@@ -32,12 +28,6 @@ export function useLogin() {
         roleName: string;
         isAdmin: boolean;
       };
-      console.log(`decoded token: ${JSON.stringify(decoded)}`);
-
-      // console.log(`id claims: ${decoded.userId}`);
-      // console.log(`fn claims: ${decoded.firstName}`);
-      // console.log(`ln claims: ${decoded.lastName}`);
-      // console.log(`email claims: ${decoded.email}`);
 
       setUser({
         userId: decoded.userId,
