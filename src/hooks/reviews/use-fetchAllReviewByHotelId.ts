@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios-config";
 
 
-export function useFetchReimbursementByUser(id: any) {
+export function useFetchReviewByHotel(id: any) {
     return useQuery({
         queryKey: ['reviewsByHotelId', id],
         queryFn: async () => {
