@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
 import HotelDetails from "@/components/Hotel/HotelDetails";
 import HotelSlider from "@/components/Hotel/HotelSlider";
 
@@ -6,7 +6,8 @@ export const Route = createFileRoute("/_main/HomePage")({
   component: RouteComponent,
 });
 
-function RouteComponent() {
+function RouteComponent() 
+{
   // check the store folder to see all my global states - these are states that can accessed anywhere in our app
   // const [hotel, setHotel] = useAtom(hotelAtom);
 

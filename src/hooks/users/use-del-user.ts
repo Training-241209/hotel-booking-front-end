@@ -1,6 +1,6 @@
 import { useRouter } from "@tanstack/react-router";
 import { useToast } from "../use-toast";
-import { useAtom, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import { userAtom } from "@/store/atoms";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios-config";
@@ -26,6 +26,10 @@ export function useDelUser()
                     title: "User deleted successfully",
                 });
                 router.navigate({to: "/"});
+            },
+            onError: () =>
+            {
+                toast({title: "Error Deleting User"});
             }
         }
     )

@@ -28,6 +28,14 @@ export function useUpdateHotel()
                 toast({
                     title: "Hotel Updated"
                 });
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Hotel Update Failed"
+                    }
+                );
             }
         }
     )

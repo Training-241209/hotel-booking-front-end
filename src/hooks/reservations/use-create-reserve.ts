@@ -31,6 +31,14 @@ export function useCreateReserve()
                     queryKey: ["reservations"]
                 });
                 router.navigate({to: "/ReservationPage"});
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Error Creating Reservation"
+                    }
+                );
             }
         }
     )

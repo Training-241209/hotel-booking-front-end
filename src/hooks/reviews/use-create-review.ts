@@ -24,6 +24,10 @@ export function useCreateReview()
                 queryClient.invalidateQueries({queryKey: ["reviews"]});
                 setReview(data);
             },
+            onError: () =>
+            {
+                toast({title: "Error Adding Review"});
+            }
         }
     )
 }
