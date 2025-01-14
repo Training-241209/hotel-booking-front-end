@@ -25,6 +25,12 @@ export function UserDropdown() {
         <DropdownMenuItem>
           <Link to="/ProfilePage">Profile</Link>
         </DropdownMenuItem>
+        <DropdownMenuItem className="flex lg:hidden">
+          <Link to="/HomePage">Hotels</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex lg:hidden">
+          <Link to="/ReservationPage">Reservations</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

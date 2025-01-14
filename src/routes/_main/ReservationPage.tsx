@@ -15,7 +15,7 @@ function RouteComponent() {
   console.log(reservations);
 
   return (
-    <div className="col-span-full row-start-2 row-end-13">
+    <div className="col-span-full row-start-2 row-end-13 xxs:row-start-1">
       <div className="scrollbar-hidden h-full w-full overflow-y-auto p-3 shadow-md xxs:p-0">
         {reservations.map((reservation) => (
           <ReservationItem key={reservation.reservationId} 

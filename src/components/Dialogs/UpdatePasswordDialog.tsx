@@ -15,17 +15,31 @@ import {
   FormControl,
   FormMessage,
   Form,
-} from "./ui/form";
-import { Input } from "./ui/input";
+} from "../ui/form";
+import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { updatePasswordFormSchema, UpdatePasswordSchema } from "@/schemas/updatePassword-schema";
 
 export function UpdatePasswordDialog() {
+  // const { mutate: create, isPending } = useCreateHotel();
 
+  const form = useForm<UpdatePasswordSchema>({
+    resolver: zodResolver(updatePasswordFormSchema),
+    defaultValues: {
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    },
+  });
+  function onSubmit(values: UpdatePasswordSchema) {
+    // create(values);
+    form.reset();
+  }
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75 md:w-3/4 sm:w-3/4">
+        <Button className="w-1/2 border border-black bg-white text-black hover:bg-white hover:opacity-75 sm:w-3/4 md:w-3/4">
           Change Password
         </Button>
       </DialogTrigger>
@@ -37,16 +51,16 @@ export function UpdatePasswordDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* <Form {...form}>
+          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
-                name="hotelName"
+                name="currentPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Hotel Name</FormLabel>
+                    <FormLabel>Current Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Hotel Name" {...field} />
+                      <Input placeholder="Current Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -54,12 +68,12 @@ export function UpdatePasswordDialog() {
               />
               <FormField
                 control={form.control}
-                name="description"
+                name="newPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>New Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Description" {...field} />
+                      <Input placeholder="New Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -67,51 +81,12 @@ export function UpdatePasswordDialog() {
               />
               <FormField
                 control={form.control}
-                name="rooms"
+                name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Rooms</FormLabel>
+                    <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Rooms" type="number" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="price"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Price</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Price" type="number" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="image"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Image URL</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Image URL" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="location"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Location</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Location" {...field} />
+                      <Input placeholder="Confirm Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -119,20 +94,14 @@ export function UpdatePasswordDialog() {
               />
               <Button
                 type="submit"
-                disabled={isPending}
+                // disabled={isPending}
                 className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
               >
                 Create Hotel
               </Button>
             </form>
-          </Form> */}
+          </Form>
         </div>
-
-        <DialogFooter>
-          <Button className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">
-            Confirm
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

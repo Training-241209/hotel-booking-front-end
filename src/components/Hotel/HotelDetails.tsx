@@ -1,23 +1,20 @@
 import { allHotelReviewsAtom, hotelAtom, hotelIdAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
-import { Star } from "lucide-react";
+import { Heading1, Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
 import ReviewDetails from "../ReviewDetails";
 import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";
 import { BookHotelDialog } from "../Dialogs/BookHotelDialog";
 import { UpdateHotelDialog } from "../Dialogs/UpdateHotelDialog";
-import { useHotelReviews } from "@/hooks/reviews/use-hotel-reviews";
+import { useFetchReimbursementByUser } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
-  const [hotelId] = useAtom(hotelIdAtom);
-  // const [allreviews] = useAtom(allHotelReviewsAtom);
-  // const { data } = useHotelReviews(hotelId);
-  // console.log(`Hotel ID: ${hotelId}`);
-  // console.log(`Reviews: ${allreviews}`);
-  // console.log(`Hotel ID: ${hotel?.hotelId}`);
-  // console.log(`Reviews: ${data[0].title}`);
+  const { data } = useFetchReimbursementByUser(hotel?.hotelId);
+  const latestReview = data ? data[data.length - 1] : null;
+  console.log("Latest: ", latestReview);
+  console.log("Current data: ", data);
 
   if (!hotel) {
     return (
@@ -29,14 +26,14 @@ export default function HotelDetails() {
 
   return (
     <div className="grid h-full w-full grid-rows-8">
-      <div className="hotel__image xs:row-span-4 row-span-5 w-full">
+      <div className="hotel__image row-span-5 w-full xs:row-span-4">
         <img
           src={hotel?.image}
           alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
       </div>
-      <div className="xs:row-span-2 row-span-2 grid grid-cols-6">
+      <div className="row-span-2 grid grid-cols-6 xs:row-span-2">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
@@ -47,7 +44,7 @@ export default function HotelDetails() {
                 {hotel.location.toUpperCase()}
               </h2>
             </div>
-            <p className="xs:truncate w-full text-[#022b60]">
+            <p className="w-full text-[#022b60] xs:truncate">
               {hotel?.description}
             </p>
           </div>
@@ -91,8 +88,16 @@ export default function HotelDetails() {
           <CreateReviewDialog />
         </div>
       </div>
-      <div className="hotel__review xs:row-span-2 row-span-1">
-        <ReviewDetails />
+      <div className="hotel__review row-span-1 xs:row-span-2">
+        {latestReview ? (
+          <ReviewDetails
+            title={latestReview.title}
+            description={latestReview.description}
+            rating={latestReview.rating}
+          />
+        ) : (
+          <h1>No Reviews</h1>
+        )}
       </div>
     </div>
   );

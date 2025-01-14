@@ -63,14 +63,14 @@ export default function Navbar() {
         {storedUser && (
           <Link
             to="/HomePage"
-            className={`${linkTextColor} [&.active]:font-bold`}
+            className={`${linkTextColor} [&.active]:font-bold hidden lg:flex`}
           >
             Hotels
           </Link>
         )}
 
         {storedUser && (
-          <div className="flex items-center justify-center">
+          <div className="items-center justify-center hidden lg:flex">
             <Link
               to="/ReservationPage"
               className={`${linkTextColor} [&.active]:font-bold`}
@@ -82,12 +82,12 @@ export default function Navbar() {
       </div>
 
       {storedUser && (
-        <div className="xs:col-start-7 col-end-11 flex items-center justify-evenly md:col-start-8 lg:col-start-9 2xl:col-start-10">
-          <div className="relative flex items-end justify-center">
+        <div className="xs:col-start-7 col-end-12 flex items-center justify-end gap-3 md:col-start-8 lg:col-start-10 2xl:col-start-11">
+          <div className="relative items-end justify-center flex">
             <input
               className={`search ${show ? styles.search : styles.hide}`}
               type="text"
-              placeholder="Enter city, state, zipcode"
+              placeholder="Enter Location"
               value={searchLocation}
               onChange={handleChange}
             />
