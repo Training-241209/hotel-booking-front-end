@@ -14,7 +14,7 @@ export function useAllHotels()
             queryFn: async () =>
             {
                 const res = await axiosInstance.get<Hotel[]>("/api/hotels/");
-                console.log(res.data);
+                // console.log(res.data);
                 setAllHotels(res.data);
 
                 queryClient.invalidateQueries({queryKey: ["reviews"]});

@@ -1,4 +1,4 @@
-import { hotelAtom, userAtom } from "@/store/atoms";
+import { allHotelReviewsAtom, hotelAtom, hotelIdAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
@@ -6,10 +6,18 @@ import ReviewDetails from "../ReviewDetails";
 import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";
 import { BookHotelDialog } from "../Dialogs/BookHotelDialog";
 import { UpdateHotelDialog } from "../Dialogs/UpdateHotelDialog";
+import { useHotelReviews } from "@/hooks/reviews/use-hotel-reviews";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
+  const [hotelId] = useAtom(hotelIdAtom);
+  const [allreviews] = useAtom(allHotelReviewsAtom);
+  const { data } = useHotelReviews(hotelId);
+  // console.log(`Hotel ID: ${hotelId}`);
+  // console.log(`Reviews: ${allreviews}`);
+  // console.log(`Hotel ID: ${hotel?.hotelId}`);
+  // console.log(`Reviews: ${data[0].title}`);
 
   if (!hotel) {
     return (

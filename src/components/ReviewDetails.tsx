@@ -5,10 +5,10 @@ import { allHotelReviewsAtom, hotelAtom} from "@/store/atoms";
 
 export default function ReviewDetails() 
 {
-  useHotelReviews();
+  // useHotelReviews();
 
   const [allReviews] = useAtom(allHotelReviewsAtom);
-  const [hotel] = useAtom(hotelAtom);
+  // const [hotel] = useAtom(hotelAtom);
   // const [reviews] = useAtom(reviewAtom);
   // allReviews[0].title ||
   // <ReviewItem title={"Title Missing"} description={"Good time with Family"} rating={5} show={true}/>
