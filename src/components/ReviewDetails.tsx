@@ -1,6 +1,7 @@
 import ReviewItem from "./ReviewItem";
 
 export default function ReviewDetails() {
+  
   return (
     <div className="flex h-full flex-col">
       <h1 className="font-bold">Most Recent Review</h1>
