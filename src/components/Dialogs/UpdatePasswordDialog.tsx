@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -19,20 +20,30 @@ import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updatePasswordFormSchema, UpdatePasswordSchema } from "@/schemas/updatePassword-schema";
+import { useUpdPassword } from "@/hooks/users/use-upd-password";
+import { useToast } from "@/hooks/use-toast";
 
 export function UpdatePasswordDialog() {
-  // const { mutate: create, isPending } = useCreateHotel();
+  const updPassword = useUpdPassword();
+  const {toast} = useToast();
 
   const form = useForm<UpdatePasswordSchema>({
     resolver: zodResolver(updatePasswordFormSchema),
     defaultValues: {
-      currentPassword: "",
+      oldPassword: "",
       newPassword: "",
       confirmPassword: "",
     },
   });
-  function onSubmit(values: UpdatePasswordSchema) {
-    // create(values);
+  function onSubmit(values: UpdatePasswordSchema) 
+  {
+    if (values.confirmPassword !== values.newPassword)
+    {
+      form.setError("confirmPassword", {message: "Passwords do not match"});
+      toast({title: "Confirm Password and New Password do not match"})
+      return;
+    }
+    updPassword.mutate(values);
     form.reset();
   }
   return (
@@ -54,7 +65,7 @@ export function UpdatePasswordDialog() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
-                name="currentPassword"
+                name="oldPassword"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Current Password</FormLabel>
@@ -91,13 +102,15 @@ export function UpdatePasswordDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                // disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Create Hotel
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  // disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Confirm
+                </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>

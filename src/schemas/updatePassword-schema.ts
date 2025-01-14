@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const updatePasswordFormSchema = z.object({
-    currentPassword: z
+    oldPassword: z
     .string({ message: "Please enter a valid password." })
     .min(8, "Password must be at least 8 characters long.")
     .max(50),

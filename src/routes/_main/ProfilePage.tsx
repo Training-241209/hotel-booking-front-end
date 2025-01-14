@@ -4,7 +4,7 @@ import UpdateUserForm from "@/components/Forms/UpdateUserForm";
 
 import { UserAvatar } from "@/components/user-avatar";
 import { userAtom } from "@/store/atoms";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 
 export const Route = createFileRoute("/_main/ProfilePage")({
@@ -13,7 +13,10 @@ export const Route = createFileRoute("/_main/ProfilePage")({
 
 function RouteComponent() {
   const [storedUser] = useAtom(userAtom);
-  if (!storedUser) {
+  const router = useRouter();
+  if (!storedUser) 
+  {
+    router.navigate({to:"/"});
     return null;
   }
 

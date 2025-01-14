@@ -24,6 +24,14 @@ export function useDeleteReserve()
                     }
                 );
                 queryClient.invalidateQueries({queryKey: ["reservations"]});
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Error Deleting Reservation"
+                    }
+                );
             }
         }
     )

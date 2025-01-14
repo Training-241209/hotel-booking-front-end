@@ -15,7 +15,7 @@ export function useHotelReviews(id: any)
                 const res = await axiosInstance.get<Review[]>(`/api/reviews/hotel/${id}`);
                 setAllHotelReviews(res.data);
                 return res.data;
-            }
+            },
         }
     )
 }

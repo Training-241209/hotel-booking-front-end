@@ -26,6 +26,14 @@ export function useCreateHotel()
                 queryClient.invalidateQueries({
                     queryKey: ["hotels"]
                 });
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Hotel Creation Failed"
+                    }
+                );
             }
         }
     )
