@@ -29,7 +29,7 @@ function RouteComponent() {
   }
 
   return (
-    <div className="col-span-full row-start-2 row-end-13 bg-orange-50 grid">
+    <div className="col-span-full row-start-2 row-end-13 grid">
       <div className="user__container flex flex-col gap-3 rounded p-3 shadow-lg">
         <div className="user__container__header flex h-1/4 items-center gap-3 bg-white px-3 shadow-md">
           <div className="user__container__header__avatar flex h-[150px] w-[150px] items-center justify-center">
@@ -43,10 +43,10 @@ function RouteComponent() {
           </div>
         </div>
         <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
-          <div className="user__container__form col-span-2 flex flex-col items-center justify-center bg-white shadow-md">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center bg-white shadow-md xs:col-span-3">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md">
+          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md xs:col-span-3">
             <UpdatePasswordDialog/>
             <DeleteUserDialog/>
           </div>

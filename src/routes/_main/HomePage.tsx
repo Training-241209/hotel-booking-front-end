@@ -11,7 +11,7 @@ function RouteComponent() {
   // const [hotel, setHotel] = useAtom(hotelAtom);
 
   return (
-    <div className="col-span-full row-start-2 row-end-13 grid grid-cols-12 grid-rows-12 gap-3">
+    <div className="col-span-full row-start-2 row-end-13 grid grid-cols-12 grid-rows-12 gap-3 xs:row-start-1">
         <div className="col-start-1 col-end-4 row-span-full flex justify-center rounded-md p-3 shadow-lg xs:col-span-full xs:row-span-2">
           <HotelSlider />
         </div>

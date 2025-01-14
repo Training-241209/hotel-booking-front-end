@@ -23,7 +23,7 @@ export function DeleteUserDialog()
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-1/2 border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75">
+        <Button className="w-1/2 border border-red-500 bg-white text-red-500 hover:bg-white hover:opacity-75 sm:w-3/4 md:w-3/4">
           Delete Account
         </Button>
       </DialogTrigger>
