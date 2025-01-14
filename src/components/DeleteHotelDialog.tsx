@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -14,7 +15,7 @@ import { useAtom } from "jotai";
 
 export function DeleteHotelDialog() 
 {
-  const [hotel] = useAtom(hotelAtom);
+  const [hotel, setHotel] = useAtom(hotelAtom);
   const del = useDelHotel();
 
   function delHotel()
@@ -25,6 +26,7 @@ export function DeleteHotelDialog()
     {
       console.log("Deleting hotel")
       del.mutate(hotel.hotelId);
+      setHotel(null);
     }
   }
 
@@ -43,10 +45,12 @@ export function DeleteHotelDialog()
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button className="w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
-          onClick={delHotel}>
-            Confirm
-          </Button>
+          <DialogClose>
+            <Button className="w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
+            onClick={delHotel}>
+              Confirm
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

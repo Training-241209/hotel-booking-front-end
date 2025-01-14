@@ -1,23 +1,20 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -173,13 +170,15 @@ export function CreateHotelDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Create Hotel
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Create Hotel
+                </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>

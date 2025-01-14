@@ -1,10 +1,11 @@
-import { useAllHotels } from "@/hooks/hotels/use-all-hotels";
 import { atom } from "jotai";
 
 // this is where all the global states will be stored
 // loading hotels when program starts
 
 export const countAtom = atom(0);
+export const themeAtom = atom('light');
+
 
 interface User 
 {
@@ -17,7 +18,6 @@ interface User
 }
 
 export const userAtom = atom<User | null>(null);
-export const themeAtom = atom('light');
 
 
 export interface Hotel {
@@ -32,3 +32,16 @@ export interface Hotel {
 
 export const hotelAtom = atom<Hotel | null>(null);
 export const allHotelsAtom = atom<Hotel[]>([]);
+
+
+export interface Reservation
+{
+  reservationId: number;
+  hotel: Hotel;
+  // location: string;
+  checkInTime: string;
+  checkOutTime: string;
+}
+
+export const reserveAtom = atom<Reservation | null>(null);
+export const allReserveAtom = atom<Reservation[]>([]);

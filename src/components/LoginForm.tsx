@@ -57,7 +57,7 @@ export default function LoginForm() {
                             name="email"
                             render={({ field }) => (
                                 <FormItem className="w-full">
-                                    <FormLabel>Username</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input type="text" placeholder="Email" {...field} />
                                     </FormControl>

@@ -20,7 +20,7 @@ export default function HotelSliderItem({
   price = 0,
   image = "",
 }: HotelSliderItemProps) {
-  const [hotel, setHotel] = useAtom(hotelAtom);
+  const [, setHotel] = useAtom(hotelAtom);
 
   const handleSelect = () => {
     setHotel({
@@ -34,7 +34,7 @@ export default function HotelSliderItem({
     });
   };
 
-  console.log(hotel);
+  // console.log(hotel);
 
   return (
     <div className="relative cursor-pointer rounded-md xs:min-w-[150px]" onClick={handleSelect}>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -8,8 +9,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useDelUser } from "@/hooks/users/use-del-user";
 
-export function DeleteUserDialog() {
+export function DeleteUserDialog() 
+{
+  const deleteUser = useDelUser();
+
+  function handleDeleteUser()
+  {
+    deleteUser.mutate();
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,9 +35,12 @@ export function DeleteUserDialog() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button className="mx-auto w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75">
-            Confirm
-          </Button>
+          <DialogClose>
+            <Button className="w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
+            onClick={handleDeleteUser}>
+              Confirm
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
