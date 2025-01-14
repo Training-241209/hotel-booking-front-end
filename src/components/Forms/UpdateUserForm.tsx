@@ -4,7 +4,7 @@ import {
 } from "@/schemas/updateUser-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   FormField,
   FormItem,
@@ -12,8 +12,8 @@ import {
   FormControl,
   FormMessage,
   Form,
-} from "./ui/form";
-import { Input } from "./ui/input";
+} from "../ui/form";
+import { Input } from "../ui/input";
 import { useAtom } from "jotai";
 import { userAtom } from "@/store/atoms";
 import { useUpdUser } from "@/hooks/users/use-upd-user";

@@ -1,4 +1,4 @@
-import HotelCarousel from "@/components/HotelCarousel";
+import HotelCarousel from "@/components/Hotel/HotelCarousel";
 import { Input } from "@/components/ui/input";
 import { createLazyFileRoute } from "@tanstack/react-router";
 

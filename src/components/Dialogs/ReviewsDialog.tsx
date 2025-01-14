@@ -9,8 +9,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import data from "../../reviewdata.json";
-import ReviewItem from "./ReviewItem";
+import data from "../../../reviewdata.json";
+import ReviewItem from "../ReviewItem";
 
 export function ReviewsDialog() {
   return (

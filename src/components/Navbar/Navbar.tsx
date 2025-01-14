@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/store/atoms";
-import { CreateHotelDialog } from "../CreateHotelDialog";
+import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);

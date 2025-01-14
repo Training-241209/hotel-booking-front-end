@@ -1,5 +1,5 @@
-import { DeleteReservationDialog } from "./DeleteReservationDialog";
-import { UpdateReservationDialog } from "./UpdateReservationDialog";
+import { DeleteReservationDialog } from "./Dialogs/DeleteReservationDialog";
+import { UpdateReservationDialog } from "./Dialogs/UpdateReservationDialog";
 
 interface ReservationProps {
   checkInTime: string;
