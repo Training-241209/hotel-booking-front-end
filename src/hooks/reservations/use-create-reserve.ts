@@ -4,12 +4,14 @@ import { hotelAtom } from "@/store/atoms";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { useToast } from "../use-toast";
+import { useRouter } from "@tanstack/react-router";
 
 export function useCreateReserve()
 {
     const [hotel] = useAtom(hotelAtom);
     const {toast} = useToast();
     const queryClient = useQueryClient();
+    const router = useRouter();
 
     return useMutation(
         {
@@ -27,7 +29,8 @@ export function useCreateReserve()
                 );
                 queryClient.invalidateQueries({
                     queryKey: ["reservations"]
-                })
+                });
+                router.navigate({to: "/ReservationPage"});
             }
         }
     )
