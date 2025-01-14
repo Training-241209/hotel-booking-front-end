@@ -12,8 +12,8 @@ export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
   const [hotelId] = useAtom(hotelIdAtom);
-  const [allreviews] = useAtom(allHotelReviewsAtom);
-  const { data } = useHotelReviews(hotelId);
+  // const [allreviews] = useAtom(allHotelReviewsAtom);
+  // const { data } = useHotelReviews(hotelId);
   // console.log(`Hotel ID: ${hotelId}`);
   // console.log(`Reviews: ${allreviews}`);
   // console.log(`Hotel ID: ${hotel?.hotelId}`);
