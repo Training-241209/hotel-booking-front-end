@@ -1,6 +1,5 @@
 import ReservationItem from "@/components/ReservationItem";
 import { createFileRoute } from "@tanstack/react-router";
-import reservationData from "../../../reservationdata.json";
 import { useAllReserves } from "@/hooks/reservations/use-all-user-reserves";
 import { useAtom } from "jotai";
 import { allReserveAtom } from "@/store/atoms";
@@ -23,10 +22,7 @@ function RouteComponent() {
       <div className="scrollbar-hidden h-full w-full overflow-y-auto p-3 shadow-md">
         {reservations.map((reservation) => (
           <ReservationItem key={reservation.reservationId} 
-          {...reservation} 
-          hotelName={reservation.hotel.hotelName} 
-          location={reservation.hotel.location}
-          image={reservation.hotel.image} />
+          {...reservation} />
         ))}
       </div>
     </div>
