@@ -1,7 +1,6 @@
 import axiosInstance from "@/lib/axios-config";
 import { HotelSchema } from "@/schemas/hotels/hotel-schema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "@tanstack/react-router";
 import { useToast } from "../use-toast";
 
 export function useCreateHotel()

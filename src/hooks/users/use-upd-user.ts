@@ -2,13 +2,13 @@ import axiosInstance from "@/lib/axios-config";
 import { UpdateUserSchema } from "@/schemas/updateUser-schema";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "../use-toast";
-import { useAtom, useSetAtom } from "jotai";
-import { userAtom } from "@/store/atoms";
+// import { useSetAtom } from "jotai";
+// import { userAtom } from "@/store/atoms";
 
 export function useUpdUser()
 {
     const {toast} = useToast();
-    const setUser = useSetAtom(userAtom);
+    // const setUser = useSetAtom(userAtom);
     // const [user, setUser] = useAtom(userAtom);
 
     return useMutation(

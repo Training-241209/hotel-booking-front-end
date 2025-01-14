@@ -10,27 +10,24 @@ import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
 
-  interface User {
-    id: number;
-    name: string;
-    email: string;
-    roleName: string;
-    isAdmin: boolean;
-  }
+  // interface User {
+  //   id: number;
+  //   name: string;
+  //   email: string;
+  //   roleName: string;
+  //   isAdmin: boolean;
+  // }
 
-  let user: User | any = {
-    id: storedUser?.userId,
-    name: `${storedUser?.firstName} ${storedUser?.lastName}`,
-    email: `${storedUser?.email}`,
-  };
+  // let user: User | any = {
+  //   id: storedUser?.userId,
+  //   name: `${storedUser?.firstName} ${storedUser?.lastName}`,
+  //   email: `${storedUser?.email}`,
+  // };
   // console.log(storedUser);
   // console.log(user);
 
   // Check if the user is on the login or register page
-  const location = useLocation();
-  const isLoginPage = location.pathname === "/login";
-  const isRegisterPage = location.pathname === "/register";
-  const isAuth = isLoginPage || isRegisterPage;
+  const isAuth = storedUser ? false : true;
 
   const linkTextColor = isAuth ? "text-white" : "text-[#022b60]";
 
@@ -54,7 +51,7 @@ export default function Navbar() {
       <Link
         to="/HomePage"
         className={`xs:scale-150 col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat ${
-          isAuth ? "bg-[url('logo-white.png')]" : "bg-[url('logo-blue.png')]"
+          isAuth ? "bg-[url('/logo-white.png')]" : "bg-[url('/logo-blue.png')]"
         }`}
       ></Link>
       <div

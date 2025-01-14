@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -19,7 +18,10 @@ import {
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updatePasswordFormSchema, UpdatePasswordSchema } from "@/schemas/updatePassword-schema";
+import {
+  updatePasswordFormSchema,
+  UpdatePasswordSchema,
+} from "@/schemas/updatePassword-schema";
 
 export function UpdatePasswordDialog() {
   // const { mutate: create, isPending } = useCreateHotel();
@@ -33,6 +35,7 @@ export function UpdatePasswordDialog() {
     },
   });
   function onSubmit(values: UpdatePasswordSchema) {
+    console.log(values);
     // create(values);
     form.reset();
   }

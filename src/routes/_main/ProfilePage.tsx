@@ -11,17 +11,17 @@ export const Route = createFileRoute("/_main/ProfilePage")({
   component: RouteComponent,
 });
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
 
-let user: User | any = {
-  id: 1,
-  name: "John Doe",
-  email: "john.doe@example.com",
-};
+// let user: User | any = {
+//   id: 1,
+//   name: "John Doe",
+//   email: "john.doe@example.com",
+// };
 
 function RouteComponent() {
   const [storedUser] = useAtom(userAtom);

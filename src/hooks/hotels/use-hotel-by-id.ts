@@ -1,9 +1,7 @@
 import {
   useQuery,
-  useQueryClient,
   UseQueryResult,
 } from "@tanstack/react-query";
-import { useToast } from "../use-toast";
 import axiosInstance from "@/lib/axios-config";
 
 export function useHotelById(id: number): UseQueryResult<{
