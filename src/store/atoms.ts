@@ -45,3 +45,17 @@ export interface Reservation
 
 export const reserveAtom = atom<Reservation | null>(null);
 export const allReserveAtom = atom<Reservation[]>([]);
+
+
+export interface Review
+{
+  reviewId: number;
+  rating: number;
+  title: string;
+  description: string;
+  hotel: Hotel;
+  user: User;
+}
+
+export const reviewAtom = atom<Review | null>(null);
+export const allHotelReviewsAtom = atom<Review[]>([]);

@@ -1,22 +1,19 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,23 +23,61 @@ import {
   reviewFormSchema,
   ReviewSchema,
 } from "@/schemas/reviews/reviews-schema";
+import { useAtom } from "jotai";
+import { hotelAtom } from "@/store/atoms";
+import { useEffect } from "react";
+import { useCreateReview } from "@/hooks/reviews/use-create-review";
 
 export function CreateReviewDialog() {
   //   const { mutate: create, isPending } = useCreateReview();
+  const [hotel] = useAtom(hotelAtom);
+  const {mutate: createReview} = useCreateReview();
 
   const form = useForm<ReviewSchema>({
     resolver: zodResolver(reviewFormSchema),
     defaultValues: {
       title: "",
       description: "",
-      rating: 1,
+      rating: 5,
+      hotel: {
+        hotelId: hotel?.hotelId || 0,
+      },
     },
   });
 
-  function onSubmit(values: ReviewSchema) {
-    // create(values);
+  function onSubmit(values: ReviewSchema) 
+  {
+    const req = 
+    {
+      title: values.title,
+      description: values.description,
+      rating: values.rating,
+      hotel: 
+      {
+        hotelId: values.hotel.hotelId,
+      },
+    }
+    console.log(req);
+    createReview(req);
     form.reset();
   }
+
+  useEffect(() =>
+  {
+    if (hotel)
+    {
+      form.reset(
+        {
+          title: "",
+          description: "",
+          rating: 5,
+          hotel: {
+            hotelId: hotel.hotelId,
+          },
+        }
+      )
+    }
+  }, [hotel, form])
 
   return (
     <Dialog>
@@ -100,19 +135,18 @@ export function CreateReviewDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                // disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Add Review
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  // disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Add Review
+                </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>
-        {/* <DialogFooter>
-          <Button type="submit">Create Hotel</Button>
-        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
