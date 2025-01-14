@@ -21,11 +21,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { reviewFormSchema, ReviewSchema } from "@/schemas/reviews/reviews-schema";
+} from "../ui/form";
+import {
+  reviewFormSchema,
+  ReviewSchema,
+} from "@/schemas/reviews/reviews-schema";
 
 export function CreateReviewDialog() {
-//   const { mutate: create, isPending } = useCreateReview();
+  //   const { mutate: create, isPending } = useCreateReview();
 
   const form = useForm<ReviewSchema>({
     resolver: zodResolver(reviewFormSchema),
@@ -44,18 +47,20 @@ export function CreateReviewDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 text-white w-1/2 xs:w-full">Add Review</Button>
+        <Button className="xs:w-full w-1/2 bg-green-600 text-white hover:bg-green-600 hover:opacity-75">
+          Add Review
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add Review</DialogTitle>
-          <DialogDescription>Share your thoughts and feedback about your experience.</DialogDescription>
+          <DialogDescription>
+            Share your thoughts and feedback about your experience.
+          </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-              
               <FormField
                 control={form.control}
                 name="title"

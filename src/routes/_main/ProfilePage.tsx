@@ -1,6 +1,7 @@
-import { DeleteUserDialog } from "@/components/DeleteUserDialog";
-import { UpdatePasswordDialog } from "@/components/UpdatePasswordDialog";
-import UpdateUserForm from "@/components/UpdateUserForm";
+import { DeleteUserDialog } from "@/components/Dialogs/DeleteUserDialog";
+import { UpdatePasswordDialog } from "@/components/Dialogs/UpdatePasswordDialog";
+import UpdateUserForm from "@/components/Forms/UpdateUserForm";
+
 import { UserAvatar } from "@/components/user-avatar";
 import { userAtom } from "@/store/atoms";
 import { createFileRoute } from "@tanstack/react-router";

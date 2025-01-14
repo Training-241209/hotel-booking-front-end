@@ -19,7 +19,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
+} from "../ui/form";
 import { useCreateHotel } from "@/hooks/hotels/use-create-hotel";
 
 export function CreateHotelDialog() {

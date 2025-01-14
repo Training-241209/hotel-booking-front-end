@@ -9,9 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Calendar } from "./ui/calendar";
+import { Calendar } from "../ui/calendar";
 import React from "react";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { useAtom } from "jotai";
 import { userAtom } from "@/store/atoms";
 import { useCreateReserve } from "@/hooks/reservations/use-create-reserve";

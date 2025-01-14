@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Star } from "lucide-react";
-import { ReviewsDialog } from "./ReviewsDialog";
+import { ReviewsDialog } from "./Dialogs/ReviewsDialog";
 
 // modify as needed, might have to pass in some user info to get the avatar to display properly
 interface ReviewItemProps{
