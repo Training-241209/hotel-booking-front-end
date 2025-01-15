@@ -4,12 +4,11 @@ import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { useAtom } from "jotai";
-import { blueAtom, userAtom } from "@/store/atoms";
+import { userAtom } from "@/store/atoms";
 import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
-  const [blue] = useAtom(blueAtom);
   const [show, setShow] = useState(false);
   const [searchLocation, setSearchLocation] = useState("");
 
