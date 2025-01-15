@@ -13,8 +13,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -39,7 +37,7 @@ export default function HotelDetails() {
 
   return (
     <div className="grid h-full w-full grid-rows-8">
-      <div className="hotel__image row-span-5 w-full xs:row-span-4 relative">
+      <div className="hotel__image relative row-span-5 w-full xs:row-span-4">
         <img
           src={hotel?.image}
           alt={hotel?.hotelName}
@@ -49,7 +47,7 @@ export default function HotelDetails() {
           <div className="hotel__info__buttons absolute right-0 top-0 col-span-2 mt-3 flex flex-col gap-3">
             <Popover>
               <PopoverTrigger>
-                <EllipsisVertical className="text-white scale-150 m-2" />
+                <EllipsisVertical className="m-2 scale-150 text-white" />
               </PopoverTrigger>
               <PopoverContent className="w-80">
                 <div className="grid gap-4">
@@ -123,6 +121,7 @@ export default function HotelDetails() {
       <div className="hotel__review row-span-1 text-[#022b60] xs:row-span-2">
         {latestReview ? (
           <ReviewDetails
+            reviewId={latestReview.reviewId}
             title={latestReview.title}
             description={latestReview.description}
             rating={latestReview.rating}
