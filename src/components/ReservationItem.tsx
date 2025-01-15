@@ -1,5 +1,5 @@
-import { useAtom, useSetAtom } from "jotai";
-import { Hotel, User, reserveAtom, userAtom } from "@/store/atoms";
+import { useSetAtom } from "jotai";
+import { Hotel, User, reserveAtom } from "@/store/atoms";
 import { DeleteReservationDialog } from "./Dialogs/DeleteReservationDialog";
 
 interface ReservationProps {
