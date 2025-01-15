@@ -7,7 +7,6 @@ import { useAtom } from "jotai";
 import { blueAtom, userAtom } from "@/store/atoms";
 import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
-
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
   const [blue] = useAtom(blueAtom);
@@ -26,11 +25,11 @@ export default function Navbar() {
 
   return (
     <div
-      className={`${blue ? 'bg-white' : 'transparent'} col-start-1 col-end-13 row-start-1 row-end-2 grid grid-cols-12 gap-3 sm:text-sm md:text-lg 2xl:text-2xl`}
+      className={`col-start-1 col-end-13 row-start-1 row-end-2 grid grid-cols-12 gap-3 sm:text-sm md:text-lg 2xl:text-2xl`}
     >
       <Link
         to="/HomePage"
-        className={`col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat xs:scale-150 ${blue ? "bg-[url(/logo-blue.png)]" : "bg-[url(/logo-white.png)]"}`}
+        className={`bg-[url(/logo-white.png)] col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat xs:scale-150`}
       ></Link>
       <div
         className={`${storedUser ? "md:col-end-6 lg:col-end-5 xs:col-end-7" : "col-span-1"} col-start-3 flex items-center justify-evenly`}
@@ -38,18 +37,15 @@ export default function Navbar() {
         {storedUser && (
           <Link
             to="/HomePage"
-            className={`hidden lg:flex [&.active]:font-bold text-white`}
+            className={`hidden text-white lg:flex [&.active]:font-bold`}
           >
             Hotels
           </Link>
         )}
 
         {storedUser && (
-          <div className="hidden items-center justify-center lg:flex text-white">
-            <Link
-              to="/ReservationPage"
-              className={`[&.active]:font-bold`}
-            >
+          <div className="hidden items-center justify-center text-white lg:flex">
+            <Link to="/ReservationPage" className={`[&.active]:font-bold`}>
               Reservations
             </Link>
           </div>
@@ -60,7 +56,7 @@ export default function Navbar() {
         <div className="col-end-12 flex items-center justify-end gap-3 md:col-start-8 lg:col-start-10 2xl:col-start-11 xs:col-start-7">
           <div className="relative flex items-center justify-center">
             <input
-              className={`search ${show ? styles.search : styles.hide} pl-3 rounded-md py-1`}
+              className={`search ${show ? styles.search : styles.hide} rounded-md py-1 pl-3`}
               type="text"
               placeholder="Enter Location"
               value={searchLocation}
@@ -70,18 +66,21 @@ export default function Navbar() {
           </div>
           {currentUser?.isAdmin ? <CreateHotelDialog /> : null}
           <div className="flex h-[50px] w-[50px]">
-            <UserDropdown/>
+            <UserDropdown />
           </div>
         </div>
       )}
       {!storedUser && (
         <div className="col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11 xs:col-start-10 xxs:col-start-8">
-          <Link to="/login" className={`[&.active]:font-bold ${blue ? 'text-[#022b60]' :'text-white'}`}>
+          <Link
+            to="/login"
+            className={`[&.active]:font-bold text-white`}
+          >
             Login
           </Link>
           <Link
             to="/register"
-            className={`[&.active]:font-bold ${blue ? 'text-[#022b60]' :'text-white'}`}
+            className={`[&.active]:font-bold text-white }`}
           >
             Register
           </Link>
