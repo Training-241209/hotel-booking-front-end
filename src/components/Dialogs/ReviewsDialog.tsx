@@ -43,6 +43,8 @@ export function ReviewsDialog()
               title={review.title}
               description={review.description}
               rating={review.rating}
+              userFN={review.user.firstName}
+              userLN={review.user.lastName}
               show={false}
             />
           ))}

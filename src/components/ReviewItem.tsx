@@ -10,10 +10,12 @@ interface ReviewItemProps
   title: string;
   description:string;
   rating:number;
+  userFN: string;
+  userLN: string;
   show:boolean;
 }
 
-export default function ReviewItem({reviewId,title, description, rating, show}:ReviewItemProps) 
+export default function ReviewItem({reviewId,title, description, rating, userFN, userLN, show}:ReviewItemProps) 
 {
   // console.log(`item Id: ${reviewId}`);
   // console.log(`item title: ${title}`);
@@ -22,7 +24,7 @@ export default function ReviewItem({reviewId,title, description, rating, show}:R
     <div className="grid h-full grid-cols-8 border-gray-100 border-2 rounded-md p-2">
       <div className="col-span-1 row-span-1 flex h-full items-center justify-center">
         <Avatar className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-[#022b60b6] text-white">
-          <AvatarFallback>DZ</AvatarFallback>
+          <AvatarFallback>{userFN?.charAt(0)} {userLN?.charAt(0)}</AvatarFallback>
         </Avatar>
       </div>
       <div className="col-span-5 row-span-1 flex flex-col justify-center pl-1">
