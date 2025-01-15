@@ -15,5 +15,5 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 RUN mkdir -p /etc/nginx/templates
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-CMD ["/bin/bash", "-c", "envsubst < /etc/nginx/templates/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+CMD ["/bin/bash", "-c", "envsubst < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
 
