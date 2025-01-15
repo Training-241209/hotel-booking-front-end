@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "checkinn-app"
+        DOCKER_IMAGE = "checkinn-frontend"
 		DOCKER_TAG = "${BUILD_NUMBER}"
 		BACKEND_API_URL = credentials("BACKEND_URL")
     }
