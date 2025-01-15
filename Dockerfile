@@ -4,7 +4,7 @@ ARG API_URL
 ENV API_URL=$VITE_API_URL
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN VITE_API_URL=API_URL npm install
 COPY . .
 RUN npm run build
 
