@@ -20,6 +20,11 @@ export function ReviewsDialog()
   
   const [reviews] = useAtom(reviewAtom);
 
+  // if (Array.isArray(reviews) && reviews.length > 0) {
+  //   console.log(`first review: ${reviews[reviews.length-1].reviewId}`);
+  //   console.log(`first review: ${reviews[reviews.length-1].title}`);
+  // }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -33,7 +38,8 @@ export function ReviewsDialog()
         <div className="grid gap-4 py-4 overflow-y-auto scrollbar-hidden max-h-96">
           {Array.isArray(reviews) && reviews.map((review) => (
             <ReviewItem
-              key={review.review_id}
+              key={review.reviewId}
+              reviewId={review.reviewId}
               title={review.title}
               description={review.description}
               rating={review.rating}
