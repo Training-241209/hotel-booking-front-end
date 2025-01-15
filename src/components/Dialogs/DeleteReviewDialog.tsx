@@ -9,25 +9,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useDelHotel } from "@/hooks/hotels/use-del-hotel";
-import { hotelAtom } from "@/store/atoms";
-import { useAtom } from "jotai";
+import { useDelReview } from "@/hooks/reviews/use-del-review";
 
-export function DeleteReviewDialog() 
+interface DeleteReviewDialogProps
 {
-  const [hotel, setHotel] = useAtom(hotelAtom);
-  const del = useDelHotel();
+  reviewId: number;
+}
 
-  function delHotel()
+export function DeleteReviewDialog({reviewId} : DeleteReviewDialogProps) 
+{
+  // console.log(`review id: ${reviewId}`);
+  const del = useDelReview();
+
+  function delReview()
   {
-    console.log(hotel?.hotelId)
-    // hotel?.hotelId;
-    if (hotel?.hotelId)
-    {
-      console.log("Deleting hotel")
-      del.mutate(hotel.hotelId);
-      setHotel(null);
-    }
+    del.mutate(reviewId);
   }
 
   return (
@@ -47,7 +43,7 @@ export function DeleteReviewDialog()
         <DialogFooter>
           <DialogClose>
             <Button className="w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
-            onClick={delHotel}>
+            onClick={delReview}>
               Confirm
             </Button>
           </DialogClose>
