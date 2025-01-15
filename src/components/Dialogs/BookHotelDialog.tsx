@@ -21,6 +21,7 @@ import {
   ReserveSchema,
 } from "@/schemas/reservations/reserve-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "@tanstack/react-router";
 
 export function BookHotelDialog() {
   const [dates, setDates] = React.useState<Date[] | undefined>([]);
@@ -55,6 +56,44 @@ export function BookHotelDialog() {
       console.error("Registration failed:", error);
     }
   };
+
+  if (!user) {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75 xs:w-full">
+            Book Now
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Login Required</DialogTitle>
+            <DialogDescription>
+              You need to log in to book a hotel. Please log in to continue.
+            </DialogDescription>
+          </DialogHeader>
+
+          <DialogFooter>
+            <div className="w-full">
+              <DialogClose className="w-full">
+                <Button
+                  className="mx-auto w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75 relative"
+                  type="button"
+                >
+                  <Link
+                    to="/login"
+                    className={`text-white [&.active]:font-bold w-full h-full absolute flex justify-center items-center`}
+                  >
+                    Login
+                  </Link>
+                </Button>
+              </DialogClose>
+            </div>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog>
