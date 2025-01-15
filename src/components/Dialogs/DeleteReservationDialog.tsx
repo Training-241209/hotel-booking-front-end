@@ -43,8 +43,8 @@ export function DeleteReservationDialog(
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <DialogClose>
-            <Button className="mx-auto w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75"
+          <DialogClose className="w-full">
+            <Button className="mx-auto w-1/2 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75"
             onClick={delFunction}>
               Confirm
             </Button>
