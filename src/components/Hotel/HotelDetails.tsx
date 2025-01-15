@@ -13,7 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { GeoCodedMap } from "./HotelMap";
+import { GoogleMapDialog } from "../Dialogs/GoogleMapDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -58,6 +58,7 @@ export default function HotelDetails() {
           alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
+        <GoogleMapDialog />
         {currentUser?.isAdmin ? (
           <div className="hotel__info__buttons absolute right-0 top-0 col-span-2 mt-3 flex flex-col gap-3">
             <Popover>
@@ -84,7 +85,6 @@ export default function HotelDetails() {
           </div>
         ) : null}
       </div>
-      <GeoCodedMap />
       <div className="row-span-2 grid grid-cols-6 xs:row-span-2">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
