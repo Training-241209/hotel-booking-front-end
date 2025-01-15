@@ -2,13 +2,19 @@ import axiosInstance from "@/lib/axios-config";
 import { UpdateUserSchema } from "@/schemas/updateUser-schema";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "../use-toast";
+<<<<<<< HEAD
 // import { useSetAtom } from "jotai";
 // import { userAtom } from "@/store/atoms";
+=======
+>>>>>>> main
 
 export function useUpdUser()
 {
     const {toast} = useToast();
+<<<<<<< HEAD
     // const setUser = useSetAtom(userAtom);
+=======
+>>>>>>> main
     // const [user, setUser] = useAtom(userAtom);
 
     return useMutation(
@@ -29,6 +35,10 @@ export function useUpdUser()
                         title: "User Updated"
                     }
                 )
+            },
+            onError: () =>
+            {
+                toast({title: "Error User Could Not Be Updated"});
             }
         }
     )

@@ -3,13 +3,19 @@ import { reserveAtom } from "@/store/atoms";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { toast } from "../use-toast";
+<<<<<<< HEAD
 // import { useRouter } from "@tanstack/react-router";
+=======
+>>>>>>> main
 
 export function useDeleteReserve()
 {
     const [reserve] = useAtom(reserveAtom);
     const queryClient = useQueryClient();
+<<<<<<< HEAD
     // const router = useRouter();
+=======
+>>>>>>> main
 
     return useMutation(
         {
@@ -26,6 +32,14 @@ export function useDeleteReserve()
                     }
                 );
                 queryClient.invalidateQueries({queryKey: ["reservations"]});
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Error Deleting Reservation"
+                    }
+                );
             }
         }
     )

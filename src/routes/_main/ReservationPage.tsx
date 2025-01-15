@@ -1,14 +1,23 @@
 import ReservationItem from "@/components/ReservationItem";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useAllReserves } from "@/hooks/reservations/use-all-user-reserves";
 import { useAtom } from "jotai";
-import { allReserveAtom } from "@/store/atoms";
+import { allReserveAtom, userAtom } from "@/store/atoms";
 
 export const Route = createFileRoute("/_main/ReservationPage")({
   component: RouteComponent,
 });
 
-function RouteComponent() {
+function RouteComponent() 
+{
+  const [checkUser] = useAtom(userAtom);
+  const router = useRouter();
+
+  if (checkUser === null)
+  {
+    router.navigate({to:"/"});
+  }
+
   useAllReserves();
   const [reservations] = useAtom(allReserveAtom);
 

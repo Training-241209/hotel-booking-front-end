@@ -6,12 +6,14 @@ import ReviewDetails from "../ReviewDetails";
 import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";
 import { BookHotelDialog } from "../Dialogs/BookHotelDialog";
 import { UpdateHotelDialog } from "../Dialogs/UpdateHotelDialog";
-import { useFetchReimbursementByUser } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
+import { useFetchReviewByHotel } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
-  const { data } = useFetchReimbursementByUser(hotel?.hotelId);
+
+  // this thing contains all the reviews for the hotel by hotelId
+  const { data } = useFetchReviewByHotel(hotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
   console.log("Latest: ", latestReview);
   console.log("Current data: ", data);

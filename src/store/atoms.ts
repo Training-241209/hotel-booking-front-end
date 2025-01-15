@@ -20,20 +20,6 @@ interface User
 export const userAtom = atom<User | null>(null);
 
 
-export interface Hotel {
-  hotelId: number;
-  hotelName: string;
-  description: string;
-  rooms: number;
-  location: string;
-  price: number;
-  image: string;
-}
-
-export const hotelAtom = atom<Hotel | null>(null);
-export const allHotelsAtom = atom<Hotel[]>([]);
-
-
 export interface Reservation
 {
   reservationId: number;
@@ -59,3 +45,18 @@ export interface Review
 
 export const reviewAtom = atom<Review | null>(null);
 export const allHotelReviewsAtom = atom<Review[]>([]);
+
+export interface Hotel {
+  hotelId: number;
+  hotelName: string;
+  description: string;
+  rooms: number;
+  location: string;
+  price: number;
+  image: string;
+}
+
+export const hotelAtom = atom<Hotel | null>(null);
+export const allHotelsAtom = atom<Hotel[]>([]);
+
+export const hotelIdAtom = atom<number | null>(null);

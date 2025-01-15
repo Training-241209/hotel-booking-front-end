@@ -29,6 +29,14 @@ export function useDelHotel()
                     }
                 )
                 router.navigate({to:"/HomePage"});
+            },
+            onError: () =>
+            {
+                toast(
+                    {
+                        title: "Hotel Deletion Failed"
+                    }
+                );
             }
         }
     )

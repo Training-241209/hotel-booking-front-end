@@ -26,6 +26,10 @@ export function useDelUser()
                     title: "User deleted successfully",
                 });
                 router.navigate({to: "/"});
+            },
+            onError: () =>
+            {
+                toast({title: "Error Deleting User"});
             }
         }
     )

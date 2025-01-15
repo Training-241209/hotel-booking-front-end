@@ -9,20 +9,6 @@ import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
-
-  // interface User {
-  //   id: number;
-  //   name: string;
-  //   email: string;
-  //   roleName: string;
-  //   isAdmin: boolean;
-  // }
-
-  // let user: User | any = {
-  //   id: storedUser?.userId,
-  //   name: `${storedUser?.firstName} ${storedUser?.lastName}`,
-  //   email: `${storedUser?.email}`,
-  // };
   // console.log(storedUser);
   // console.log(user);
 

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -18,25 +19,44 @@ import {
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+<<<<<<< HEAD
 import {
   updatePasswordFormSchema,
   UpdatePasswordSchema,
 } from "@/schemas/updatePassword-schema";
+=======
+import { updatePasswordFormSchema, UpdatePasswordSchema } from "@/schemas/updatePassword-schema";
+import { useUpdPassword } from "@/hooks/users/use-upd-password";
+import { useToast } from "@/hooks/use-toast";
+>>>>>>> main
 
 export function UpdatePasswordDialog() {
-  // const { mutate: create, isPending } = useCreateHotel();
+  const updPassword = useUpdPassword();
+  const {toast} = useToast();
 
   const form = useForm<UpdatePasswordSchema>({
     resolver: zodResolver(updatePasswordFormSchema),
     defaultValues: {
-      currentPassword: "",
+      oldPassword: "",
       newPassword: "",
       confirmPassword: "",
     },
   });
+<<<<<<< HEAD
   function onSubmit(values: UpdatePasswordSchema) {
     console.log(values);
     // create(values);
+=======
+  function onSubmit(values: UpdatePasswordSchema) 
+  {
+    if (values.confirmPassword !== values.newPassword)
+    {
+      form.setError("confirmPassword", {message: "Passwords do not match"});
+      toast({title: "Confirm Password and New Password do not match"})
+      return;
+    }
+    updPassword.mutate(values);
+>>>>>>> main
     form.reset();
   }
   return (
@@ -58,7 +78,7 @@ export function UpdatePasswordDialog() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
-                name="currentPassword"
+                name="oldPassword"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Current Password</FormLabel>
@@ -95,13 +115,15 @@ export function UpdatePasswordDialog() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                // disabled={isPending}
-                className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
-              >
-                Create Hotel
-              </Button>
+              <DialogClose>
+                <Button
+                  type="submit"
+                  // disabled={isPending}
+                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                >
+                  Confirm
+                </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>

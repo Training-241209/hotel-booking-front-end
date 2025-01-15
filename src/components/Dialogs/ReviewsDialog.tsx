@@ -8,10 +8,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import data from "../../../reviewdata.json";
 import ReviewItem from "../ReviewItem";
+import { useFetchReviewByHotel } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
+import { useAtom } from "jotai";
+import { hotelAtom, reviewAtom } from "@/store/atoms";
 
-export function ReviewsDialog() {
+export function ReviewsDialog() 
+{
+  const [hotel] = useAtom(hotelAtom);
+  useFetchReviewByHotel(hotel?.hotelId);
+  
+  const [reviews] = useAtom(reviewAtom);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +31,7 @@ export function ReviewsDialog() {
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4 overflow-y-auto scrollbar-hidden">
-          {data.map((review) => (
+          {Array.isArray(reviews) && reviews.map((review) => (
             <ReviewItem
               key={review.review_id}
               title={review.title}

@@ -53,43 +53,6 @@ export function CreateHotelDialog() {
           <DialogDescription>Add a new hotel to our database</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" placeholder="Hotel Name" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="description" className="text-right">
-              Description
-            </Label>
-            <Input id="description" placeholder="Hotel Description" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="rooms" className="text-right">
-              # of Rooms
-            </Label>
-            <Input id="rooms" type="number" placeholder="Rooms Available" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="location" className="text-right">
-              Location
-            </Label>
-            <Input id="location" placeholder="Hotel Location" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="price" className="text-right">
-              Price
-            </Label>
-            <Input id="price" placeholder="Room Price" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="image" className="text-right">
-              Image
-            </Label>
-            <Input id="image" placeholder="Hotel Image" className="col-span-3" />
-          </div> */}
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
