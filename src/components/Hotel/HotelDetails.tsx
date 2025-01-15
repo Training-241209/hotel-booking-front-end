@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { GeoCodedMap } from "./HotelMap";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -69,6 +70,7 @@ export default function HotelDetails() {
           </div>
         ) : null}
       </div>
+      <GeoCodedMap />
       <div className="row-span-2 grid grid-cols-6 xs:row-span-2">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
