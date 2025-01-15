@@ -57,6 +57,12 @@ export function CreateReviewDialog() {
       toast({ title: "Rating must be between 1 and 5" });
       return;
     }
+    if (values.rating.includes("."))
+    {
+      form.setError("rating", {message: "Rating cannot be decimal values"});
+      toast({ title: "Rating cannot be decimal values" });
+      return;
+    }
     const req = {
       title: values.title,
       description: values.description,

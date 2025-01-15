@@ -6,7 +6,8 @@ export const Route = createLazyFileRoute("/")({
   component: Index,
 });
 
-function Index() {
+function Index() 
+{
   return (
     <div className="col-span-full row-start-2 row-end-13 grid grid-cols-10 grid-rows-10">
       <div className="logo col-start-5 col-end-7 mx-auto row-span-2 xs:col-start-3 xs:col-end-9 xs:row-start-2 
