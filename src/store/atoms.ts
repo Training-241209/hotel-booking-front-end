@@ -8,7 +8,7 @@ export const themeAtom = atom("light");
 
 export const blueAtom = atom(true);
 
-interface User {
+export interface User {
   userId: number;
   firstName: string;
   lastName: string;
@@ -22,7 +22,7 @@ export const userAtom = atom<User | null>(null);
 export interface Reservation {
   reservationId: number;
   hotel: Hotel;
-  // location: string;
+  user: User;
   checkInTime: string;
   checkOutTime: string;
 }
