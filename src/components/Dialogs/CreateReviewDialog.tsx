@@ -177,11 +177,11 @@ export function CreateReviewDialog() {
                   </FormItem>
                 )}
               />
-              <DialogClose>
+              <DialogClose className="w-full">
                 <Button
                   type="submit"
                   // disabled={isPending}
-                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                  className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75"
                 >
                   Add Review
                 </Button>

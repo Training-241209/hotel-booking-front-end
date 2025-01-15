@@ -137,9 +137,9 @@ export function BookHotelDialog() {
         </div>
 
         <DialogFooter>
-          <DialogClose>
+          <DialogClose className="w-full">
             <Button
-              className="mx-auto w-3/4 bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+              className="mx-auto w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75"
               type="button"
               onClick={() => {
                 // fillDates();
