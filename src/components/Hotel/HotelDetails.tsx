@@ -15,7 +15,7 @@ export default function HotelDetails() {
   const [, setBlue] = useAtom(blueAtom);
 
   useEffect(() => {
-    setBlue(true);
+    setBlue(false);
   }, []);
 
   // this thing contains all the reviews for the hotel by hotelId

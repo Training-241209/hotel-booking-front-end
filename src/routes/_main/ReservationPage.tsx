@@ -25,7 +25,7 @@ function RouteComponent() {
   const [, setBlue] = useAtom(blueAtom);
 
   useEffect(() => {
-    setBlue(true);
+    setBlue(false);
   }, []);
 
   return (

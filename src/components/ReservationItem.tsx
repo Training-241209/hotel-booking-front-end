@@ -1,7 +1,6 @@
 import { useAtom, useSetAtom } from "jotai";
 import { Hotel, reserveAtom, userAtom } from "@/store/atoms";
 import { DeleteReservationDialog } from "./Dialogs/DeleteReservationDialog";
-import { UpdateReservationDialog } from "./Dialogs/UpdateReservationDialog";
 
 interface ReservationProps {
   reservationId: number;
@@ -64,7 +63,7 @@ export default function ReservationItem({
           </div>
         </div>
         <div className="reservation__details__buttons border-grey row-span-3 flex flex-col items-center justify-center gap-3 border-l-2 xxs:col-span-3 xxs:flex-row xxs:border-none">
-          <UpdateReservationDialog />
+          {/* <UpdateReservationDialog /> */}
           <DeleteReservationDialog onDelete={handleDel} />
         </div>
       </div>

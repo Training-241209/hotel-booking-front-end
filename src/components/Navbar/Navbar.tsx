@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`${blue ? 'bg-white' : 'transparent'} col-start-1 col-end-13 row-start-1 row-end-2 grid grid-cols-12 gap-3 ${storedUser ? "shadow-md" : ""} sm:text-sm md:text-lg 2xl:text-2xl`}
+      className={`${blue ? 'bg-white' : 'transparent'} col-start-1 col-end-13 row-start-1 row-end-2 grid grid-cols-12 gap-3 sm:text-sm md:text-lg 2xl:text-2xl`}
     >
       <Link
         to="/HomePage"
@@ -38,14 +38,14 @@ export default function Navbar() {
         {storedUser && (
           <Link
             to="/HomePage"
-            className={`hidden lg:flex [&.active]:font-bold text-[#022b60]`}
+            className={`hidden lg:flex [&.active]:font-bold text-white`}
           >
             Hotels
           </Link>
         )}
 
         {storedUser && (
-          <div className="hidden items-center justify-center lg:flex text-[#022b60]">
+          <div className="hidden items-center justify-center lg:flex text-white">
             <Link
               to="/ReservationPage"
               className={`[&.active]:font-bold`}
@@ -58,19 +58,19 @@ export default function Navbar() {
 
       {storedUser && (
         <div className="col-end-12 flex items-center justify-end gap-3 md:col-start-8 lg:col-start-10 2xl:col-start-11 xs:col-start-7">
-          <div className="relative flex items-end justify-center">
+          <div className="relative flex items-center justify-center">
             <input
-              className={`search ${show ? styles.search : styles.hide}`}
+              className={`search ${show ? styles.search : styles.hide} pl-3 rounded-md py-1`}
               type="text"
               placeholder="Enter Location"
               value={searchLocation}
               onChange={handleChange}
             />
-            <Search onClick={() => handleShow()} />
+            <Search onClick={() => handleShow()} className="text-white" />
           </div>
           {currentUser?.isAdmin ? <CreateHotelDialog /> : null}
           <div className="flex h-[50px] w-[50px]">
-            <UserDropdown />
+            <UserDropdown/>
           </div>
         </div>
       )}
