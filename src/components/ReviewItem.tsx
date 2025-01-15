@@ -5,14 +5,20 @@ import { DeleteReviewDialog } from "./Dialogs/DeleteReviewDialog";
 import { UpdateReviewDialog } from "./Dialogs/UpdateReviewDialog";
 
 // modify as needed, might have to pass in some user info to get the avatar to display properly
-interface ReviewItemProps{
-    title: string;
-    description:string;
-    rating:number;
-    show:boolean;
+interface ReviewItemProps
+{
+  reviewId: number;
+  title: string;
+  description:string;
+  rating:number;
+  show:boolean;
 }
 
-export default function ReviewItem({title, description, rating, show}:ReviewItemProps) {
+export default function ReviewItem({reviewId,title, description, rating, show}:ReviewItemProps) 
+{
+  // console.log(`item Id: ${reviewId}`);
+  // console.log(`item title: ${title}`);
+
   return (
     <div className="grid h-full grid-cols-8 border-gray-100 border-2 rounded-md p-2">
       <div className="col-span-1 row-span-1 flex h-full items-center justify-center">
@@ -31,8 +37,8 @@ export default function ReviewItem({title, description, rating, show}:ReviewItem
           <span className="text-2xl font-bold text-[#022b60]">{rating}</span>
           <Star fill="#022b60" color="#022b60" className="h-[25px] w-[25px]" />
         </div>
-        <DeleteReviewDialog/>
         <UpdateReviewDialog/>
+        <DeleteReviewDialog reviewId={reviewId}/>
         {show && <ReviewsDialog />}
       </div>
     </div>
