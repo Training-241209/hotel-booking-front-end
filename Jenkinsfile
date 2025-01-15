@@ -25,8 +25,6 @@ pipeline {
                     sh "docker stop ${DOCKER_IMAGE} || true"
                     sh "docker rm ${DOCKER_IMAGE} || true"
 
-                    echo 'The URL is ${VITE_API_URL}'
-
                     // Run new container with environment variables
                     sh """
                         docker run -d \
