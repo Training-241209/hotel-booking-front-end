@@ -19,16 +19,9 @@ import {
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-<<<<<<< HEAD
-import {
-  updatePasswordFormSchema,
-  UpdatePasswordSchema,
-} from "@/schemas/updatePassword-schema";
-=======
 import { updatePasswordFormSchema, UpdatePasswordSchema } from "@/schemas/updatePassword-schema";
 import { useUpdPassword } from "@/hooks/users/use-upd-password";
 import { useToast } from "@/hooks/use-toast";
->>>>>>> main
 
 export function UpdatePasswordDialog() {
   const updPassword = useUpdPassword();
@@ -42,11 +35,6 @@ export function UpdatePasswordDialog() {
       confirmPassword: "",
     },
   });
-<<<<<<< HEAD
-  function onSubmit(values: UpdatePasswordSchema) {
-    console.log(values);
-    // create(values);
-=======
   function onSubmit(values: UpdatePasswordSchema) 
   {
     if (values.confirmPassword !== values.newPassword)
@@ -56,7 +44,6 @@ export function UpdatePasswordDialog() {
       return;
     }
     updPassword.mutate(values);
->>>>>>> main
     form.reset();
   }
   return (

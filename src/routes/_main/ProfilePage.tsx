@@ -11,21 +11,6 @@ export const Route = createFileRoute("/_main/ProfilePage")({
   component: RouteComponent,
 });
 
-<<<<<<< HEAD
-// interface User {
-//   id: number;
-//   name: string;
-//   email: string;
-// }
-
-// let user: User | any = {
-//   id: 1,
-//   name: "John Doe",
-//   email: "john.doe@example.com",
-// };
-
-=======
->>>>>>> main
 function RouteComponent() {
   const [storedUser] = useAtom(userAtom);
   const router = useRouter();
