@@ -12,8 +12,8 @@ export function useRegister() {
     return useMutation({
         mutationFn: async (values: RegisterSchema) => {
             const resp = await axiosInstance.post("/api/auth/register", values);
-            console.log(`headers: ${resp.headers}`);
-            console.log(`body: ${resp.data}`);
+            // console.log(`headers: ${resp.headers}`);
+            // console.log(`body: ${resp.data}`);
             return resp.data;
             // return;
         },

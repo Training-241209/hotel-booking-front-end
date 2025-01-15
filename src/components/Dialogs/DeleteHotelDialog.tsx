@@ -20,11 +20,11 @@ export function DeleteHotelDialog()
 
   function delHotel()
   {
-    console.log(hotel?.hotelId)
+    // console.log(hotel?.hotelId)
     // hotel?.hotelId;
     if (hotel?.hotelId)
     {
-      console.log("Deleting hotel")
+      // console.log("Deleting hotel")
       del.mutate(hotel.hotelId);
       setHotel(null);
     }

@@ -12,7 +12,7 @@ export function useUpdUser()
             mutationFn: async (values: UpdateUserSchema) =>
             {
                 const res = await axiosInstance.patch(`/api/users/edit`, values);
-                console.log(res.data);
+                // console.log(res.data);
                 return res.data;
             },
             onSuccess: () =>

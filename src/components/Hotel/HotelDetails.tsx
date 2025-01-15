@@ -127,7 +127,7 @@ export default function HotelDetails() {
               />
             </div>
             <div className="hotel__cta__reviews text-[#022b60]">
-              ({totalReviews})
+              ({`${totalReviews} Reviews`})
             </div>
           </div>
           <BookHotelDialog />

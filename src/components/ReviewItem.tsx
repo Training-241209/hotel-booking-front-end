@@ -56,7 +56,7 @@ export default function ReviewItem({reviewId,title, description, rating, userFN,
 
               <div className="flex flex-col items-center gap-2">
                 {show && <ReviewsDialog />}
-                <UpdateReviewDialog />
+                <UpdateReviewDialog reviewId={reviewId} title={title} description={description} rating={rating}/>
                 <DeleteReviewDialog reviewId={reviewId} />
               </div>
             </div>
