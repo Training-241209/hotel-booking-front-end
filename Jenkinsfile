@@ -31,6 +31,7 @@ pipeline {
                         docker run -d \
                         --name ${DOCKER_IMAGE} \
                         -p 80:80 \
+                        -e VITE_API_URL=${BACKEND_API_URL} \
                         --restart unless-stopped \
                         ${DOCKER_IMAGE}:${DOCKER_TAG}
                     """
