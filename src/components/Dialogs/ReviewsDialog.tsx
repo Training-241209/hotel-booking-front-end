@@ -25,12 +25,12 @@ export function ReviewsDialog()
       <DialogTrigger asChild>
         <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75">All Reviews</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px] h-1/2">
+      <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>Reviews</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4 overflow-y-auto scrollbar-hidden">
+        <div className="grid gap-4 py-4 overflow-y-auto scrollbar-hidden max-h-96">
           {Array.isArray(reviews) && reviews.map((review) => (
             <ReviewItem
               key={review.review_id}

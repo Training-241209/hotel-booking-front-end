@@ -13,7 +13,7 @@ function Index() {
       md:col-start-3 md:col-end-9 md:row-start-2
       
       ">
-        <img src="Logo.png" alt="Logo" />
+        <img src="/logo-white.png" alt="Logo" />
       </div>
       <div className="search_bar row-start-6 col-start-4 col-end-8 sm:col-start-3 sm:col-end-9">
         <Input

@@ -12,13 +12,13 @@ interface ReviewItemProps{
 
 export default function ReviewItem({title, description, rating, show}:ReviewItemProps) {
   return (
-    <div className="grid h-full grid-cols-8 border-gray-100 border-2 rounded-md">
+    <div className="grid h-full grid-cols-8 border-gray-100 border-2 rounded-md p-2">
       <div className="col-span-1 row-span-1 flex h-full items-center justify-center">
-        <Avatar className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-50">
+        <Avatar className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-[#022b60b6] text-white">
           <AvatarFallback>DZ</AvatarFallback>
         </Avatar>
       </div>
-      <div className="col-span-5 row-span-1 flex flex-col justify-center">
+      <div className="col-span-5 row-span-1 flex flex-col justify-center pl-1">
         <h1 className="review_title font-bold">{title}</h1>
         <p className="review_description">
           {description}

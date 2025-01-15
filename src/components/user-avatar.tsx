@@ -14,14 +14,12 @@ export function UserAvatar({ height, width, nav }: UserAvatarProps) {
   if (!storedUser){
     return null;
   }
-
-  // testing
   
   let fontSize = nav ? "text-sm" : "text-5xl";
 
   return (
     <Avatar className={`h-[${height}px] w-[${width}px] ${fontSize}`}>
-      <AvatarFallback>
+      <AvatarFallback className="bg-[#022b60b6] text-white">
         {storedUser.firstName.charAt(0).toUpperCase() +
           storedUser.lastName.charAt(0).toUpperCase()}
       </AvatarFallback>
