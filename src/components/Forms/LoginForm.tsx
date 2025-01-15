@@ -22,8 +22,6 @@ export default function LoginForm() {
 
   useEffect(() => {
     setBlue(false);
-    console.log("API URL is:")
-    console.log(import.meta.env.VITE_API_URL);
   }, []);
   const { mutate: login, isPending } = useLogin();
 

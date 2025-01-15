@@ -28,7 +28,7 @@ export function ReviewsDialog()
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75">All Reviews</Button>
+        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 w-1/2">All Reviews</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>

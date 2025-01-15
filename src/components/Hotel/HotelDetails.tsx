@@ -1,6 +1,6 @@
 import { blueAtom, hotelAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
-import { Star } from "lucide-react";
+import { EllipsisVertical, Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
 import ReviewDetails from "../ReviewDetails";
 import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";
@@ -8,6 +8,11 @@ import { BookHotelDialog } from "../Dialogs/BookHotelDialog";
 import { UpdateHotelDialog } from "../Dialogs/UpdateHotelDialog";
 import { useFetchReviewByHotel } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
 import { useEffect } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -46,12 +51,37 @@ export default function HotelDetails() {
 
   return (
     <div className="grid h-full w-full grid-rows-8">
-      <div className="hotel__image row-span-5 w-full xs:row-span-4">
+      <div className="hotel__image relative row-span-5 w-full xs:row-span-4">
         <img
           src={hotel?.image}
           alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
+        {currentUser?.isAdmin ? (
+          <div className="hotel__info__buttons absolute right-0 top-0 col-span-2 mt-3 flex flex-col gap-3">
+            <Popover>
+              <PopoverTrigger>
+                <EllipsisVertical className="m-2 scale-150 text-white" />
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="grid gap-4">
+                  <div className="space-y-2">
+                    <h4 className="font-medium leading-none">
+                      Available Actions
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      For Managers Only
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <UpdateHotelDialog />
+                    <DeleteHotelDialog />
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ) : null}
       </div>
       <div className="row-span-2 grid grid-cols-6 xs:row-span-2">
         <div className="hotel__info col-span-4 flex flex-col gap-3">
@@ -60,7 +90,7 @@ export default function HotelDetails() {
               <h1 className="font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
                 {hotel?.hotelName.toUpperCase()}
               </h1>
-              <h2 className="border-l-2 border-[#022b60] pl-3 font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
+              <h2 className="flex items-center border-l-2 border-[#022b60] pl-3 font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
                 {hotel.location.toUpperCase()}
               </h2>
             </div>
@@ -79,12 +109,6 @@ export default function HotelDetails() {
                 {hotel?.price}
               </div>
             </div>
-            {currentUser?.isAdmin ? (
-              <div className="hotel__info__buttons col-span-2 flex flex-col gap-3">
-                <UpdateHotelDialog />
-                <DeleteHotelDialog />
-              </div>
-            ) : null}
           </div>
         </div>
         <div className="hotel__cta border-grey col-span-2 flex flex-col items-end justify-start gap-2">
@@ -108,9 +132,10 @@ export default function HotelDetails() {
           <CreateReviewDialog />
         </div>
       </div>
-      <div className="hotel__review row-span-1 xs:row-span-2 text-[#022b60]">
+      <div className="hotel__review row-span-1 text-[#022b60] xs:row-span-2">
         {latestReview ? (
           <ReviewDetails
+            reviewId={latestReview.reviewId}
             title={latestReview.title}
             description={latestReview.description}
             rating={latestReview.rating} reviewId={0} 
