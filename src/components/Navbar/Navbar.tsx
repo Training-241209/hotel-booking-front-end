@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link} from "@tanstack/react-router";
 import { UserDropdown } from "../user-dropdown";
 import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
