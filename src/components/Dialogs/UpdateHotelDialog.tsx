@@ -153,8 +153,8 @@ export function UpdateHotelDialog()
                   </FormItem>
                 )}
               />
-              <DialogClose>
-                <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75">Update Hotel</Button>
+              <DialogClose className="w-full">
+                <Button type="submit" className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75">Update Hotel</Button>
               </DialogClose>
             </form>
           </Form>
