@@ -23,7 +23,7 @@ export function GeoCodedMap() {
     }, [hotel])
 
     const fetchCoordinates = async (cityName: string) => {
-        const apiKey = "AIzaSyA20hjqRTdUGmt7cWhL7d2lEY7e2soVt08";
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
             cityName
         )}&key=${apiKey}`;
