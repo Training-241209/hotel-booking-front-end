@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "checkinn-app"
 		DOCKER_TAG = "${BUILD_NUMBER}"
-		VITE_API_URL = credentials("VITE_API_URL")
+		BACKEND_API_URL = credentials("BACKEND_URL")
     }
 
     stages {
@@ -30,7 +30,7 @@ pipeline {
                         docker run -d \
                         --name ${DOCKER_IMAGE} \
                         -p 80:80 \
-                        -e VITE_API_URL=${VITE_API_URL} \
+                        -e VITE_API_URL=${BACKEND_API_URL} \
                         --restart unless-stopped \
                         ${DOCKER_IMAGE}:${DOCKER_TAG}
                     """
