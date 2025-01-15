@@ -6,7 +6,6 @@ import { useToast } from "../use-toast";
 export function useUpdUser()
 {
     const {toast} = useToast();
-    // const [user, setUser] = useAtom(userAtom);
 
     return useMutation(
         {
