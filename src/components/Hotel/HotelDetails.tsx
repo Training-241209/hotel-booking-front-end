@@ -138,7 +138,8 @@ export default function HotelDetails() {
             reviewId={latestReview.reviewId}
             title={latestReview.title}
             description={latestReview.description}
-            rating={latestReview.rating} reviewId={0} 
+            rating={latestReview.rating} 
+            // reviewId={0} 
             userFN={latestReview.user.firstName} 
             userLN={latestReview.user.lastName}
           />
