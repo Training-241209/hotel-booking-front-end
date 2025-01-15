@@ -21,7 +21,7 @@ http {
 
         # Handle CORS for API requests
         location / {
-            try_files $uri /index.html; # Frontend SPA fallback (Angular/Vue/React)
+            try_files $uri $uri/ /index.html; # Updated: Handle both $uri and fallback to directory/index.html
 
             # Add CORS headers to responses coming from the backend
             add_header Access-Control-Allow-Origin "${DEPLOY_URL}" always;
