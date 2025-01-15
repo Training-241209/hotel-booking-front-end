@@ -6,7 +6,7 @@ import { createRootRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
   component: () => (
-    <div className="h-screen grid grid-cols-12 grid-rows-12 gap-3">
+    <div className="h-screen grid grid-cols-12 grid-rows-12">
       <Navbar />
       <div className="row-start-2 row-end-12 col-start-2 col-end-12 grid grid-cols-12 grid-rows-12 xs:col-start-1 xs:col-end-13">
         <Outlet />
