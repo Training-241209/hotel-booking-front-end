@@ -16,8 +16,16 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { useRegister } from "@/hooks/users/auth/use-register";
+import { blueAtom } from "@/store/atoms";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 
 export default function RegisterForm() {
+  const [, setBlue] = useAtom(blueAtom);
+
+  useEffect(() => {
+    setBlue(false);
+  }, []);
   const { mutate: register, isPending } = useRegister();
 
   // Define your form
@@ -50,7 +58,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 sm:col-span-full xs:col-span-full xs:h-full">
+    <div className="col-start-4 col-end-10 row-start-3 row-end-12 flex rounded bg-white p-2 sm:col-span-full lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 xs:col-span-full xs:h-full">
       <div className="register_form_image relative w-1/2 xs:hidden">
         <img
           src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg"
@@ -64,7 +72,7 @@ export default function RegisterForm() {
           </h2>
         </div>
       </div>
-      <div className="w-1/2 rounded-md bg-white p-5 flex flex-col justify-center xs:w-full">
+      <div className="flex w-1/2 flex-col justify-center rounded-md bg-white p-5 xs:w-full">
         <div className="mb-8 text-center text-lg font-semibold">Sign Up</div>
         <Form {...form}>
           <form
