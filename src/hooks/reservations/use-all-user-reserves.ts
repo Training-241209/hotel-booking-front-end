@@ -3,7 +3,7 @@ import { allReserveAtom, Reservation,  } from "@/store/atoms";
 import { useQuery } from "@tanstack/react-query";
 import { useSetAtom } from "jotai";
 
-export function useAllReserves()
+export function useAllUserReserves()
 {
     const setAllReserve = useSetAtom(allReserveAtom);
 
