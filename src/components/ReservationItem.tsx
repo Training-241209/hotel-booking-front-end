@@ -1,10 +1,11 @@
-import { useAtom, useSetAtom } from "jotai";
-import { Hotel, reserveAtom, userAtom } from "@/store/atoms";
+import { useSetAtom } from "jotai";
+import { Hotel, User, reserveAtom } from "@/store/atoms";
 import { DeleteReservationDialog } from "./Dialogs/DeleteReservationDialog";
 
 interface ReservationProps {
   reservationId: number;
   hotel: Hotel;
+  user: User;
   checkInTime: string;
   checkOutTime: string;
 }
@@ -12,16 +13,18 @@ interface ReservationProps {
 export default function ReservationItem({
   reservationId,
   hotel,
+  user,
   checkInTime,
   checkOutTime,
 }: ReservationProps) {
   const setReserve = useSetAtom(reserveAtom);
-  const [user] = useAtom(userAtom);
+  // const [reservedUser] = useAtom(userAtom);
 
   const handleDel = () => {
     setReserve({
       reservationId,
       hotel,
+      user,
       checkInTime,
       checkOutTime,
     });
@@ -44,7 +47,7 @@ export default function ReservationItem({
             {hotel.hotelName}
           </h1>
           <div className="reservation__details__guess_name">
-            {user?.firstName} {user?.lastName}
+            {user.firstName} {user.lastName}
           </div>
         </div>
         <div className="reservation__details__info col-span-2 row-span-3 py-3 xxs:col-span-3 xxs:row-span-2">

@@ -28,6 +28,20 @@ export default function HotelDetails() {
   const { data } = useFetchReviewByHotel(hotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
 
+  let totalReviews = 0;
+  let average;
+
+  if (data)
+  {
+    totalReviews = data.length;
+    average = data.reduce((sum: number, review: { rating: number }) => sum + review.rating, 0) / totalReviews;
+
+    // if (!average)
+    // {
+    //   average = "Empty"
+    // }
+  }
+
   if (!hotel) {
     return (
       <h1 className="flex h-full w-full items-center justify-center text-xl font-bold shadow-md">
@@ -104,7 +118,7 @@ export default function HotelDetails() {
             <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
               {/* Hard coded need to change later */}
               <span className="font-bold text-[#022b60] md:text-3xl lg:text-4xl 2xl:text-6xl">
-                4.5
+                {average}
               </span>
               <Star
                 fill="#022b60"
@@ -113,7 +127,7 @@ export default function HotelDetails() {
               />
             </div>
             <div className="hotel__cta__reviews text-[#022b60]">
-              (334 Reviews)
+              ({totalReviews})
             </div>
           </div>
           <BookHotelDialog />
@@ -126,7 +140,10 @@ export default function HotelDetails() {
             reviewId={latestReview.reviewId}
             title={latestReview.title}
             description={latestReview.description}
-            rating={latestReview.rating}
+            rating={latestReview.rating} 
+            // reviewId={0} 
+            userFN={latestReview.user.firstName} 
+            userLN={latestReview.user.lastName}
           />
         ) : (
           <h1>No Reviews</h1>
