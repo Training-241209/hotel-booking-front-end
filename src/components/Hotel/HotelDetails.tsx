@@ -31,15 +31,13 @@ export default function HotelDetails() {
   let totalReviews = 0;
   let average;
 
-  if (data)
-  {
+  if (data) {
     totalReviews = data.length;
-    average = data.reduce((sum: number, review: { rating: number }) => sum + review.rating, 0) / totalReviews;
-
-    // if (!average)
-    // {
-    //   average = "Empty"
-    // }
+    average =
+      data.reduce(
+        (sum: number, review: { rating: number }) => sum + review.rating,
+        0,
+      ) / totalReviews;
   }
 
   if (!hotel) {
@@ -116,15 +114,18 @@ export default function HotelDetails() {
         <div className="hotel__cta border-grey col-span-2 flex flex-col items-end justify-start gap-2">
           <div className="mt-3 flex flex-col items-center">
             <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
-              {/* Hard coded need to change later */}
-              <span className="font-bold text-[#022b60] md:text-3xl lg:text-4xl 2xl:text-6xl">
-                {average}
-              </span>
-              <Star
-                fill="#022b60"
-                color="#022b60"
-                className="md:min-h-[35px] md:min-w-[35px] lg:min-h-[40px] lg:min-w-[40px] 2xl:min-h-[50px] 2xl:min-w-[50px]"
-              />
+              <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
+                <div className="hotel__cta__ratings flex w-1/2 items-center justify-center">
+                  <span className="font-bold text-[#022b60] md:text-3xl lg:text-4xl 2xl:text-6xl">
+                    {totalReviews > 0 ? average : 0}
+                  </span>
+                  <Star
+                    fill="#022b60"
+                    color="#022b60"
+                    className="md:min-h-[35px] md:min-w-[35px] lg:min-h-[40px] lg:min-w-[40px] 2xl:min-h-[50px] 2xl:min-w-[50px]"
+                  />
+                </div>
+              </div>
             </div>
             <div className="hotel__cta__reviews text-[#022b60]">
               ({`${totalReviews} Reviews`})
@@ -140,13 +141,13 @@ export default function HotelDetails() {
             reviewId={latestReview.reviewId}
             title={latestReview.title}
             description={latestReview.description}
-            rating={latestReview.rating} 
-            // reviewId={0} 
-            userFN={latestReview.user.firstName} 
+            rating={latestReview.rating}
+            // reviewId={0}
+            userFN={latestReview.user.firstName}
             userLN={latestReview.user.lastName}
           />
         ) : (
-          <h1>No Reviews</h1>
+          <h1 className="font-bold">No Review</h1>
         )}
       </div>
     </div>
