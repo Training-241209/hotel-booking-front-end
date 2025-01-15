@@ -21,8 +21,7 @@ export default function HotelDetails() {
   // this thing contains all the reviews for the hotel by hotelId
   const { data } = useFetchReviewByHotel(hotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
-  console.log("Latest: ", latestReview);
-  console.log("Current data: ", data);
+
 
   if (!hotel) {
     return (
@@ -56,7 +55,7 @@ export default function HotelDetails() {
               {hotel?.description}
             </p>
           </div>
-          <div className="grid w-full grid-cols-9 grid-rows-1">
+          <div className="grid w-full grid-cols-9 grid-rows-1 text-[#022b60]">
             <div className="col-span-7 flex flex-col justify-evenly">
               <div className="hotel__info__rooms">
                 <span className="text-md font-bold">Rooms Available</span>:{" "}
@@ -96,7 +95,7 @@ export default function HotelDetails() {
           <CreateReviewDialog />
         </div>
       </div>
-      <div className="hotel__review row-span-1 xs:row-span-2">
+      <div className="hotel__review row-span-1 xs:row-span-2 text-[#022b60]">
         {latestReview ? (
           <ReviewDetails
             title={latestReview.title}

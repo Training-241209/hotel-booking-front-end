@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`col-span-12 row-span-1 grid grid-cols-12 gap-3 ${storedUser ? "shadow-md" : ""} sm:text-sm md:text-lg 2xl:text-2xl`}
+      className={`${blue ? 'bg-white' : 'transparent'} col-start-1 col-end-13 row-start-1 row-end-2 grid grid-cols-12 gap-3 ${storedUser ? "shadow-md" : ""} sm:text-sm md:text-lg 2xl:text-2xl`}
     >
       <Link
         to="/HomePage"

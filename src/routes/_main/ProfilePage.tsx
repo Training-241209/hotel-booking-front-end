@@ -14,33 +14,35 @@ export const Route = createFileRoute("/_main/ProfilePage")({
 function RouteComponent() {
   const [storedUser] = useAtom(userAtom);
   const router = useRouter();
-  if (!storedUser) 
-  {
-    router.navigate({to:"/"});
+  if (!storedUser) {
+    router.navigate({ to: "/" });
     return null;
   }
 
   return (
-    <div className="col-span-full row-start-2 row-end-13 grid">
+    <div className="col-span-full row-start-2 row-end-13 grid rounded-md bg-white text-[#022b60]">
       <div className="user__container flex flex-col gap-3 rounded p-3 shadow-lg">
-        <div className="user__container__header flex h-1/4 items-center gap-3 bg-white px-3 shadow-md">
+        <div className="user__container__header flex h-1/4 items-center gap-3 rounded-md bg-white px-3 shadow-md">
           <div className="user__container__header__avatar flex h-[150px] w-[150px] items-center justify-center">
             <UserAvatar height={150} width={150} nav={false} />
           </div>
           <div className="user__container__header__details flex flex-col justify-center">
-            <h1>Email: {storedUser?.email}</h1>
             <h1>
-              Full Name: {storedUser?.firstName + " " + storedUser?.lastName}
+              <span className="font-bold">Email</span>: {storedUser?.email}
+            </h1>
+            <h1>
+              <span className="font-bold">Full Name</span>:{" "}
+              {storedUser?.firstName + " " + storedUser?.lastName}
             </h1>
           </div>
         </div>
         <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
-          <div className="user__container__form col-span-2 flex flex-col items-center justify-center bg-white shadow-md xs:col-span-3">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white shadow-md xs:col-span-3">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 bg-white shadow-md xs:col-span-3">
-            <UpdatePasswordDialog/>
-            <DeleteUserDialog/>
+          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 rounded-md bg-white shadow-md xs:col-span-3">
+            <UpdatePasswordDialog />
+            <DeleteUserDialog />
           </div>
         </div>
       </div>

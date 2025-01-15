@@ -21,7 +21,9 @@ export function useCreateReview()
             onSuccess: (data) =>
             {
                 toast({title: "Review Added"});
-                queryClient.invalidateQueries({queryKey: ["reviews"]});
+                queryClient.invalidateQueries({
+                    queryKey: ["reviews"]
+                });
                 setReview(data);
             },
             onError: () =>
