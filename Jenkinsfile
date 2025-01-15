@@ -13,7 +13,8 @@ pipeline {
             steps {
                 script {
                     // Build new image
-                    sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                    sh "docker build --build-arg VITE_API_URL=${BACKEND_API_URL} \
+                     -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
         }
