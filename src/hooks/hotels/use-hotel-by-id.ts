@@ -29,7 +29,7 @@ export function useHotelById(id: number): UseQueryResult<{
     ],
     queryFn: async () => {
       const res = await axiosInstance.get(`/api/hotels/${id}`);
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });

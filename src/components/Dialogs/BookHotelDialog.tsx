@@ -51,9 +51,9 @@ export function BookHotelDialog() {
       createReserve(data);
       setDates([]);
       form.reset();
-      console.log("Registration successful", data);
+      // console.log("Registration successful", data);
     } catch (error) {
-      console.error("Registration failed:", error);
+      // console.error("Registration failed:", error);
     }
   };
 

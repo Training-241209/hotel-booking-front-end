@@ -13,7 +13,7 @@ export function useAllUserReserves()
             queryFn: async () =>
             {
                 const res = await axiosInstance.get<Reservation[]>("/api/reservations/user");
-                console.log("entered");
+                // console.log("entered");
                 setAllReserve(res.data);
                 return res.data;
             },

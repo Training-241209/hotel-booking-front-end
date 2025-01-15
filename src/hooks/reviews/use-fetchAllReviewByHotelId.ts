@@ -14,7 +14,7 @@ export function useFetchReviewByHotel(id: any) {
         setReview(resp.data);
         return resp.data;
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         return null;
       }
     },

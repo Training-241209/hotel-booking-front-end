@@ -12,50 +12,54 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useAtom } from "jotai";
-import { hotelAtom } from "@/store/atoms";
-import { hotelFormSchema, HotelSchema } from "@/schemas/hotels/hotel-schema";
-import { useUpdateHotel } from "@/hooks/hotels/use-update-hotel";
-import { useEffect } from "react";
+import { useUpdReview } from "@/hooks/reviews/use-upd-review";
+import { reviewUpdFormSchema, ReviewUpdSchema } from "@/schemas/reviews/review-upd-schema";
+import { useToast } from "@/hooks/use-toast";
 
-export function UpdateReviewDialog() 
+interface UpdateReviewDialogProps
 {
-  const [hotel] = useAtom(hotelAtom);
-  const update = useUpdateHotel();
+  reviewId: number;
+  title: string;
+  description: string; 
+  rating: number;
+}
 
-  const form = useForm<HotelSchema>({
-    resolver: zodResolver(hotelFormSchema),
+export function UpdateReviewDialog({reviewId, title, description, rating}: UpdateReviewDialogProps) 
+{
+  const update = useUpdReview(reviewId);
+  const {toast} = useToast();
+
+  const form = useForm<ReviewUpdSchema>({
+    resolver: zodResolver(reviewUpdFormSchema),
     defaultValues:
     {
-      hotelName: hotel?.hotelName,
-      description: hotel?.description,
-      rooms: hotel?.rooms?.toString(),
-      location: hotel?.location,
-      price: hotel?.price.toString(),
-      image: hotel?.image,
+      title: title,
+      description: description,
+      rating: rating.toString(),
     }
   })
 
-  useEffect(() =>
+  function onSubmit(values: ReviewUpdSchema)
   {
-    if (hotel)
-    {
-      form.reset(
-        {
-          hotelName: hotel.hotelName,
-          description: hotel.description,
-          rooms: hotel.rooms.toString(),
-          location: hotel.location,
-          price: hotel.price.toString(),
-          image: hotel.image,
-        }
-      )
+    let num = parseInt(values.rating);
+    if (num > 5 || num < 1) {
+      form.setError("rating", { message: "Rating must be between 1 and 5" });
+      toast({ title: "Rating must be between 1 and 5" });
+      return;
     }
-  }, [hotel, form])
+    if (values.rating.includes("."))
+    {
+      form.setError("rating", {message: "Rating cannot be decimal values"});
+      toast({ title: "Rating cannot be decimal values" });
+      return;
+    }
 
-  function onSubmit(values: HotelSchema)
-  {
-    update.mutate(values)
+    const req = 
+    {
+      ...values,
+      rating: values.rating.toString(),
+    }
+    update.mutate(req);
   }
 
   return (
@@ -78,12 +82,12 @@ export function UpdateReviewDialog()
 
               <FormField
                 control={form.control}
-                name="description"
+                name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="Description" {...field} />
+                      <Input placeholder="title" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -91,12 +95,25 @@ export function UpdateReviewDialog()
               />
               <FormField
                 control={form.control}
-                name="location"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Input placeholder="Location" {...field} />
+                      <Input placeholder="description" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="rating"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Rating</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="rating" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
