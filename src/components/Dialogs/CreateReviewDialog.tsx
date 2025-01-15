@@ -4,6 +4,7 @@ import {
   DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -24,16 +25,18 @@ import {
   ReviewSchema,
 } from "@/schemas/reviews/reviews-schema";
 import { useAtom } from "jotai";
-import { hotelAtom } from "@/store/atoms";
+import { hotelAtom, userAtom } from "@/store/atoms";
 import { useEffect } from "react";
 import { useCreateReview } from "@/hooks/reviews/use-create-review";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "@tanstack/react-router";
 
 export function CreateReviewDialog() {
   //   const { mutate: create, isPending } = useCreateReview();
   const [hotel] = useAtom(hotelAtom);
-  const {mutate: createReview} = useCreateReview();
-  const {toast} = useToast();
+  const { mutate: createReview } = useCreateReview();
+  const { toast } = useToast();
+  const [user] = useAtom(userAtom);
 
   const form = useForm<ReviewSchema>({
     resolver: zodResolver(reviewFormSchema),
@@ -47,51 +50,81 @@ export function CreateReviewDialog() {
     },
   });
 
-  function onSubmit(values: ReviewSchema) 
-  {
+  function onSubmit(values: ReviewSchema) {
     let num = parseInt(values.rating);
-    if (num > 5 || num < 1)
-    {
-      form.setError("rating", {message: "Rating must be between 1 and 5"});
-      toast({title: "Rating must be between 1 and 5"});
+    if (num > 5 || num < 1) {
+      form.setError("rating", { message: "Rating must be between 1 and 5" });
+      toast({ title: "Rating must be between 1 and 5" });
       return;
     }
-    const req = 
-    {
+    const req = {
       title: values.title,
       description: values.description,
       rating: values.rating,
-      hotel: 
-      {
+      hotel: {
         hotelId: values.hotel.hotelId,
       },
-    }
+    };
     console.log(req);
     createReview(req);
     form.reset();
   }
 
-  useEffect(() =>
-  {
-    if (hotel)
-    {
-      form.reset(
-        {
-          title: "",
-          description: "",
-          rating: "5",
-          hotel: {
-            hotelId: hotel.hotelId,
-          },
-        }
-      )
+  useEffect(() => {
+    if (hotel) {
+      form.reset({
+        title: "",
+        description: "",
+        rating: "5",
+        hotel: {
+          hotelId: hotel.hotelId,
+        },
+      });
     }
-  }, [hotel, form])
+  }, [hotel, form]);
+
+  if (!user) {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="w-1/2 bg-green-600 text-white hover:bg-green-600 hover:opacity-75 xs:w-full">
+            Add Review
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Login Required</DialogTitle>
+            <DialogDescription>
+              You need to log in to write a review. Please log in to continue.
+            </DialogDescription>
+          </DialogHeader>
+
+          <DialogFooter>
+            <div className="w-full">
+              <DialogClose className="w-full">
+                <Button
+                  className="mx-auto w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75 relative"
+                  type="button"
+                >
+                  <Link
+                    to="/login"
+                    className={`text-white [&.active]:font-bold w-full h-full absolute flex justify-center items-center`}
+                  >
+                    Login
+                  </Link>
+                </Button>
+              </DialogClose>
+            </div>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="xs:w-full w-1/2 bg-green-600 text-white hover:bg-green-600 hover:opacity-75">
+        <Button className="w-1/2 bg-green-600 text-white hover:bg-green-600 hover:opacity-75 xs:w-full">
           Add Review
         </Button>
       </DialogTrigger>
@@ -144,11 +177,11 @@ export function CreateReviewDialog() {
                   </FormItem>
                 )}
               />
-              <DialogClose>
+              <DialogClose className="w-full">
                 <Button
                   type="submit"
                   // disabled={isPending}
-                  className="w-full bg-blue-500 hover:bg-blue-500 hover:opacity-75"
+                  className="w-1/2 bg-blue-500 hover:bg-blue-500 hover:opacity-75"
                 >
                   Add Review
                 </Button>

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export function UpdateReservationDialog() {
   return (
@@ -31,7 +32,12 @@ export function UpdateReservationDialog() {
             <Label htmlFor="check_in_time" className="text-right">
               CheckIn
             </Label>
-            <Input id="check_in_time" placeholder="Check in date" className="col-span-3" type="date" />
+            <Input
+              id="check_in_time"
+              placeholder="Check in date"
+              className="col-span-2 flex justify-center"
+              type="date"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="check_out_time" className="text-right">
@@ -40,13 +46,20 @@ export function UpdateReservationDialog() {
             <Input
               id="check_out_time"
               placeholder="Check out date"
-              className="col-span-3"
+              className="col-span-2 flex justify-center"
               type="date"
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" className="w-full bg-blue-500 text-white hover:bg-blue-500 hover:opacity-75">Update Reservation</Button>
+          <DialogClose className="w-full">
+            <Button
+              type="submit"
+              className="w-1/2 bg-blue-500 text-white hover:bg-blue-500 hover:opacity-75"
+            >
+              Update Reservation
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
