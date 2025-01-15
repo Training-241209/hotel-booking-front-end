@@ -45,8 +45,8 @@ export function DeleteHotelDialog()
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <DialogClose>
-            <Button className="w-3/4 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
+          <DialogClose className="w-full">
+            <Button className="w-1/2 border border-red-500 bg-red-500 text-white hover:bg-red-500 hover:opacity-75 mx-auto"
             onClick={delHotel}>
               Confirm
             </Button>
