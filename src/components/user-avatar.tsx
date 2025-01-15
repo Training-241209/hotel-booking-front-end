@@ -16,10 +16,11 @@ export function UserAvatar({ height, width, nav }: UserAvatarProps) {
   }
   
   let fontSize = nav ? "text-sm" : "text-5xl";
+  let border = nav ? "border border-2" : "";
 
   return (
-    <Avatar className={`h-[${height}px] w-[${width}px] ${fontSize}`}>
-      <AvatarFallback className="bg-[#022b60b6] text-white">
+    <Avatar className={`h-[${height}px] w-[${width}px] ${fontSize} ${border}`}>
+      <AvatarFallback className="bg-[#022b60a4] text-white">
         {storedUser.firstName.charAt(0).toUpperCase() +
           storedUser.lastName.charAt(0).toUpperCase()}
       </AvatarFallback>
