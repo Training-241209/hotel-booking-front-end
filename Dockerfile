@@ -10,9 +10,8 @@ RUN VITE_API_URL=$VITE_API_URL npm run build
 
 # production stage
 FROM nginx:stable-alpine as production-stage
-RUN apk add --no-cache bash gettext
 COPY --from=build-stage /app/dist /usr/share/nginx/html
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
 EXPOSE 80
-CMD ["/bin/bash", "-c", "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+CMD ["npm", "run", "start"]
+
 
