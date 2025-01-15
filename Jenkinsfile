@@ -29,8 +29,8 @@ pipeline {
                     sh """
                         docker run -d \
                         --name ${DOCKER_IMAGE} \
-                        -e VITE_API_URL ${VITE_API_URL} \
                         -p 8081:8080 \
+                        -e VITE_API_URL '${VITE_API_URL}' \
                         --restart unless-stopped \
                         ${DOCKER_IMAGE}:${DOCKER_TAG}
                     """
