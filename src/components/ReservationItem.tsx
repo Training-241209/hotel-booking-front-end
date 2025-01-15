@@ -29,8 +29,8 @@ export default function ReservationItem({
   };
 
   return (
-    <div className="reservation mx-auto mb-3 grid lg:h-2/5 grid-cols-5 p-3 shadow-md lg:w-full xl:w-3/4 md:h-3/5">
-      <div className="reservation__image xxs:col-span-2 col-span-2 sm:col-span-2 lg:col-span-2 flex h-full items-center justify-center bg-blue-50 overflow-hidden md:col-span-5">
+    <div className="reservation mx-auto mb-3 grid lg:h-2/5 grid-cols-5 p-3 shadow-md lg:w-full xl:w-3/4 md:h-3/5 bg-white rounded-md">
+      <div className="reservation__image xxs:col-span-2 col-span-2 sm:col-span-2 lg:col-span-2 flex h-full items-center justify-center bg-blue-50 overflow-hidden md:col-span-5 rounded-l-md">
         <img
           src={hotel.image}
           alt="hotel image"
@@ -38,7 +38,7 @@ export default function ReservationItem({
         />
       </div>
 
-      <div className="reservation__details col-span-3 xxs:col-span-3 sm:col-span-3 lg:col-span-3 grid h-full grid-cols-3 grid-rows-4 border px-3 md:col-span-5">
+      <div className="reservation__details col-span-3 xxs:col-span-3 sm:col-span-3 lg:col-span-3 grid h-full grid-cols-3 grid-rows-4 border px-3 md:col-span-5 rounded-r-md">
         <div className="reservation__details__head border-grey col-span-3 flex items-center justify-between border-b-2 px-3">
           <h1 className="reservation__details__hotel_name">
             {/* Hotel Name */}
