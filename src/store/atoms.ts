@@ -4,24 +4,22 @@ import { atom } from "jotai";
 // loading hotels when program starts
 
 export const countAtom = atom(0);
-export const themeAtom = atom('light');
+export const themeAtom = atom("light");
 
+export const blueAtom = atom(true);
 
-interface User 
-{
-    userId: number,
-    firstName: string, 
-    lastName: string, 
-    email: string,
-    roleName: string,
-    isAdmin: boolean
+interface User {
+  userId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  roleName: string;
+  isAdmin: boolean;
 }
 
 export const userAtom = atom<User | null>(null);
 
-
-export interface Reservation
-{
+export interface Reservation {
   reservationId: number;
   hotel: Hotel;
   // location: string;
@@ -32,9 +30,7 @@ export interface Reservation
 export const reserveAtom = atom<Reservation | null>(null);
 export const allReserveAtom = atom<Reservation[]>([]);
 
-
-export interface Review
-{
+export interface Review {
   reviewId: number;
   rating: number;
   title: string;

@@ -1,4 +1,4 @@
-import { hotelAtom, userAtom } from "@/store/atoms";
+import { blueAtom, hotelAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
@@ -7,10 +7,16 @@ import { CreateReviewDialog } from "../Dialogs/CreateReviewDialog";
 import { BookHotelDialog } from "../Dialogs/BookHotelDialog";
 import { UpdateHotelDialog } from "../Dialogs/UpdateHotelDialog";
 import { useFetchReviewByHotel } from "@/hooks/reviews/use-fetchAllReviewByHotelId";
+import { useEffect } from "react";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
+  const [, setBlue] = useAtom(blueAtom);
+
+  useEffect(() => {
+    setBlue(true);
+  }, []);
 
   // this thing contains all the reviews for the hotel by hotelId
   const { data } = useFetchReviewByHotel(hotel?.hotelId);

@@ -6,10 +6,8 @@ export const Route = createFileRoute("/_auth")({
 
 function RouteComponent() {
   return (
-    <div
-      className="col-span-full row-span-full grid grid-cols-12 grid-rows-12"
-    >
-      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[url('landing-bg.jpg')] bg-cover bg-center"></div>
+    <div className="col-span-full row-span-full grid grid-cols-12 grid-rows-12">
+      <div className="absolute left-0 top-0 -z-10 h-full w-full bg-[url(/landing-bg.jpg)] bg-cover bg-center"></div>
       <Outlet />
     </div>
   );

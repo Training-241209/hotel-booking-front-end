@@ -13,20 +13,28 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { loginFormSchema, LoginSchema } from "@/schemas/auth/login-schema";
 import { useLogin } from "@/hooks/users/auth/use-login";
+import { blueAtom } from "@/store/atoms";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 
 export default function LoginForm() {
+  const [, setBlue] = useAtom(blueAtom);
+
+  useEffect(() => {
+    setBlue(false);
+  }, []);
   const { mutate: login, isPending } = useLogin();
 
-    // Define your form
-    const form = useForm<LoginSchema>({
-        // resolver integrates wuth your preferred validation library
-        resolver: zodResolver(loginFormSchema),
-        // this is the default values for the form
-        defaultValues: {
-            email: "",
-            password: "",
-        },
-    });
+  // Define your form
+  const form = useForm<LoginSchema>({
+    // resolver integrates wuth your preferred validation library
+    resolver: zodResolver(loginFormSchema),
+    // this is the default values for the form
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   // Define the onSubmit function
   const onSubmit = (data: LoginSchema) => {
@@ -37,59 +45,73 @@ export default function LoginForm() {
     }
   };
 
-    // <div className="flex w-1/2 h-1/2 p-2 bg-white rounded"> => changed
-    return (
-        <div className="col-start-4 col-end-10 row-start-4 row-end-10 flex rounded bg-white p-2 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 md:col-start-1 md:col-end-13 sm:col-span-full xs:col-span-full">
-            <div className="login_form_image w-1/2 relative xs:hidden">
-                <img src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg" alt="Laptop Image" className="w-full h-full" />
-                <div className="w-full h-full flex flex-col items-center justify-center text-center text-white absolute top-0 p-3">
-                    <h1 className="font-bold text-2xl mb-3">Welcome Back</h1>
-                    <h2 className="">Please log in using your personal information to stay connected with us.</h2>
-                </div>
-            </div>
-        
-            <div className="w-1/2 p-5 rounded-md bg-white flex flex-col justify-center xs:w-full">
-                <div className="text-lg font-semibold mb-8 text-center">Login</div>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 flex flex-col justify-center items-center">
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem className="w-full">
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input type="text" placeholder="Email" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <FormItem className="w-full">
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input type="password" placeholder="Password" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <Button type="submit" disabled={isPending} className="w-full bg-blue-500 hover:opacity-75 hover:bg-blue-500 !mt-5 text-white">
-                            Login
-                        </Button>
-                    </form>
-                </Form>
-                <div className="mt-4 xs:hidden">Don't have an account?
-                    <Link to="/register" className="ml-1 text-blue-500">
-                        Signup
-                    </Link>
-                </div>
-            </div>
-        
+  // <div className="flex w-1/2 h-1/2 p-2 bg-white rounded"> => changed
+  return (
+    <div className="col-start-4 col-end-10 row-start-4 row-end-10 flex rounded bg-white p-2 sm:col-span-full md:col-start-1 md:col-end-13 lg:col-start-2 lg:col-end-12 2xl:col-start-4 2xl:col-end-10 xs:col-span-full">
+      <div className="login_form_image relative w-1/2 xs:hidden">
+        <img
+          src="https://img.freepik.com/free-photo/one-person-typing-laptop-night-generated-by-ai_188544-27872.jpg"
+          alt="Laptop Image"
+          className="h-full w-full"
+        />
+        <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center p-3 text-center text-white">
+          <h1 className="mb-3 text-2xl font-bold">Welcome Back</h1>
+          <h2 className="">
+            Please log in using your personal information to stay connected with
+            us.
+          </h2>
         </div>
+      </div>
+
+      <div className="flex w-1/2 flex-col justify-center rounded-md bg-white p-5 xs:w-full">
+        <div className="mb-8 text-center text-lg font-semibold">Login</div>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col items-center justify-center space-y-3"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="!mt-5 w-full bg-blue-500 text-white hover:bg-blue-500 hover:opacity-75"
+            >
+              Login
+            </Button>
+          </form>
+        </Form>
+        <div className="mt-4 xs:hidden">
+          Don't have an account?
+          <Link to="/register" className="ml-1 text-blue-500">
+            Signup
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
