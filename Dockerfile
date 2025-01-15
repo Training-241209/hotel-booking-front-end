@@ -6,7 +6,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-RUN echo "$VITE_API_URL"
+RUN echo The URL is: "$VITE_API_URL"
 
 # production stage
 FROM nginx:stable-alpine as production-stage
