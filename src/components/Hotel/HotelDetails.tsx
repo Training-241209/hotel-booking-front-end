@@ -1,4 +1,11 @@
-import { blueAtom, hotelAtom, userAtom } from "@/store/atoms";
+import {
+  // allHotelsAtom,
+  blueAtom,
+  filteredHotelsAtom,
+  filterWordAtom,
+  hotelAtom,
+  userAtom,
+} from "@/store/atoms";
 import { useAtom } from "jotai";
 import { EllipsisVertical, Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
@@ -19,14 +26,21 @@ export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
   const [, setBlue] = useAtom(blueAtom);
+  const [filteredHotels] = useAtom(filteredHotelsAtom);
+  const [filterWord] = useAtom(filterWordAtom);
+  // const [allHotels] = useAtom(allHotelsAtom);
+
+
+  const displayHotel =
+    !filterWord || filteredHotels.some((h) => h.hotelId === hotel?.hotelId)
+      ? hotel
+      : filteredHotels[0];
 
   useEffect(() => {
     setBlue(false);
-  }, []);
+  }, [filteredHotels, filterWord]);
 
-
-  // this thing contains all the reviews for the hotel by hotelId
-  const { data } = useFetchReviewByHotel(hotel?.hotelId);
+  const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
 
   let totalReviews = 0;
@@ -41,7 +55,7 @@ export default function HotelDetails() {
       ) / totalReviews;
   }
 
-  if (!hotel) {
+  if (!displayHotel) {
     return (
       <h1 className="flex h-full w-full items-center justify-center text-xl font-bold shadow-md">
         Please select a hotel
@@ -53,8 +67,8 @@ export default function HotelDetails() {
     <div className="grid h-full w-full grid-rows-8">
       <div className="hotel__image relative row-span-5 w-full xs:row-span-4">
         <img
-          src={hotel?.image}
-          alt={hotel?.hotelName}
+          src={displayHotel?.image}
+          alt={displayHotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
         <GoogleMapDialog />
@@ -89,25 +103,25 @@ export default function HotelDetails() {
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
               <h1 className="font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
-                {hotel?.hotelName.toUpperCase()}
+                {displayHotel?.hotelName.toUpperCase()}
               </h1>
               <h2 className="flex items-center border-l-2 border-[#022b60] pl-3 font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
-                {hotel.location.toUpperCase()}
+                {displayHotel.location.toUpperCase()}
               </h2>
             </div>
             <p className="w-full text-[#022b60] xs:truncate">
-              {hotel?.description}
+              {displayHotel?.description}
             </p>
           </div>
           <div className="grid w-full grid-cols-9 grid-rows-1 text-[#022b60]">
             <div className="col-span-7 flex flex-col justify-evenly">
               <div className="hotel__info__rooms">
                 <span className="text-md font-bold">Rooms Available</span>:{" "}
-                {hotel?.rooms}
+                {displayHotel?.rooms}
               </div>
               <div className="hotel__info__price">
-                <span className="text-md font-bold">Room Price</span>: $
-                {hotel?.price}
+                <span className="text-md font-bold">Room Price</span>: ${" "}
+                {displayHotel?.price}
               </div>
             </div>
           </div>
@@ -153,4 +167,3 @@ export default function HotelDetails() {
     </div>
   );
 }
-

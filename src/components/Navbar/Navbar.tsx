@@ -4,13 +4,13 @@ import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { useAtom } from "jotai";
-import { filterHotelAtom, userAtom } from "@/store/atoms";
+import { filterWordAtom, userAtom } from "@/store/atoms";
 import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
   const [show, setShow] = useState(false);
-  const [filterHotel, setFilterHotel] = useAtom(filterHotelAtom);
+  const [filterHotel, setFilterHotel] = useAtom(filterWordAtom);
 
   const handleChange = (e: any) => {
     setFilterHotel(e.target.value);
@@ -58,7 +58,7 @@ export default function Navbar() {
               className={`search ${show ? styles.search : styles.hide} rounded-md py-1 pl-3`}
               type="text"
               placeholder="Enter Location"
-              value={filterHotel}
+              value={filterHotel ? filterHotel : ""}
               onChange={handleChange}
             />
             <Search onClick={() => handleShow()} className="text-white" />
