@@ -26,6 +26,8 @@ export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
   const [, setBlue] = useAtom(blueAtom);
+
+  // search bar code starts
   const [filteredHotels] = useAtom(filteredHotelsAtom);
   const [filterWord] = useAtom(filterWordAtom);
   // const [allHotels] = useAtom(allHotelsAtom);
