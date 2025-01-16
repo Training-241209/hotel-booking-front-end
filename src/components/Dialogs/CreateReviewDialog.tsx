@@ -71,7 +71,7 @@ export function CreateReviewDialog() {
         hotelId: values.hotel.hotelId,
       },
     };
-    console.log(req);
+    // console.log(req);
     createReview(req);
     form.reset();
   }

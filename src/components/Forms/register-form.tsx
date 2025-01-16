@@ -51,7 +51,7 @@ export default function RegisterForm() {
 
     try {
       register(data);
-      console.log("Registration successful", data);
+      // console.log("Registration successful", data);
     } catch (error) {
       console.error("Registration failed:", error);
     }

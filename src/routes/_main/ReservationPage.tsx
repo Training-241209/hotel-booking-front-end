@@ -33,7 +33,7 @@ function RouteComponent() {
 
   const [reservations] = useAtom(allReserveAtom);
 
-  console.log(reservations);
+  // console.log(reservations);
 
   const [, setBlue] = useAtom(blueAtom);
 

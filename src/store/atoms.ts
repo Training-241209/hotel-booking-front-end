@@ -55,4 +55,11 @@ export interface Hotel {
 export const hotelAtom = atom<Hotel | null>(null);
 export const allHotelsAtom = atom<Hotel[]>([]);
 
-export const hotelIdAtom = atom<number | null>(null);
+// export const hotelIdAtom = atom<number | null>(null);
+
+// word that filters the filteredHotelsAtom
+// first step for search bar
+export const filterWordAtom = atom<string|null>(null);
+
+// it depends on the filteredWordAtom
+export const filteredHotelsAtom = atom<Hotel[]>([]);

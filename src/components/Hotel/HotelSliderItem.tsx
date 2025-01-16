@@ -1,5 +1,5 @@
-import { useAtom, useSetAtom } from "jotai";
-import { hotelAtom, hotelIdAtom } from "@/store/atoms";
+import { useAtom} from "jotai";
+import { hotelAtom} from "@/store/atoms";
 
 interface HotelSliderItemProps {
   hotelId: number;
@@ -21,8 +21,12 @@ export default function HotelSliderItem({
   image = "",
 }: HotelSliderItemProps) {
   const [, setHotel] = useAtom(hotelAtom);
-  const setHotelId = useSetAtom(hotelIdAtom);
+  // const setHotelId = useSetAtom(hotelIdAtom);
   // const queryClient = useQueryClient();
+  // const [filteredHotels, setFilteredHotels] = useAtom(filteredHotelsAtom);
+  // const [filterWord, setFilterWord] = useAtom(filterWordAtom);
+  
+  
 
   const handleSelect = () => 
   {
@@ -35,8 +39,20 @@ export default function HotelSliderItem({
       price,
       image,
     });
-
-    setHotelId(hotelId);
+    // setFilteredHotels([
+    //   {
+    //     hotelId,
+    //     hotelName,
+    //     description,
+    //     rooms,
+    //     location,
+    //     price,
+    //     image,
+    //   },
+    //   ...filteredHotels,
+    // ]);
+    // setFilterWord(null);
+    // setHotelId(hotelId);
 
     // queryClient.invalidateQueries({queryKey: ["reviews"]});
   };
