@@ -24,6 +24,7 @@ export function GeoCodedMap() {
 
   const fetchCoordinates = async (cityName: string) => {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    console.log("The API Key is: " + apiKey);
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
       cityName,
     )}&key=${apiKey}`;
