@@ -51,6 +51,18 @@ export default function Navbar() {
         )}
       </div>
 
+      {/* without condition for not logged in users */}
+      {/* <div className="relative flex items-center justify-center">
+        <input
+          className={`search ${show ? styles.search : styles.hide} rounded-md py-1 pl-3`}
+          type="text"
+          placeholder="Enter Location"
+          value={filterHotel ? filterHotel : ""}
+          onChange={handleChange}
+        />
+        <Search onClick={() => handleShow()} className="text-red-50" />
+      </div>       */}
+
       {storedUser && (
         <div className="col-end-12 flex items-center justify-end gap-3 md:col-start-8 lg:col-start-10 2xl:col-start-11 xs:col-start-7">
           <div className="relative flex items-center justify-center">
