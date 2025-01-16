@@ -59,7 +59,9 @@ export const allHotelsAtom = atom<Hotel[]>([]);
 
 // word that filters the filteredHotelsAtom
 // first step for search bar
-export const filterWordAtom = atom<string|null>(null);
+export const filterWordAtom = atom<string | null>(null);
 
 // it depends on the filteredWordAtom
 export const filteredHotelsAtom = atom<Hotel[]>([]);
+
+export const homePageAtom = atom(false);
