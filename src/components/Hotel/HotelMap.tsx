@@ -63,7 +63,7 @@ function Map({
 
   useEffect(() => {
     const loader = new Loader({
-      apiKey: "AIzaSyA20hjqRTdUGmt7cWhL7d2lEY7e2soVt08", // Replace with your API key
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY, // Replace with your API key
       version: "weekly",
       libraries: ["places", "marker"],
     });
