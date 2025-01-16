@@ -23,6 +23,10 @@ export default function HotelSliderItem({
   const [, setHotel] = useAtom(hotelAtom);
   const setHotelId = useSetAtom(hotelIdAtom);
   // const queryClient = useQueryClient();
+  // const [filteredHotels, setFilteredHotels] = useAtom(filteredHotelsAtom);
+  // const [filterWord, setFilterWord] = useAtom(filterWordAtom);
+  
+  
 
   const handleSelect = () => 
   {
@@ -35,7 +39,19 @@ export default function HotelSliderItem({
       price,
       image,
     });
-
+    // setFilteredHotels([
+    //   {
+    //     hotelId,
+    //     hotelName,
+    //     description,
+    //     rooms,
+    //     location,
+    //     price,
+    //     image,
+    //   },
+    //   ...filteredHotels,
+    // ]);
+    // setFilterWord(null);
     setHotelId(hotelId);
 
     // queryClient.invalidateQueries({queryKey: ["reviews"]});

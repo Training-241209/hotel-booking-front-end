@@ -1,4 +1,11 @@
-import { blueAtom, firstFilteredHotelAtom, hotelAtom, userAtom } from "@/store/atoms";
+import {
+  // allHotelsAtom,
+  blueAtom,
+  filteredHotelsAtom,
+  filterWordAtom,
+  hotelAtom,
+  userAtom,
+} from "@/store/atoms";
 import { useAtom } from "jotai";
 import { EllipsisVertical, Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
@@ -17,17 +24,22 @@ import { GoogleMapDialog } from "../Dialogs/GoogleMapDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
-  const [firstFilteredHotel] = useAtom(firstFilteredHotelAtom);
   const [currentUser] = useAtom(userAtom);
   const [, setBlue] = useAtom(blueAtom);
+  const [filteredHotels] = useAtom(filteredHotelsAtom);
+  const [filterWord] = useAtom(filterWordAtom);
+  // const [allHotels] = useAtom(allHotelsAtom);
+
+
+  const displayHotel =
+    !filterWord || filteredHotels.some((h) => h.hotelId === hotel?.hotelId)
+      ? hotel
+      : filteredHotels[0];
 
   useEffect(() => {
     setBlue(false);
-  }, []);
+  }, [filteredHotels, filterWord]);
 
-  const displayHotel = firstFilteredHotel || hotel;
-
-  // this thing contains all the reviews for the hotel by hotelId
   const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
 
@@ -108,7 +120,7 @@ export default function HotelDetails() {
                 {displayHotel?.rooms}
               </div>
               <div className="hotel__info__price">
-                <span className="text-md font-bold">Room Price</span>: $
+                <span className="text-md font-bold">Room Price</span>: ${" "}
                 {displayHotel?.price}
               </div>
             </div>
@@ -155,4 +167,3 @@ export default function HotelDetails() {
     </div>
   );
 }
-

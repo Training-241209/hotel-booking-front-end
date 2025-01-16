@@ -3,8 +3,9 @@ import HotelSliderItem from "./HotelSliderItem";
 import { useAtom } from "jotai";
 import {
   allHotelsAtom,
-  filterHotelAtom,
-  firstFilteredHotelAtom,
+  filteredHotelsAtom,
+  filterWordAtom,
+  Hotel,
   hotelAtom,
   hotelIdAtom,
 } from "@/store/atoms";
@@ -17,33 +18,46 @@ export default function HotelSlider() {
   const [hotels] = useAtom(allHotelsAtom);
   const [hotel, setHotel] = useAtom(hotelAtom);
   const setHotelId = useAtom(hotelIdAtom)[1];
-  const [filterHotel] = useAtom(filterHotelAtom);
-  const [firstFilteredHotel, setFirstFilteredHotel] = useAtom(
-    firstFilteredHotelAtom,
-  );
+  const [filterWord] = useAtom(filterWordAtom);
+  const [filtered, setFilteredHotels] = useAtom(filteredHotelsAtom);
 
-  const filteredHotels = hotels.filter((hotel) =>
-    hotel.hotelName.toLowerCase().includes(filterHotel.toLowerCase()),
-  );
+  const filteredHotels = filterWord
+    ? hotels.filter(
+        (hotel) =>
+          hotel.hotelName.toLowerCase().includes(filterWord.toLowerCase()) ||
+          hotel.location.toLowerCase().includes(filterWord.toLowerCase()),
+      )
+    : hotels; // Return all hotels if filterWord is null
 
-  console.log(firstFilteredHotel);
+  const filterHotels = (data: Hotel[], word: string) => {
+    if (word === "") return [];
 
+    return data.filter(
+      (dataItem) =>
+        dataItem.hotelName.toLowerCase().includes(word.toLowerCase()) ||
+        dataItem.location.toLowerCase().includes(word.toLowerCase()),
+    );
+  };
+
+  console.log({ filtered });
   useEffect(() => {
     if (!hotel && hotels.length > 0) {
       const defaultHotel = hotels[0];
       setHotel(defaultHotel);
       setHotelId(defaultHotel.hotelId);
-    }
-    if (filteredHotels.length > 0) {
-      setFirstFilteredHotel(filteredHotels[0]);
+      if (filterWord) {
+        setFilteredHotels(filterHotels(hotels, filterWord));
+      }
     } else {
-      setFirstFilteredHotel(null);
+      if (filterWord) {
+        setFilteredHotels(filterHotels(hotels, filterWord));
+      }
     }
-  }, [hotel, setHotel, hotels, setHotelId, filteredHotels]);
+  }, [hotel, setHotel, hotels, setHotelId, setFilteredHotels]);
 
   return (
     <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md xs:flex-row xs:overflow-x-auto">
-      {(filterHotel ? filteredHotels : hotels).map((hotel) => (
+      {(filterWord ? filteredHotels : hotels).map((hotel) => (
         <HotelSliderItem key={hotel.hotelId} {...hotel} />
       ))}
     </div>
