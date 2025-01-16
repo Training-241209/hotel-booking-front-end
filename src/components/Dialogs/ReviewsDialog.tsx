@@ -48,6 +48,7 @@ export function ReviewsDialog()
               userLN={review.user.lastName}
               show={false}
               userId={review.user.userId}
+              profile={false}
             />
           ))}
         </div>
