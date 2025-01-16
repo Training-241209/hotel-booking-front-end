@@ -4,16 +4,16 @@ import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { useAtom } from "jotai";
-import { userAtom } from "@/store/atoms";
+import { filterHotelAtom, userAtom } from "@/store/atoms";
 import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
 
 export default function Navbar() {
   const [storedUser] = useAtom(userAtom);
   const [show, setShow] = useState(false);
-  const [searchLocation, setSearchLocation] = useState("");
+  const [filterHotel, setFilterHotel] = useAtom(filterHotelAtom);
 
   const handleChange = (e: any) => {
-    setSearchLocation(e.target.value);
+    setFilterHotel(e.target.value);
   };
 
   const handleShow = () => {
@@ -28,7 +28,7 @@ export default function Navbar() {
     >
       <Link
         to="/HomePage"
-        className={`bg-[url(/logo-white.png)] col-start-2 flex items-center justify-center bg-contain bg-center bg-no-repeat xs:scale-150`}
+        className={`col-start-2 flex items-center justify-center bg-[url(/logo-white.png)] bg-contain bg-center bg-no-repeat xs:scale-150`}
       ></Link>
       <div
         className={`${storedUser ? "md:col-end-6 lg:col-end-5 xs:col-end-7" : "col-span-1"} col-start-3 flex items-center justify-evenly`}
@@ -58,7 +58,7 @@ export default function Navbar() {
               className={`search ${show ? styles.search : styles.hide} rounded-md py-1 pl-3`}
               type="text"
               placeholder="Enter Location"
-              value={searchLocation}
+              value={filterHotel}
               onChange={handleChange}
             />
             <Search onClick={() => handleShow()} className="text-white" />
@@ -71,16 +71,10 @@ export default function Navbar() {
       )}
       {!storedUser && (
         <div className="col-end-12 flex items-center gap-3 sm:col-start-9 md:col-start-10 2xl:col-start-11 xs:col-start-10 xxs:col-start-8">
-          <Link
-            to="/login"
-            className={`[&.active]:font-bold text-white`}
-          >
+          <Link to="/login" className={`text-white [&.active]:font-bold`}>
             Login
           </Link>
-          <Link
-            to="/register"
-            className={`[&.active]:font-bold text-white }`}
-          >
+          <Link to="/register" className={`} text-white [&.active]:font-bold`}>
             Register
           </Link>
         </div>

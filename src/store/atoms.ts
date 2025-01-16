@@ -56,3 +56,7 @@ export const hotelAtom = atom<Hotel | null>(null);
 export const allHotelsAtom = atom<Hotel[]>([]);
 
 export const hotelIdAtom = atom<number | null>(null);
+
+export const filterHotelAtom = atom<string>("");
+
+export const firstFilteredHotelAtom = atom<Hotel | null>(null);
