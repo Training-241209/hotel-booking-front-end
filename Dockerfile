@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN VITE_API_URL=$VITE_API_URL npm run build
+RUN VITE_API_URL=$VITE_API_URL VITE_GOOGLE_API_KEY=$VITE_GOOGLE_API_KEY npm run build
 
 
 # production stage
