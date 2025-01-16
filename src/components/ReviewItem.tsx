@@ -21,6 +21,7 @@ interface ReviewItemProps {
   userLN: string;
   show: boolean;
   userId: any;
+  profile: boolean;
 }
 
 export default function ReviewItem({
@@ -32,6 +33,7 @@ export default function ReviewItem({
   userLN,
   show,
   userId,
+  profile
 }: ReviewItemProps) {
   // console.log(`item Id: ${reviewId}`);
   // console.log(`item title: ${title}`);
@@ -39,16 +41,16 @@ export default function ReviewItem({
   // console.log(currentUser);
 
   return (
-    <div className="grid h-full grid-cols-8 rounded-md border-2 border-gray-100 p-2">
-      <div className="col-span-1 row-span-1 flex h-full items-center justify-center">
+    <div className="grid h-full grid-cols-8 rounded-md border-2 border-gray-100 p-2 xs:min-w-full">
+      <div className={`col-span-1 row-span-1 flex h-full items-center justify-center ${profile ? 'lg:col-span-2 lg:flex md:hidden':''}`}>
         <Avatar className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-[#022b60b6] text-white">
           <AvatarFallback>
             {userFN?.charAt(0)} {userLN?.charAt(0)}
           </AvatarFallback>
         </Avatar>
       </div>
-      <div className="col-span-5 row-span-1 flex flex-col justify-center pl-1">
-        <h1 className="review_title font-bold">{title}</h1>
+      <div className={`col-span-5 row-span-1 flex flex-col justify-center pl-1 ${profile ? 'lg:col-span-4 lg:text-sm md:text-sm md:col-span-6 ':''}`}>
+        <h1 className={`review_title font-bold`}>{title}</h1>
         <p className="review_description">{description}</p>
       </div>
       <div className="col-span-2 row-span-1 flex items-center justify-end gap-2">

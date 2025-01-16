@@ -168,7 +168,7 @@ export default function HotelDetails() {
             userId = {latestReview.user.userId}
           />
         ) : (
-          <h1 className="font-bold">No Review</h1>
+          <h1 className="font-bold">No Reviews</h1>
         )}
       </div>
     </div>

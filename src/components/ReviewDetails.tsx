@@ -17,7 +17,7 @@ export default function ReviewDetails({reviewId,title,description,rating,userFN,
   return (
     <div className="flex h-full flex-col">
       <h1 className="font-bold">Most Recent Review</h1>
-      <ReviewItem reviewId={reviewId} title={title} description={description} rating={rating} userFN={userFN} userLN={userLN} show={true} userId={userId} />
+      <ReviewItem profile={false} reviewId={reviewId} title={title} description={description} rating={rating} userFN={userFN} userLN={userLN} show={true} userId={userId} />
     </div>
   );
 }
