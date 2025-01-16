@@ -71,12 +71,13 @@ function RouteComponent() {
           </PopoverContent>
         </Popover>
         <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
-          <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white shadow-md xs:col-span-3 ">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white shadow-md xs:col-span-3 md:col-span-3 lg:col-span-2 p-3">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col items-center justify-center gap-3 rounded-md bg-white shadow-md xs:col-span-3">
+          <div className="user__container__buttons flex flex-col items-center justify-evenly gap-3 rounded-md bg-white shadow-md xs:col-span-3 md:col-span-3 lg:col-span-1">
+            <h1 className="font-bold mt-3">My Reviews</h1>
             {Array.isArray(data) && (
-              <div className="flex flex-col max-h-[500px] overflow-y-auto gap-2 p-1 scrollbar-hidden xs:flex-row xs:overflow-x-auto xs:max-w-3/4">
+              <div className="flex flex-col lg:max-h-[500px] md:max-h-[400px] overflow-y-auto gap-2 p-1 scrollbar-hidden xs:flex-row xs:overflow-x-auto xs:max-w-3/4 w-full">
                 {data.map((review) => (
                   <ReviewItem
                     key={review.reviewId}
