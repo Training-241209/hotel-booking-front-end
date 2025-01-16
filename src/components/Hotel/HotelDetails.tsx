@@ -57,6 +57,8 @@ export default function HotelDetails() {
         (sum: number, review: { rating: number }) => sum + review.rating,
         0,
       ) / totalReviews;
+
+    average = parseFloat(average.toFixed(1));
   }
 
   if (!displayHotel) {
