@@ -6,12 +6,13 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN VITE_API_URL=$VITE_API_URL npm run build
+CMD ["npm", "start"]
 
 
-# production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+## production stage
+#FROM nginx:stable-alpine as production-stage
+#COPY --from=build-stage /app/dist /usr/share/nginx/html
+#EXPOSE 80
+#CMD ["nginx", "-g", "daemon off;"]
 
 
