@@ -31,13 +31,13 @@ function Index()
 
   return (
     <div className="col-span-full row-start-2 row-end-13 grid grid-cols-10 grid-rows-10">
-      <div className="logo col-start-5 col-end-7 mx-auto row-span-2 xs:col-start-3 xs:col-end-9 xs:row-start-2 
+      <div className="logo col-start-5 col-end-7 mx-auto row-span-2 xs:col-start-3 xs:col-end-9 xs:row-start-3 
       md:col-start-3 md:col-end-9 md:row-start-2
       
-      ">
-        <img src="/logo-white.png" alt="Logo" className="object-cover lg:scale-150 w-full h-full sm:scale-125 xxs:scale-100" />
+       xxs:row-start-3">
+        <img src="/logo-white.png" alt="Logo" className="object-cover lg:scale-150 w-full h-full sm:scale-125 xxs:scale-150 xs:scale-150" />
       </div>
-      <div className="search_bar row-start-6 col-start-4 col-end-8 sm:col-start-3 sm:col-end-9">
+      <div className="search_bar row-start-6 lg:col-start-4 lg:col-end-8 sm:col-start-3 sm:col-end-9 xs:col-start-3 xs:col-end-9">
         <Input
           type="text"
           placeholder="Location Search"
@@ -47,7 +47,7 @@ function Index()
           onKeyDown={onEnterPress}
         />
       </div>
-      <div className="hotel_carousel row-start-7 col-start-0 col-span-full row-end-11">
+      <div className="hotel_carousel row-start-7 col-start-0 col-span-full row-end-11 mx-2">
         <HotelCarousel />
       </div>
     </div>
