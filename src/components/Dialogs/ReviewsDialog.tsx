@@ -19,6 +19,7 @@ export function ReviewsDialog()
   useFetchReviewByHotel(hotel?.hotelId);
   
   const [reviews] = useAtom(reviewAtom);
+  console.log({reviews})
 
   // if (Array.isArray(reviews) && reviews.length > 0) {
   //   console.log(`first review: ${reviews[reviews.length-1].reviewId}`);
@@ -46,6 +47,7 @@ export function ReviewsDialog()
               userFN={review.user.firstName}
               userLN={review.user.lastName}
               show={false}
+              userId={review.user.userId}
             />
           ))}
         </div>

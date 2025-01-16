@@ -30,7 +30,6 @@ export default function HotelDetails() {
   const [filterWord] = useAtom(filterWordAtom);
   // const [allHotels] = useAtom(allHotelsAtom);
 
-
   const displayHotel =
     !filterWord || filteredHotels.some((h) => h.hotelId === hotel?.hotelId)
       ? hotel
@@ -41,7 +40,10 @@ export default function HotelDetails() {
   }, [filteredHotels, filterWord]);
 
   const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
+  console.log(data);
   const latestReview = data ? data[data.length - 1] : null;
+  console.log({latestReview});
+
 
   let totalReviews = 0;
   let average;
@@ -159,6 +161,7 @@ export default function HotelDetails() {
             rating={latestReview.rating}
             userFN={latestReview.user.firstName}
             userLN={latestReview.user.lastName}
+            userId = {latestReview.user.userId}
           />
         ) : (
           <h1 className="font-bold">No Review</h1>
