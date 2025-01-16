@@ -36,7 +36,7 @@ export default function ReviewItem({
   // console.log(`item Id: ${reviewId}`);
   // console.log(`item title: ${title}`);
   const [currentUser] = useAtom(userAtom);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return (
     <div className="grid h-full grid-cols-8 rounded-md border-2 border-gray-100 p-2">

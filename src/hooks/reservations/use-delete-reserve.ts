@@ -23,6 +23,7 @@ export function useDeleteReserve()
                         title: "Reservation Deleted"
                     }
                 );
+                queryClient.invalidateQueries({queryKey: ["all-reservations"]});
                 queryClient.invalidateQueries({queryKey: ["reservations"]});
             },
             onError: () =>

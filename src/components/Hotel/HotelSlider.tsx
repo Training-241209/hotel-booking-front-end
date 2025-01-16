@@ -7,7 +7,7 @@ import {
   filterWordAtom,
   Hotel,
   hotelAtom,
-  hotelIdAtom,
+  // hotelIdAtom,
 } from "@/store/atoms";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ export default function HotelSlider() {
   useAllHotels();
   const [hotels] = useAtom(allHotelsAtom);
   const [hotel, setHotel] = useAtom(hotelAtom);
-  const setHotelId = useAtom(hotelIdAtom)[1];
+  // const setHotelId = useAtom(hotelIdAtom)[1];
   const [filterWord] = useAtom(filterWordAtom);
   const [filtered, setFilteredHotels] = useAtom(filteredHotelsAtom);
 
@@ -44,7 +44,7 @@ export default function HotelSlider() {
     if (!hotel && hotels.length > 0) {
       const defaultHotel = hotels[0];
       setHotel(defaultHotel);
-      setHotelId(defaultHotel.hotelId);
+      // setHotelId(defaultHotel.hotelId);
       if (filterWord) {
         setFilteredHotels(filterHotels(hotels, filterWord));
       }
@@ -53,7 +53,7 @@ export default function HotelSlider() {
         setFilteredHotels(filterHotels(hotels, filterWord));
       }
     }
-  }, [hotel, setHotel, hotels, setHotelId, setFilteredHotels]);
+  }, [hotel, setHotel, hotels, setFilteredHotels]);
 
   return (
     <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md xs:flex-row xs:overflow-x-auto">
