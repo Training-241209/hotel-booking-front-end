@@ -11,15 +11,13 @@ import {
 } from "@/store/atoms";
 import { useEffect } from "react";
 
-// console.log(hotels[0]);
-
 export default function HotelSlider() {
   useAllHotels();
   const [hotels] = useAtom(allHotelsAtom);
   const [hotel, setHotel] = useAtom(hotelAtom);
   const setHotelId = useAtom(hotelIdAtom)[1];
   const [filterWord] = useAtom(filterWordAtom);
-  const [filtered, setFilteredHotels] = useAtom(filteredHotelsAtom);
+  const [,setFilteredHotels] = useAtom(filteredHotelsAtom);
 
   const filteredHotels = filterWord
     ? hotels.filter(
@@ -39,7 +37,6 @@ export default function HotelSlider() {
     );
   };
 
-  console.log({ filtered });
   useEffect(() => {
     if (!hotel && hotels.length > 0) {
       const defaultHotel = hotels[0];
@@ -55,11 +52,17 @@ export default function HotelSlider() {
     }
   }, [hotel, setHotel, hotels, setHotelId, setFilteredHotels]);
 
+  const displayHotels = filterWord ? filteredHotels : hotels;
+
   return (
     <div className="scrollbar-hidden flex flex-col gap-2 overflow-y-auto rounded-md xs:flex-row xs:overflow-x-auto">
-      {(filterWord ? filteredHotels : hotels).map((hotel) => (
-        <HotelSliderItem key={hotel.hotelId} {...hotel} />
-      ))}
+      {displayHotels.length > 0 ? (
+        displayHotels.map((hotel) => (
+          <HotelSliderItem key={hotel.hotelId} {...hotel} />
+        ))
+      ) : (
+        <div className="text-center font-bold text-[#022b60] flex w-full h-full justify-center items-center">No matching hotels</div>
+      )}
     </div>
   );
 }
