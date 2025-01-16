@@ -1,6 +1,8 @@
 import { createFileRoute} from "@tanstack/react-router";
 import HotelDetails from "@/components/Hotel/HotelDetails";
 import HotelSlider from "@/components/Hotel/HotelSlider";
+import { useAtom } from "jotai";
+import { homePageAtom } from "@/store/atoms";
 
 export const Route = createFileRoute("/_main/HomePage")({
   component: RouteComponent,
@@ -9,7 +11,8 @@ export const Route = createFileRoute("/_main/HomePage")({
 function RouteComponent() 
 {
   // check the store folder to see all my global states - these are states that can accessed anywhere in our app
-  // const [hotel, setHotel] = useAtom(hotelAtom);
+  const [, setHomePage] = useAtom(homePageAtom);
+  setHomePage(true);
 
   return (
     <div className="xs:row-start-1 col-span-full row-start-2 row-end-13 grid grid-cols-12 grid-rows-12 gap-3">

@@ -2,7 +2,7 @@ import ReservationItem from "@/components/ReservationItem";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useAllUserReserves } from "@/hooks/reservations/use-all-user-reserves";
 import { useAtom } from "jotai";
-import { allReserveAtom, blueAtom, userAtom } from "@/store/atoms";
+import { allReserveAtom, blueAtom, homePageAtom, userAtom } from "@/store/atoms";
 import { useEffect } from "react";
 import { useAllReserves } from "@/hooks/reservations/use-all-reserves";
 
@@ -14,19 +14,18 @@ function RouteComponent() {
   const [checkUser] = useAtom(userAtom);
   const router = useRouter();
 
+  const [, setHomePage] = useAtom(homePageAtom);
+  setHomePage(false);
+
   if (checkUser === null) {
     router.navigate({ to: "/" });
   }
 
   // useAllUserReserves();
-  if (checkUser)
-  {
-    if (checkUser.isAdmin)
-    {
+  if (checkUser) {
+    if (checkUser.isAdmin) {
       useAllReserves();
-    }
-    else if (!checkUser.isAdmin)
-    {
+    } else if (!checkUser.isAdmin) {
       useAllUserReserves();
     }
   }

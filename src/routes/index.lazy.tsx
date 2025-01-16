@@ -1,6 +1,6 @@
 import HotelCarousel from "@/components/Hotel/HotelCarousel";
 import { Input } from "@/components/ui/input";
-import { filterWordAtom } from "@/store/atoms";
+import { filterWordAtom, homePageAtom } from "@/store/atoms";
 import { createLazyFileRoute, useRouter } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 
@@ -26,6 +26,8 @@ function Index()
       router.navigate({to: "/HomePage"});
     }
   }
+    const [, setHomePage] = useAtom(homePageAtom);
+    setHomePage(false);
 
   return (
     <div className="col-span-full row-start-2 row-end-13 grid grid-cols-10 grid-rows-10">

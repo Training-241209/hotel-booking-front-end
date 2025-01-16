@@ -3,7 +3,7 @@ import { UpdatePasswordDialog } from "@/components/Dialogs/UpdatePasswordDialog"
 import UpdateUserForm from "@/components/Forms/UpdateUserForm";
 
 import { UserAvatar } from "@/components/user-avatar";
-import { userAtom } from "@/store/atoms";
+import { homePageAtom, userAtom } from "@/store/atoms";
 import {
   Popover,
   PopoverContent,
@@ -27,6 +27,8 @@ function RouteComponent() {
     return null;
   }
   const { data } = useReviewByUserId(storedUser.userId);
+  const [, setHomePage] = useAtom(homePageAtom);
+  setHomePage(false);
 
   return (
     <div className="col-span-full row-start-2 row-end-13 grid text-[#022b60]">
