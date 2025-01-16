@@ -36,6 +36,7 @@ export default function ReviewItem({
   // console.log(`item Id: ${reviewId}`);
   // console.log(`item title: ${title}`);
   const [currentUser] = useAtom(userAtom);
+  console.log(currentUser);
 
   return (
     <div className="grid h-full grid-cols-8 rounded-md border-2 border-gray-100 p-2">
@@ -55,36 +56,38 @@ export default function ReviewItem({
           <span className="text-2xl font-bold text-[#022b60]">{rating}</span>
           <Star fill="#022b60" color="#022b60" className="h-[25px] w-[25px]" />
         </div>
-        <Popover>
-          <PopoverTrigger>
-            <EllipsisVertical className="m-2 scale-150" />
-          </PopoverTrigger>
-          <PopoverContent className="w-80">
-            <div className="grid gap-4">
-              <div className="space-y-2">
-                <h4 className="font-medium leading-none">Available Actions</h4>
-                <p className="text-sm text-muted-foreground">
-                  Pick an option to proceed with your next step.
-                </p>
-              </div>
 
-              <div className="flex flex-col items-center gap-2">
-                {show && <ReviewsDialog />}
-                {currentUser?.userId === userId && (
-                  <>
-                    <UpdateReviewDialog
-                      reviewId={reviewId}
-                      title={title}
-                      description={description}
-                      rating={rating}
-                    />
-                    <DeleteReviewDialog reviewId={reviewId} />
-                  </>
-                )}
+        {show && <ReviewsDialog />}
+
+        {(currentUser?.userId === userId || currentUser?.isAdmin) && (
+          <Popover>
+            <PopoverTrigger>
+              <EllipsisVertical className="m-2 scale-150" />
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="grid gap-4">
+                <div className="space-y-2">
+                  <h4 className="font-medium leading-none">
+                    Available Actions
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    Pick an option to proceed with your next step.
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center gap-2">
+                  <UpdateReviewDialog
+                    reviewId={reviewId}
+                    title={title}
+                    description={description}
+                    rating={rating}
+                  />
+                  <DeleteReviewDialog reviewId={reviewId} />
+                </div>
               </div>
-            </div>
-          </PopoverContent>
-        </Popover>
+            </PopoverContent>
+          </Popover>
+        )}
       </div>
     </div>
   );
