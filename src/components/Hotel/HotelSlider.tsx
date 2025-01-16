@@ -4,7 +4,6 @@ import { useAtom } from "jotai";
 import {
   allHotelsAtom,
   filterHotelAtom,
-  firstFilteredHotelAtom,
   hotelAtom,
   hotelIdAtom,
 } from "@/store/atoms";
@@ -18,26 +17,18 @@ export default function HotelSlider() {
   const [hotel, setHotel] = useAtom(hotelAtom);
   const setHotelId = useAtom(hotelIdAtom)[1];
   const [filterHotel] = useAtom(filterHotelAtom);
-  const [firstFilteredHotel, setFirstFilteredHotel] = useAtom(
-    firstFilteredHotelAtom,
-  );
 
-  const filteredHotels = hotels.filter((hotel) =>
-    hotel.hotelName.toLowerCase().includes(filterHotel.toLowerCase()),
+  const filteredHotels = hotels.filter(
+    (hotel) =>
+      hotel.hotelName.toLowerCase().includes(filterHotel.toLowerCase()) ||
+      hotel.location.toLowerCase().includes(filterHotel.toLowerCase()),
   );
-
-  console.log(firstFilteredHotel);
 
   useEffect(() => {
     if (!hotel && hotels.length > 0) {
       const defaultHotel = hotels[0];
       setHotel(defaultHotel);
       setHotelId(defaultHotel.hotelId);
-    }
-    if (filteredHotels.length > 0) {
-      setFirstFilteredHotel(filteredHotels[0]);
-    } else {
-      setFirstFilteredHotel(null);
     }
   }, [hotel, setHotel, hotels, setHotelId, filteredHotels]);
 

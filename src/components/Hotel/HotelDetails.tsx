@@ -1,4 +1,4 @@
-import { blueAtom, firstFilteredHotelAtom, hotelAtom, userAtom } from "@/store/atoms";
+import { blueAtom, hotelAtom, userAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { EllipsisVertical, Star } from "lucide-react";
 import { DeleteHotelDialog } from "../Dialogs/DeleteHotelDialog";
@@ -17,7 +17,6 @@ import { GoogleMapDialog } from "../Dialogs/GoogleMapDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
-  const [firstFilteredHotel] = useAtom(firstFilteredHotelAtom);
   const [currentUser] = useAtom(userAtom);
   const [, setBlue] = useAtom(blueAtom);
 
@@ -25,10 +24,9 @@ export default function HotelDetails() {
     setBlue(false);
   }, []);
 
-  const displayHotel = firstFilteredHotel || hotel;
 
   // this thing contains all the reviews for the hotel by hotelId
-  const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
+  const { data } = useFetchReviewByHotel(hotel?.hotelId);
   const latestReview = data ? data[data.length - 1] : null;
 
   let totalReviews = 0;
@@ -43,7 +41,7 @@ export default function HotelDetails() {
       ) / totalReviews;
   }
 
-  if (!displayHotel) {
+  if (!hotel) {
     return (
       <h1 className="flex h-full w-full items-center justify-center text-xl font-bold shadow-md">
         Please select a hotel
@@ -55,8 +53,8 @@ export default function HotelDetails() {
     <div className="grid h-full w-full grid-rows-8">
       <div className="hotel__image relative row-span-5 w-full xs:row-span-4">
         <img
-          src={displayHotel?.image}
-          alt={displayHotel?.hotelName}
+          src={hotel?.image}
+          alt={hotel?.hotelName}
           className="h-full w-full rounded-md object-cover"
         />
         <GoogleMapDialog />
@@ -91,25 +89,25 @@ export default function HotelDetails() {
           <div className="hotel__info__title mt-3 flex flex-col items-start justify-between">
             <div className="flex items-center gap-3">
               <h1 className="font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
-                {displayHotel?.hotelName.toUpperCase()}
+                {hotel?.hotelName.toUpperCase()}
               </h1>
               <h2 className="flex items-center border-l-2 border-[#022b60] pl-3 font-bold text-[#022b60] sm:text-base md:text-xl lg:text-xl 2xl:text-3xl">
-                {displayHotel.location.toUpperCase()}
+                {hotel.location.toUpperCase()}
               </h2>
             </div>
             <p className="w-full text-[#022b60] xs:truncate">
-              {displayHotel?.description}
+              {hotel?.description}
             </p>
           </div>
           <div className="grid w-full grid-cols-9 grid-rows-1 text-[#022b60]">
             <div className="col-span-7 flex flex-col justify-evenly">
               <div className="hotel__info__rooms">
                 <span className="text-md font-bold">Rooms Available</span>:{" "}
-                {displayHotel?.rooms}
+                {hotel?.rooms}
               </div>
               <div className="hotel__info__price">
                 <span className="text-md font-bold">Room Price</span>: $
-                {displayHotel?.price}
+                {hotel?.price}
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useSetAtom } from "jotai";
 import { Hotel, User, reserveAtom } from "@/store/atoms";
 import { DeleteReservationDialog } from "./Dialogs/DeleteReservationDialog";
+import { console } from "node:inspector";
 
 interface ReservationProps {
   reservationId: number;
