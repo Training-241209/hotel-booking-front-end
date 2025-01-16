@@ -15,7 +15,7 @@ pipeline {
                 script {
                     // Build new image
                     sh "docker build --build-arg VITE_API_URL=${BACKEND_API_URL} \
-                     --build-arg VITE_GOOGLE_MAPS_API_KEY=${GOOGLE_API_KEY} \
+                     --build-arg VITE_GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY} \
                      -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
