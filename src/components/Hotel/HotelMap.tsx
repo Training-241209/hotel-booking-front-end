@@ -102,7 +102,7 @@ function Map({ center }: MapProps) {
             center: center,
             radius: 1000,
           },
-          includedPrimaryTypes: ["restaurant", "historical_landmark"],
+          includedPrimaryTypes: ["restaurant", "historical_landmark", "museum", "park"],
           maxResultCount: 15,
           rankPreference: SearchNearbyRankPreference.POPULARITY,
           language: "en-US",
