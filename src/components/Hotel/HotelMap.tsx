@@ -100,10 +100,10 @@ function Map({ center }: MapProps) {
           fields: ["displayName", "location", "businessStatus"],
           locationRestriction: {
             center: center,
-            radius: 1000,
+            radius: 5000,
           },
-          includedPrimaryTypes: ["restaurant", "historical_landmark"],
-          maxResultCount: 15,
+          includedPrimaryTypes: ["restaurant", "historical_landmark", "museum", "park"],
+          maxResultCount: 20,
           rankPreference: SearchNearbyRankPreference.POPULARITY,
           language: "en-US",
           region: "us",

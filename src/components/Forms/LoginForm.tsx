@@ -16,12 +16,14 @@ import { useLogin } from "@/hooks/users/auth/use-login";
 import { blueAtom } from "@/store/atoms";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
+import axiosInstance from "@/lib/axios-config.ts";
 
 export default function LoginForm() {
   const [, setBlue] = useAtom(blueAtom);
 
   useEffect(() => {
     setBlue(false);
+    axiosInstance.get("api/auth/ping").then((res) => console.log(res.data));
   }, []);
   const { mutate: login, isPending } = useLogin();
 
