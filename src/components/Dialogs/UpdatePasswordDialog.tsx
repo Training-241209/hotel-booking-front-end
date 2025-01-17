@@ -70,7 +70,7 @@ export function UpdatePasswordDialog() {
                   <FormItem>
                     <FormLabel>Current Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Current Password" {...field} />
+                      <Input type='password' placeholder="Current Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -83,7 +83,7 @@ export function UpdatePasswordDialog() {
                   <FormItem>
                     <FormLabel>New Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="New Password" {...field} />
+                      <Input type='password' placeholder="New Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -96,7 +96,7 @@ export function UpdatePasswordDialog() {
                   <FormItem>
                     <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Confirm Password" {...field} />
+                      <Input type='password' placeholder="Confirm Password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
