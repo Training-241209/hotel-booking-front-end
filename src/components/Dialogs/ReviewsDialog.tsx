@@ -30,7 +30,7 @@ export function ReviewsDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 sm:w-1/2">
+        <Button className="bg-green-600 hover:bg-green-600 hover:opacity-75 sm:w-1/2 xxs:w-full">
           Reviews
         </Button>
       </DialogTrigger>

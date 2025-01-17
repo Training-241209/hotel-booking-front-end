@@ -21,6 +21,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { GoogleMapDialog } from "../Dialogs/GoogleMapDialog";
+import { ReviewsDialog } from "../Dialogs/ReviewsDialog";
 
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
@@ -40,16 +41,13 @@ export default function HotelDetails() {
 
   useEffect(() => {
     // setBlue(false);
-    console.log("Inside Useeffect in hotel details")
+    console.log("Inside Useeffect in hotel details");
   }, [filteredHotels, filterWord, hotel]);
-
-
 
   const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
   console.log(data);
   const latestReview = data ? data[data.length - 1] : null;
-  console.log({latestReview});
-
+  console.log({ latestReview });
 
   let totalReviews = 0;
   let average;
@@ -160,7 +158,7 @@ export default function HotelDetails() {
           <CreateReviewDialog />
         </div>
       </div>
-      <div className="hotel__review row-span-1 text-[#022b60] xs:row-span-2">
+      <div className="hotel__review row-span-1 text-[#022b60] xs:row-span-2 xxs:hidden">
         {latestReview ? (
           <ReviewDetails
             reviewId={latestReview.reviewId}
@@ -169,11 +167,14 @@ export default function HotelDetails() {
             rating={latestReview.rating}
             userFN={latestReview.user.firstName}
             userLN={latestReview.user.lastName}
-            userId = {latestReview.user.userId}
+            userId={latestReview.user.userId}
           />
         ) : (
           <h1 className="font-bold">No Reviews</h1>
         )}
+      </div>
+      <div className="hidden xxs:flex justify-center w-1/2 mx-auto max-h-[30px] bg-red-100 mt-10 ">
+        <ReviewsDialog />
       </div>
     </div>
   );
