@@ -72,7 +72,7 @@ export default function HotelDetails() {
   }
 
   return (
-    <div className="grid h-full w-full grid-rows-8">
+    <div className="grid h-full w-full grid-rows-8 relative">
       <div className="hotel__image relative row-span-5 w-full xs:row-span-4">
         <img
           src={displayHotel?.image}
@@ -173,7 +173,7 @@ export default function HotelDetails() {
           <h1 className="font-bold">No Reviews</h1>
         )}
       </div>
-      <div className="hidden xxs:flex justify-center w-1/2 mx-auto max-h-[30px] bg-red-100 mt-10 ">
+      <div className="hidden xxs:flex justify-center w-1/2 mx-auto absolute bottom-0 right-0">
         <ReviewsDialog />
       </div>
     </div>
