@@ -7,6 +7,8 @@ import { useEffect } from "react";
 export default function HotelCarousel() {
   useAllHotels();
   const [hotels] = useAtom(allHotelsAtom);
+  const displayed = hotels.slice(0, 6);
+
 
   const [, setBlue] = useAtom(blueAtom);
 
@@ -19,8 +21,8 @@ export default function HotelCarousel() {
       <h1 className="col-start-4 col-end-8 row-start-7 mb-2 text-center text-2xl font-bold text-white">
         Check out some of our hotels
       </h1>
-      <div className="flex gap-3 overflow-x-auto scrollbar-hidden">
-        {hotels.map((hotel) => (
+      <div className="flex gap-3 items-center justify-center min-h-[300px]">
+        {displayed.map((hotel) => (
           <HotelCarouselItem
             key={hotel.hotelId}
             name={hotel.hotelName}

@@ -8,13 +8,21 @@ export default function HotelCarouselItem({
   name,
 }: HotelCarouselItemProps) {
   return (
-    <div className="hotel-carousel-item relative rounded-md">
-      <img
-        src={image}
-        alt={name}
-        className="hotel-image rounded-md object-cover sm:max-h-[200px] sm:min-h-[200px] sm:min-w-[200px] sm:max-w-[200px] md:max-h-[300px] md:min-h-[300px] md:min-w-[300px] md:max-w-[300px] xs:max-h-[200px] xs:min-h-[200px] xs:min-w-[200px] xs:max-w-[200px] xxs:max-h-[150px] xxs:min-h-[150px] xxs:min-w-[150px] xxs:max-w-[150px]"
-      />
-      <h3 className="hotel-name absolute bottom-0 m-1 text-white">{name}</h3>
+    <div
+      className="hotel-carousel-item relative rounded-md bg-red-50 xxs:h-[75px] xxs:w-[75px] 
+        xs:h-[100px] xs:w-[100px]
+        md:h-[150px] md:w-[150px]
+        lg:h-[200px] lg:w-[200px]
+        2xl:h-[300px] 2xl:w-[300px]
+      "
+      style={{
+        backgroundImage: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <h3 className="hotel-name absolute bottom-0 m-1 text-white xxs:hidden">{name}</h3>
     </div>
   );
 }
