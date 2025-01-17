@@ -51,7 +51,6 @@ export interface Hotel {
   price: number;
   image: string;
 }
-
 export const hotelAtom = atom<Hotel | null>(null);
 export const allHotelsAtom = atom<Hotel[]>([]);
 

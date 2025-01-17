@@ -1,6 +1,6 @@
 import {
   // allHotelsAtom,
-  blueAtom,
+  // allHotelsAtom,
   filteredHotelsAtom,
   filterWordAtom,
   hotelAtom,
@@ -25,21 +25,25 @@ import { GoogleMapDialog } from "../Dialogs/GoogleMapDialog";
 export default function HotelDetails() {
   const [hotel] = useAtom(hotelAtom);
   const [currentUser] = useAtom(userAtom);
-  const [, setBlue] = useAtom(blueAtom);
+  // const [, setBlue] = useAtom(blueAtom);
 
   // search bar code starts
   const [filteredHotels] = useAtom(filteredHotelsAtom);
   const [filterWord] = useAtom(filterWordAtom);
   // const [allHotels] = useAtom(allHotelsAtom);
 
-  const displayHotel =
-    !filterWord || filteredHotels.some((h) => h.hotelId === hotel?.hotelId)
-      ? hotel
-      : filteredHotels[0];
+  const displayHotel = hotel;
+  //   !filterWord || filteredHotels.some((h) => h.hotelId === hotel?.hotelId)
+  //     ? hotel
+  //     : filteredHotels[0];
+  // console.log({displayHotel});
 
   useEffect(() => {
-    setBlue(false);
-  }, [filteredHotels, filterWord]);
+    // setBlue(false);
+    console.log("Inside Useeffect in hotel details")
+  }, [filteredHotels, filterWord, hotel]);
+
+
 
   const { data } = useFetchReviewByHotel(displayHotel?.hotelId);
   console.log(data);
