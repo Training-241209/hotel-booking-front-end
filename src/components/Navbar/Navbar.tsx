@@ -2,13 +2,39 @@ import { Link } from "@tanstack/react-router";
 import { UserDropdown } from "../user-dropdown";
 import { Search } from "lucide-react";
 import styles from "./Navbar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { filterWordAtom, homePageAtom, userAtom } from "@/store/atoms";
 import { CreateHotelDialog } from "../Dialogs/CreateHotelDialog";
+import { jwtDecode } from "jwt-decode";
 
 export default function Navbar() {
-  const [storedUser] = useAtom(userAtom);
+  const [storedUser,setStoredUser] = useAtom(userAtom);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if(token){
+      const decoded = jwtDecode(token) as {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        email: string;
+        roleName: string;
+        isAdmin: boolean;
+
+      };
+      setStoredUser({
+        userId: decoded.userId,
+        firstName: decoded.firstName,
+        lastName: decoded.lastName,
+        email: decoded.email,
+        roleName: decoded.roleName,
+        isAdmin: decoded.isAdmin,
+      });
+    }
+  }, []);
+
   const [homePage] = useAtom(homePageAtom);
   const [show, setShow] = useState(false);
   const [filterHotel, setFilterHotel] = useAtom(filterWordAtom);
