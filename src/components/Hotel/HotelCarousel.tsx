@@ -21,7 +21,7 @@ export default function HotelCarousel() {
       <h1 className="col-start-4 col-end-8 row-start-7 mb-2 text-center text-2xl font-bold text-white">
         Check out some of our hotels
       </h1>
-      <div className="flex gap-3 items-center justify-center min-h-[300px]">
+      <div className="flex gap-3 items-center justify-center min-h-[300px] xs:grid xs:grid-cols-3 xs:w-[600px] xs:mx-auto xxs:max-w-[350px] xs:max-w-[350px] ">
         {displayed.map((hotel) => (
           <HotelCarouselItem
             key={hotel.hotelId}
