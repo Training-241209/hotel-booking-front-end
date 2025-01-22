@@ -14,6 +14,7 @@ import { useAtom } from "jotai";
 import { EllipsisVertical } from "lucide-react";
 import { useReviewByUserId } from "@/hooks/reviews/use-review-by-userId";
 import ReviewItem from "@/components/ReviewItem";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/_main/ProfilePage")({
   component: RouteComponent,
@@ -29,6 +30,8 @@ function RouteComponent() {
   const { data } = useReviewByUserId(storedUser.userId);
   const [, setHomePage] = useAtom(homePageAtom);
   setHomePage(false);
+
+  useEffect(() => {}, [data]);
 
   return (
     <div className="col-span-full row-start-2 row-end-13 grid text-[#022b60]">
@@ -46,14 +49,14 @@ function RouteComponent() {
               {storedUser?.firstName + " " + storedUser?.lastName}
             </h1>
           </div>
-          <div className="col-span-2 col-start-11 flex h-full flex-col items-center justify-center gap-3 sm:col-span-4 sm:col-start-10 md:col-span-3 md:col-start-10 xs:col-span-3 xs:col-start-10 xxs:hidden xs:hidden">
+          <div className="col-span-2 col-start-11 flex h-full flex-col items-center justify-center gap-3 sm:col-span-4 sm:col-start-10 md:col-span-3 md:col-start-10 xs:col-span-3 xs:col-start-10 xs:hidden xxs:hidden">
             <UpdatePasswordDialog />
             <DeleteUserDialog />
           </div>
         </div>
         <Popover>
           <PopoverTrigger>
-            <EllipsisVertical className="absolute right-0 top-0 m-2 mt-5 hidden scale-150 text-white xxs:flex xs:flex" />
+            <EllipsisVertical className="absolute right-0 top-0 m-2 mt-5 hidden scale-150 text-white xs:flex xxs:flex" />
           </PopoverTrigger>
           <PopoverContent className="w-80">
             <div className="grid gap-4">
@@ -71,13 +74,13 @@ function RouteComponent() {
           </PopoverContent>
         </Popover>
         <div className="user__container__main grid h-3/4 w-full grid-cols-3 gap-3">
-          <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white shadow-md xs:col-span-3 md:col-span-3 lg:col-span-2 p-3">
+          <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white p-3 shadow-md md:col-span-3 lg:col-span-2 xs:col-span-3">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col items-center justify-evenly gap-3 rounded-md bg-white shadow-md xs:col-span-3 md:col-span-3 lg:col-span-1">
-            <h1 className="font-bold mt-3">My Reviews</h1>
+          <div className="user__container__buttons flex flex-col items-center justify-evenly gap-3 rounded-md bg-white shadow-md md:col-span-3 lg:col-span-1 xs:col-span-3">
+            <h1 className="mt-3 font-bold">My Reviews</h1>
             {Array.isArray(data) && (
-              <div className="flex flex-col lg:max-h-[500px] md:max-h-[400px] overflow-y-auto gap-2 p-1 scrollbar-hidden xs:flex-row xs:overflow-x-auto xs:max-w-3/4 w-full">
+              <div className="scrollbar-hidden xs:max-w-3/4 flex w-full flex-col gap-2 overflow-y-auto p-1 md:max-h-[400px] lg:max-h-[500px] xs:flex-row xs:overflow-x-auto">
                 {data.map((review) => (
                   <ReviewItem
                     key={review.reviewId}
