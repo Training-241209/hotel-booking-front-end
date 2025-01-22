@@ -77,7 +77,7 @@ function RouteComponent() {
           <div className="user__container__form col-span-2 flex flex-col items-center justify-center rounded-md bg-white p-3 shadow-md md:col-span-3 lg:col-span-2 xs:col-span-3">
             <UpdateUserForm />
           </div>
-          <div className="user__container__buttons flex flex-col items-center justify-evenly gap-3 rounded-md bg-white shadow-md md:col-span-3 lg:col-span-1 xs:col-span-3">
+          <div className="user__container__buttons flex flex-col items-center justify-start gap-3 rounded-md bg-white shadow-md md:col-span-3 lg:col-span-1 xs:col-span-3">
             <h1 className="mt-3 font-bold">My Reviews</h1>
             {Array.isArray(data) && (
               <div className="scrollbar-hidden xs:max-w-3/4 flex w-full flex-col gap-2 overflow-y-auto p-1 md:max-h-[400px] lg:max-h-[500px] xs:flex-row xs:overflow-x-auto">
