@@ -51,7 +51,7 @@ export default function ReviewItem({
       </div>
       <div className={`col-span-5 row-span-1 flex flex-col justify-center pl-1 ${profile ? 'lg:col-span-4 lg:text-sm md:text-sm md:col-span-6 ':''}`}>
         <h1 className={`review_title font-bold`}>{title}</h1>
-        <p className="review_description line-clamp-2">{description}</p>
+        <p className="review_description line-clamp-1">{description}</p>
       </div>
       <div className="col-span-2 row-span-1 flex items-center justify-end gap-2">
         <div className="flex items-center xxs:hidden">
