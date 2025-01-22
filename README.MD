@@ -71,8 +71,8 @@ Here's the markdown with badges added for each technology:
 :satellite: Next Steps:
 Here are some potential improvements for the project:
 
-Use an API to fetch real hotel data.
-Allow users to filter nearby amenities on Google Maps.
-Host hotel images on S3.
-Allow users to update their reservations.
-Create a manager view.
+- Use an API to fetch real hotel data.
+- Allow users to filter nearby amenities on Google Maps.
+- Host hotel images on S3.
+- Allow users to update their reservations.
+- Create a manager view.
