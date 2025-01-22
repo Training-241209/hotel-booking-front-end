@@ -68,7 +68,7 @@ Here's the markdown with badges added for each technology:
 - ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white)
 
 
-:satellite: Next Steps:
+## :satellite: Next Steps:
 Here are some potential improvements for the project:
 
 - Use an API to fetch real hotel data.
